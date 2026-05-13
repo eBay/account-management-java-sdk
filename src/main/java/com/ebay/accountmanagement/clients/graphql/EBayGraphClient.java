@@ -2,6 +2,7 @@ package com.ebay.accountmanagement.clients.graphql;
 
 import com.ebay.accountmanagement.configuration.RequestOptions;
 import com.ebay.accountmanagement.graphql.EBayGraphOperations;
+import com.ebay.accountmanagement.graphql.types.UserBiddingActivityInput;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -43,18 +44,18 @@ public final class EBayGraphClient {
     /**
      * Retrieve bidding activity for the authenticated user.
      *
-     * @param input Filter criteria (map with filter properties)
+     * @param input Filter criteria (typed UserBiddingActivityInput)
      * @param accessToken Per-call access token (optional)
      * @param requestOptions Optional custom headers
      * @return CompletableFuture with bidding activity data as JsonNode
      */
     public CompletableFuture<JsonNode> userBiddingActivityAsync(
-            Map<String, Object> input,
+            UserBiddingActivityInput input,
             String accessToken,
             RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> {
             Map<String, Object> variables = new HashMap<>();
-            variables.put("input", input != null ? input : Map.of());
+            variables.put("input", input != null ? input.toMap() : Map.of());
 
             JsonNode data = dynamic.execute(
                 EBayGraphOperations.USER_BIDDING_ACTIVITY,

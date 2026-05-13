@@ -10,9 +10,9 @@ import java.util.HashSet;
  */
 public final class AccountManagementConfiguration {
     // Base URLs for each API
-    private String sellAccountV1BaseUrl = "https://api.ebay.com";
-    private String sellAccountV2BaseUrl = "https://api.ebay.com";
-    private String sellFinancesV1BaseUrl = "https://apiz.ebay.com";
+    private String sellAccountV1BaseUrl = "https://api.ebay.com/sell/account/v1";
+    private String sellAccountV2BaseUrl = "https://api.ebay.com/sell/account/v2";
+    private String sellFinancesV1BaseUrl = "https://apiz.ebay.com/sell/finances/v1";
     private String graphQLBaseUrl = "https://api.ebay.com/graphql";
 
     private String accessToken;  // static fallback; per-call token takes precedence
