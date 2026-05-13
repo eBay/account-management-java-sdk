@@ -13,6 +13,7 @@ public final class AccountManagementConfiguration {
     private String sellAccountV1BaseUrl = "https://api.ebay.com";
     private String sellAccountV2BaseUrl = "https://api.ebay.com";
     private String sellFinancesV1BaseUrl = "https://apiz.ebay.com";
+    private String graphQLBaseUrl = "https://api.ebay.com/graphql";
 
     private String accessToken;  // static fallback; per-call token takes precedence
     private boolean diagnosticLogging = false;
@@ -33,6 +34,9 @@ public final class AccountManagementConfiguration {
     public String getSellFinancesV1BaseUrl() { return sellFinancesV1BaseUrl; }
     public void setSellFinancesV1BaseUrl(String sellFinancesV1BaseUrl) { this.sellFinancesV1BaseUrl = sellFinancesV1BaseUrl; }
 
+    public String getGraphQLBaseUrl() { return graphQLBaseUrl; }
+    public void setGraphQLBaseUrl(String graphQLBaseUrl) { this.graphQLBaseUrl = graphQLBaseUrl; }
+
     public String getAccessToken() { return accessToken; }
     public void setAccessToken(String accessToken) { this.accessToken = accessToken; }
 
@@ -50,6 +54,7 @@ public final class AccountManagementConfiguration {
         hosts.add(extractHost(sellAccountV1BaseUrl));
         hosts.add(extractHost(sellAccountV2BaseUrl));
         hosts.add(extractHost(sellFinancesV1BaseUrl));
+        hosts.add(extractHost(graphQLBaseUrl));
         return hosts;
     }
 

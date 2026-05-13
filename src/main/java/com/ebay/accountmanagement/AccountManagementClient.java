@@ -1,5 +1,7 @@
 package com.ebay.accountmanagement;
 
+import com.ebay.accountmanagement.clients.graphql.DynamicGraphQLClient;
+import com.ebay.accountmanagement.clients.graphql.EBayGraphClient;
 import com.ebay.accountmanagement.clients.rest.SellAccountV1Client;
 import com.ebay.accountmanagement.clients.rest.SellAccountV2Client;
 import com.ebay.accountmanagement.clients.rest.SellFinancesV1Client;
@@ -15,15 +17,19 @@ import java.io.Closeable;
 
 /**
  * Main facade for the Account Management SDK.
- * Provides unified access to Sell Account V1, Sell Account V2, and Sell Finances V1 APIs.
+ * Provides unified access to Sell Account V1, Sell Account V2, Sell Finances V1 APIs, and eBay Graph (GraphQL).
  *
  * <pre>{@code
  * var config = new AccountManagementConfiguration();
  * config.setAccessToken("your-token");
  *
  * try (var sdk = new AccountManagementClient(config)) {
+ *     // REST API
  *     var policies = sdk.sellAccountV1.getFulfillmentPoliciesAsync("EBAY_US", null, null).join();
- *     System.out.println(policies);
+ *
+ *     // GraphQL API
+ *     var user = sdk.graphQL.userAsync(null, null).join();
+ *     System.out.println(user);
  * }
  * }</pre>
  */
@@ -33,6 +39,7 @@ public final class AccountManagementClient implements Closeable {
     public final SellAccountV1Client sellAccountV1;
     public final SellAccountV2Client sellAccountV2;
     public final SellFinancesV1Client sellFinances;
+    public final EBayGraphClient graphQL;
 
     public AccountManagementClient(AccountManagementConfiguration config) {
         // Shared OkHttpClient for all REST clients
@@ -55,6 +62,9 @@ public final class AccountManagementClient implements Closeable {
         var sellFinancesV1Adapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         sellFinancesV1Adapter.setBaseUrl(config.getSellFinancesV1BaseUrl());
         this.sellFinances = new SellFinancesV1Client(new SellFinancesV1ApiClient(sellFinancesV1Adapter), config);
+
+        // GraphQL client
+        this.graphQL = new EBayGraphClient(new DynamicGraphQLClient(sharedHttpClient, config));
     }
 
     @Override
