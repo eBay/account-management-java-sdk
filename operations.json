@@ -1,0 +1,78 @@
+{
+  "rest": {
+    "sell_account_v1_oas3": [
+      "bulkCreateOrReplaceSalesTax",
+      "createCustomPolicy",
+      "createFulfillmentPolicy",
+      "createOrReplaceSalesTax",
+      "createPaymentPolicy",
+      "createReturnPolicy",
+      "deleteFulfillmentPolicy",
+      "deletePaymentPolicy",
+      "deleteReturnPolicy",
+      "deleteSalesTax",
+      "getAdvertisingEligibility",
+      "getCustomPolicies",
+      "getCustomPolicy",
+      "getFulfillmentPolicies",
+      "getFulfillmentPolicy",
+      "getFulfillmentPolicyByName",
+      "getKYC",
+      "getOptedInPrograms",
+      "getPaymentPolicies",
+      "getPaymentPolicy",
+      "getPaymentPolicyByName",
+      "getPaymentsProgram",
+      "getPaymentsProgramOnboarding",
+      "getPrivileges",
+      "getRateTables",
+      "getReturnPolicies",
+      "getReturnPolicy",
+      "getReturnPolicyByName",
+      "getSalesTax",
+      "getSalesTaxes",
+      "getSubscription",
+      "optInToProgram",
+      "optOutOfProgram",
+      "updateCustomPolicy",
+      "updateFulfillmentPolicy",
+      "updatePaymentPolicy",
+      "updateReturnPolicy"
+    ],
+    "sell_account_v2_oas3": [
+      "createCalculatedShippingRules",
+      "createFlatShippingRules",
+      "createPromotionalShippingRule",
+      "getCombinedShippingRules",
+      "getPayoutSettings",
+      "getRateTable",
+      "getUserPreferences",
+      "setUserPreferences",
+      "updateCalculatedShippingRules",
+      "updateCombinedPayments",
+      "updateFlatShippingRules",
+      "updatePayoutPercentage",
+      "updatePromotionalShippingRule",
+      "updateShippingCost"
+    ],
+    "sell_finances_v1_oas3": [
+      "getBillingActivities",
+      "getOrderEarnings",
+      "getOrderEarningsById",
+      "getOrderEarningsSummary",
+      "getPayout",
+      "getPayoutSummary",
+      "getPayouts",
+      "getSellerFundsSummary",
+      "getTransactionSummary",
+      "getTransactions",
+      "getTransfer"
+    ]
+  },
+  "graphql": {
+    "eBay_Graph": [
+      "userBiddingActivity",
+      "user"
+    ]
+  }
+}
