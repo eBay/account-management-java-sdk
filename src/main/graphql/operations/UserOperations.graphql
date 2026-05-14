@@ -1,0 +1,20 @@
+# User shipping zone query
+query User {
+  user {
+    shippingZone {
+      countryCode
+    }
+  }
+}
+
+# User bidding activity query
+query UserBiddingActivity($input: UserBiddingActivityInput!) {
+  userBiddingActivity(input: $input) {
+    auctions {
+      itemId
+    }
+    paginationOutput {
+      nextCursor
+    }
+  }
+}

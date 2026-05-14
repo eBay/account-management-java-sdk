@@ -76,6 +76,32 @@
             <version>2.18.2</version>
         </dependency>
 
+        <!-- Apollo Kotlin runtime -->
+        <dependency>
+            <groupId>com.apollographql.apollo3</groupId>
+            <artifactId>apollo-runtime</artifactId>
+            <version>3.8.4</version>
+        </dependency>
+
+        <!-- Kotlin stdlib (required for Apollo) -->
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>1.9.22</version>
+        </dependency>
+
+        <!-- Kotlin coroutines (for Apollo async) -->
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-jdk8</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
         <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -99,12 +125,75 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
+            <!-- Kotlin Maven plugin (must come before Java compiler) -->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>1.9.22</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Apollo Kotlin Maven plugin -->
+            <plugin>
+                <groupId>com.apollographql.apollo3</groupId>
+                <artifactId>apollo-maven-plugin</artifactId>
+                <version>3.8.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <service>
+                                <name>accountManagement</name>
+                                <packageName>com.ebay.accountmanagement.generated.graphql</packageName>
+                                <schemaFile>${project.basedir}/src/main/graphql/schema.graphqls</schemaFile>
+                                <graphqlSourceDirectorySet>
+                                    <includes>
+                                        <include>src/main/graphql/**/*.graphql</include>
+                                    </includes>
+                                </graphqlSourceDirectorySet>
+                            </service>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
+                <executions>
+                    <!-- Compile Kotlin first, then Java -->
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
