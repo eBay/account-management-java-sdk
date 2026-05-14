@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture
  * Typed GraphQL client for eBay Account Management operations.
  * Uses Apollo Kotlin for strongly-typed GraphQL queries.
  */
-class EBayGraphQLClient internal constructor(
+class EBayGraphQLClient @JvmOverloads constructor(
     private val apolloClient: ApolloClient,
     private val dynamicClient: com.ebay.accountmanagement.clients.graphql.DynamicGraphQLClient,
     private val config: AccountManagementConfiguration,

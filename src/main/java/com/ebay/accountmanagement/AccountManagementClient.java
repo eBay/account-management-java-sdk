@@ -1,7 +1,8 @@
 package com.ebay.accountmanagement;
 
+import com.ebay.accountmanagement.clients.graphql.ApolloClientFactory;
 import com.ebay.accountmanagement.clients.graphql.DynamicGraphQLClient;
-import com.ebay.accountmanagement.clients.graphql.EBayGraphClient;
+import com.ebay.accountmanagement.clients.graphql.EBayGraphQLClient;
 import com.ebay.accountmanagement.clients.rest.SellAccountV1Client;
 import com.ebay.accountmanagement.clients.rest.SellAccountV2Client;
 import com.ebay.accountmanagement.clients.rest.SellFinancesV1Client;
@@ -39,7 +40,7 @@ public final class AccountManagementClient implements Closeable {
     public final SellAccountV1Client sellAccountV1;
     public final SellAccountV2Client sellAccountV2;
     public final SellFinancesV1Client sellFinances;
-    public final EBayGraphClient graphQL;
+    public final EBayGraphQLClient graphQL;
 
     public AccountManagementClient(AccountManagementConfiguration config) {
         // Shared OkHttpClient for all REST clients
@@ -63,8 +64,10 @@ public final class AccountManagementClient implements Closeable {
         sellFinancesV1Adapter.setBaseUrl(config.getSellFinancesV1BaseUrl());
         this.sellFinances = new SellFinancesV1Client(new SellFinancesV1ApiClient(sellFinancesV1Adapter), config);
 
-        // GraphQL client
-        this.graphQL = new EBayGraphClient(new DynamicGraphQLClient(sharedHttpClient, config));
+        // GraphQL client with Apollo Kotlin
+        var apolloClient = ApolloClientFactory.create(sharedHttpClient, config);
+        var dynamicClient = new DynamicGraphQLClient(sharedHttpClient, config);
+        this.graphQL = new EBayGraphQLClient(apolloClient, dynamicClient, config);
     }
 
     @Override
