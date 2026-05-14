@@ -1,0 +1,37 @@
+query User {
+  user {
+    username
+    userType {
+      displayName
+    }
+    userStatus {
+      displayName
+    }
+    userIdLastChangedAt
+    userIdChanged
+    userId
+    userCreatedAt
+    registrationMarketPlace
+    newUser
+    individualIdentityProfile {
+      email
+      lastName
+      firstName
+      middleName
+      primaryPhone {
+        dialCode
+        countryCode
+        phoneNumber
+        phoneNumberType
+      }
+      profileAddress {
+        addressLine1
+        addressLine2
+        city
+        countryCode
+        postalCode
+        stateOrProvince
+      }
+    }
+  }
+}
