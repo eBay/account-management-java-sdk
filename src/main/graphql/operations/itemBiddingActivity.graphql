@@ -1,0 +1,103 @@
+query ItemBiddingActivity($input: ItemBiddingActivityInput!, $activeBidHistoryRecords_paginationInput: PageInfoInput, $cancelledBidHistoryRecords_paginationInput: PageInfoInput, $retractedBidHistoryRecords_paginationInput: PageInfoInput) {
+  itemBiddingActivity(input: $input) {
+    itemBiddingActivity {
+      activeBidHistoryRecords(paginationInput: $activeBidHistoryRecords_paginationInput) {
+        bidHistoryRecords {
+          bidAmount {
+            converted {
+              currency
+              value
+            }
+            original {
+              currency
+              value
+            }
+          }
+        }
+        paginationOutput {
+          nextCursor
+          previousCursor
+        }
+      }
+      cancelledBidHistoryRecords(paginationInput: $cancelledBidHistoryRecords_paginationInput) {
+        paginationOutput {
+          nextCursor
+          previousCursor
+        }
+        bidHistoryRecords {
+          bidder {
+            userId
+            username
+          }
+          bidAmount {
+            converted {
+              currency
+              value
+            }
+            original {
+              currency
+              value
+            }
+          }
+        }
+      }
+      retractedBidHistoryRecords(paginationInput: $retractedBidHistoryRecords_paginationInput) {
+        paginationOutput {
+          nextCursor
+          previousCursor
+        }
+        bidHistoryRecords {
+          bidAmount {
+            converted {
+              currency
+              value
+            }
+            original {
+              currency
+              value
+            }
+          }
+        }
+      }
+      leadingBid {
+        buyerBiddingSummary {
+          bidsWithSellerPercentage
+          itemBids {
+            bidCount
+            mostRecentBidAt
+          }
+          totalBidCount
+          retractedBidCount
+          uniqueListingCategoryBidCount
+          uniqueSellerBidCount
+        }
+        bidder {
+          username
+          userId
+          shippingZone {
+            countryCode
+            postalCode
+            stateOrProvince
+          }
+        }
+        bidAmount {
+          converted {
+            currency
+            value
+          }
+          original {
+            currency
+            value
+          }
+        }
+        bidMetadata {
+          placedAt
+        }
+      }
+      reservePriceMet
+      bidStatistics {
+        userSubmittedBidCount
+      }
+    }
+  }
+}

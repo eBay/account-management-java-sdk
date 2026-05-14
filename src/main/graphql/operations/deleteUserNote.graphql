@@ -1,0 +1,16 @@
+mutation DeleteUserNote($input: DeleteUserNoteInput) {
+  deleteUserNote(input: $input) {
+    __typename
+    ... on DeleteUserNoteSuccess {
+      userNote {
+        note
+        orderLineItemId
+      }
+    }
+    ... on ReferenceArgumentsNotFound {
+      argumentNames
+      errorCode
+      errorMessage
+    }
+  }
+}

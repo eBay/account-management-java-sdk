@@ -1,0 +1,8 @@
+mutation RemoveAllFromWatchList {
+  removeAllFromWatchList {
+    __typename
+    ... on RemoveAllFromWatchListSuccess {
+      numberOfItemsUnwatched
+    }
+  }
+}

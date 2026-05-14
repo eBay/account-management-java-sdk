@@ -1,0 +1,39 @@
+mutation AddToWatchList($input: AddToWatchListInput!) {
+  addToWatchList(input: $input) {
+    __typename
+    ... on AddToWatchListFailure {
+      errorCode
+      errorMessage
+      failedItems {
+        item {
+          itemId
+        }
+        reason
+      }
+      watchListCount
+      watchListMaximum
+    }
+    ... on AddToWatchListPartialFailure {
+      addedItems {
+        itemId
+      }
+      errorCode
+      failedItems {
+        item {
+          itemId
+        }
+        reason
+      }
+      errorMessage
+      watchListCount
+      watchListMaximum
+    }
+    ... on AddToWatchListSuccess {
+      addedItems {
+        itemId
+      }
+      watchListCount
+      watchListMaximum
+    }
+  }
+}

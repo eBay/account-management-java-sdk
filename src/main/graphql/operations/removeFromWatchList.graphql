@@ -1,0 +1,41 @@
+mutation RemoveFromWatchList($input: RemoveFromWatchListInput!) {
+  removeFromWatchList(input: $input) {
+    __typename
+    ... on RemoveFromWatchListFailure {
+      errorCode
+      failedItems {
+        item {
+          itemId
+        }
+        reason
+      }
+      errorMessage
+      watchListCount
+      watchListMaximum
+    }
+    ... on RemoveFromWatchListPartialFailure {
+      errorCode
+      errorMessage
+      failedItems {
+        item {
+          itemId
+        }
+        reason
+      }
+      numberOfItemsUnwatched
+      removedItems {
+        itemId
+      }
+      watchListCount
+      watchListMaximum
+    }
+    ... on RemoveFromWatchListSuccess {
+      numberOfItemsUnwatched
+      watchListCount
+      removedItems {
+        itemId
+      }
+      watchListMaximum
+    }
+  }
+}

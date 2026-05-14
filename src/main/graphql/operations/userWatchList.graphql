@@ -1,0 +1,26 @@
+query UserWatchList($input: UserWatchListInput) {
+  userWatchList(input: $input) {
+    items {
+      item {
+        itemId
+        userNotes {
+          note
+          orderLineItemId
+        }
+      }
+      startedWatchingAt
+      startedWatchingPrice {
+        original {
+          currency
+          value
+        }
+      }
+    }
+    pagination {
+      nextCursor
+      previousCursor
+    }
+    watchListCount
+    watchListMaximum
+  }
+}

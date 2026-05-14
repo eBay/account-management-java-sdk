@@ -1,0 +1,54 @@
+query UserBiddingActivity($input: UserBiddingActivityInput!) {
+  userBiddingActivity(input: $input) {
+    auctions {
+      itemId
+      auctionDataSummary {
+        bidStatistics {
+          userSubmittedBidCount
+        }
+        leadingBid {
+          bidAmount {
+            converted {
+              value
+              currency
+            }
+            original {
+              currency
+              value
+            }
+          }
+          bidder {
+            userId
+            username
+          }
+        }
+        itemId
+        bidderAuctionDetails {
+          userBiddingStatus
+          maxBid {
+            original {
+              value
+              currency
+            }
+          }
+          minimumQualifyingBidForMaxBid {
+            original {
+              currency
+              value
+            }
+          }
+          userPowerBids {
+            original {
+              value
+              currency
+            }
+          }
+        }
+      }
+    }
+    paginationOutput {
+      nextCursor
+      previousCursor
+    }
+  }
+}

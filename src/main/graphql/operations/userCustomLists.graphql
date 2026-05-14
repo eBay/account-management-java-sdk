@@ -1,0 +1,59 @@
+query UserCustomLists($input: UserCustomListsInput) {
+  userCustomLists(input: $input) {
+    __typename
+    ... on UserCustomListsFailure {
+      errorCode
+      errorMessage
+      failedCustomLists {
+        customListId
+        reason
+      }
+    }
+    ... on UserCustomListsPartialFailure {
+      customLists {
+        customListId
+        itemCount
+        items {
+          pagination {
+            nextCursor
+            previousCursor
+          }
+          results {
+            addedAt
+            item {
+              itemId
+            }
+          }
+        }
+        name
+      }
+      errorCode
+      errorMessage
+      failedCustomLists {
+        customListId
+        reason
+      }
+      totalCount
+    }
+    ... on UserCustomListsSuccess {
+      customLists {
+        customListId
+        itemCount
+        items {
+          pagination {
+            nextCursor
+            previousCursor
+          }
+          results {
+            addedAt
+            item {
+              itemId
+            }
+          }
+        }
+        name
+      }
+      totalCount
+    }
+  }
+}

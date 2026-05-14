@@ -1,0 +1,16 @@
+mutation CreateOrReplaceUserNote($input: CreateOrReplaceUserNoteInput) {
+  createOrReplaceUserNote(input: $input) {
+    __typename
+    ... on CreateOrReplaceUserNoteSuccess {
+      userNote {
+        note
+        orderLineItemId
+      }
+    }
+    ... on ReferenceArgumentsNotFound {
+      argumentNames
+      errorCode
+      errorMessage
+    }
+  }
+}
