@@ -40,6 +40,9 @@ kiota generate \
   -o src/main/java/com/ebay/accountmanagement/generated/sellfinancesv1 \
   --ebc --co
 
+echo "Adding license headers to generated files..."
+./add-license-headers.sh ./src
+
 echo "Code generation complete!"
 echo "Next steps:"
 echo "  1. Create wrapper clients in src/main/java/com/ebay/accountmanagement/clients/rest/"
