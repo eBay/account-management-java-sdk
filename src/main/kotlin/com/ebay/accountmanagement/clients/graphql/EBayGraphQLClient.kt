@@ -83,5 +83,5 @@ class EBayGraphQLClient @JvmOverloads constructor(
 
     // Escape hatch: arbitrary query/mutation → JsonNode
     fun executeRaw(query: String, variables: Any?, accessToken: String?, requestOptions: com.ebay.accountmanagement.configuration.RequestOptions? = null) =
-        dynamicClient.execute(query, variables, accessToken, requestOptions)
+        dynamicClient.executeRawUnsafe(query, variables, accessToken, requestOptions)
 }
