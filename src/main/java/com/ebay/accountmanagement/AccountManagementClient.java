@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement;
 
+import com.apollographql.apollo.ApolloClient;
 import com.ebay.accountmanagement.clients.graphql.ApolloClientFactory;
 import com.ebay.accountmanagement.clients.graphql.DynamicGraphQLClient;
 import com.ebay.accountmanagement.clients.graphql.EBayGraphQLClient;
@@ -29,6 +30,7 @@ import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 import okhttp3.OkHttpClient;
 import java.io.Closeable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Main facade for the Account Management SDK.
@@ -50,6 +52,8 @@ import java.io.Closeable;
  */
 public final class AccountManagementClient implements Closeable {
     private final OkHttpClient sharedHttpClient;
+    // SEC-004: Apollo OkHttpClient stored as private final field so it can be closed
+    private final ApolloClient apolloClient;
 
     public final SellAccountV1Client sellAccountV1;
     public final SellAccountV2Client sellAccountV2;
@@ -59,6 +63,9 @@ public final class AccountManagementClient implements Closeable {
     public AccountManagementClient(AccountManagementConfiguration config) {
         // Shared OkHttpClient for all REST clients
         this.sharedHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build();
 
         var authProvider = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config));
@@ -78,14 +85,15 @@ public final class AccountManagementClient implements Closeable {
         sellFinancesV1Adapter.setBaseUrl(config.getSellFinancesV1BaseUrl());
         this.sellFinances = new SellFinancesV1Client(new SellFinancesV1ApiClient(sellFinancesV1Adapter), config);
 
-        // GraphQL client with Apollo Kotlin
-        var apolloClient = ApolloClientFactory.create(sharedHttpClient, config);
+        // GraphQL client with Apollo Kotlin — store as field for proper lifecycle management
+        this.apolloClient = ApolloClientFactory.create(sharedHttpClient, config);
         var dynamicClient = new DynamicGraphQLClient(sharedHttpClient, config);
         this.graphQL = new EBayGraphQLClient(apolloClient, dynamicClient, config);
     }
 
     @Override
     public void close() {
+        apolloClient.close();
         sharedHttpClient.dispatcher().executorService().shutdown();
         sharedHttpClient.connectionPool().evictAll();
     }

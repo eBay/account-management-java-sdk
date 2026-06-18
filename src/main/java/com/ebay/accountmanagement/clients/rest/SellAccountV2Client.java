@@ -56,13 +56,12 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<RateTableDetails> getRateTableAsync(
             String rateTableId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.rateTable().byRate_table_id(rateTableId).get(config -> {
+            return kiota.rateTable().byRate_table_id(Params.requireValid("rateTableId", rateTableId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -70,14 +69,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updateShippingCostAsync(
             String rateTableId, RateTableUpdate body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.rateTable().byRate_table_id(rateTableId).updateShippingCost().post(body, config -> {
+            kiota.rateTable().byRate_table_id(Params.requireValid("rateTableId", rateTableId)).updateShippingCost().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     // ── Payout Settings ───────────────────────────────────────────────────
@@ -87,13 +85,12 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<PayoutSettingsResponse> getPayoutSettingsAsync(
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.payoutSettings().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -101,14 +98,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updatePayoutPercentageAsync(
             UpdatePayoutPercentageRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.payoutSettings().updatePercentage().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     // ── Combined Shipping Rules ───────────────────────────────────────────
@@ -118,14 +114,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> createCalculatedShippingRulesAsync(
             CreateCalculatedShippingRulesRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().createCalculatedShippingRules().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -133,14 +128,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> createFlatShippingRulesAsync(
             CreateFlatShippingRulesRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().createFlatShippingRules().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -148,14 +142,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> createPromotionalShippingRuleAsync(
             CreatePromotionalShippingRuleRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().createPromotionalShippingRule().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -163,13 +156,12 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<GetCombinedShippingRulesPublicApiResponse> getCombinedShippingRulesAsync(
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.combinedShippingRules().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -177,14 +169,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updateCalculatedShippingRulesAsync(
             UpdateCalculatedShippingRulesRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().updateCalculatedShippingRules().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -192,14 +183,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updateCombinedPaymentsAsync(
             UpdateCombinedPaymentsRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().updateCombinedPayments().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -207,14 +197,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updateFlatShippingRulesAsync(
             UpdateFlatShippingRulesRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().updateFlatShippingRules().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -222,14 +211,13 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> updatePromotionalShippingRuleAsync(
             UpdatePromotionalShippingRuleRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.combinedShippingRules().updatePromotionalShippingRule().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     // ── User Preferences ──────────────────────────────────────────────────
@@ -239,8 +227,7 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<GetUserPreferencesResponse> getUserPreferencesAsync(
             String fieldgroups, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.userPreferences().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -248,7 +235,7 @@ public final class SellAccountV2Client {
                     config.queryParameters.fieldgroups = fieldgroups;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -256,13 +243,12 @@ public final class SellAccountV2Client {
      */
     public CompletableFuture<Void> setUserPreferencesAsync(
             UntypedNode body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.userPreferences().patch(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 }

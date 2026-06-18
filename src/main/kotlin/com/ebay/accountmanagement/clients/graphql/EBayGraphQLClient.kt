@@ -81,7 +81,13 @@ class EBayGraphQLClient @JvmOverloads constructor(
     fun userBiddingActivityFuture(input: UserBiddingActivityInput, accessToken: String?) =
         scope.future { userBiddingActivityAsync(input, accessToken) }
 
-    // Escape hatch: arbitrary query/mutation → JsonNode
-    fun executeRaw(query: String, variables: Any?, accessToken: String?, requestOptions: com.ebay.accountmanagement.configuration.RequestOptions? = null) =
+    /**
+     * Escape hatch for arbitrary GraphQL queries. Use with caution.
+     *
+     * WARNING: The caller is responsible for ensuring the query string is not constructed
+     * from untrusted user input. Passing user-controlled strings here can enable
+     * GraphQL injection attacks. Prefer the typed query methods (userAsync, etc.) instead.
+     */
+    fun executeRawUnsafe(query: String, variables: Any?, accessToken: String?, requestOptions: com.ebay.accountmanagement.configuration.RequestOptions? = null) =
         dynamicClient.executeRawUnsafe(query, variables, accessToken, requestOptions)
 }

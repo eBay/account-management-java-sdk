@@ -55,8 +55,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<BillingActivityResponse> getBillingActivitiesAsync(
             String filter, String limit, String offset, String sort, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.billingActivity().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -73,7 +72,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.sort = sort;
                 }
             });
-        });
+        }));
     }
 
     // ── Order Earnings ────────────────────────────────────────────────────
@@ -83,8 +82,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<OrderEarnings> getOrderEarningsAsync(
             String filter, String limit, String offset, String sort, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.orderEarnings().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -101,7 +99,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.sort = sort;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -109,13 +107,12 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<OrderEarning> getOrderEarningsByIdAsync(
             String orderId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.orderEarnings().byOrder_id(orderId).get(config -> {
+            return kiota.orderEarnings().byOrder_id(Params.requireValid("orderId", orderId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -123,8 +120,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<OrderEarningsSummary> getOrderEarningsSummaryAsync(
             String filter, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.orderEarningsSummary().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -132,7 +128,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.filter = filter;
                 }
             });
-        });
+        }));
     }
 
     // ── Payout ────────────────────────────────────────────────────────────
@@ -142,13 +138,12 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<Payout> getPayoutAsync(
             String payoutId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.payout().byPayout_Id(payoutId).get(config -> {
+            return kiota.payout().byPayout_Id(Params.requireValid("payoutId", payoutId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -156,8 +151,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<Payouts> getPayoutsAsync(
             String filter, String limit, String offset, String sort, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.payout().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -174,7 +168,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.sort = sort;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -182,8 +176,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<PayoutSummaryResponse> getPayoutSummaryAsync(
             String filter, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.payoutSummary().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -191,7 +184,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.filter = filter;
                 }
             });
-        });
+        }));
     }
 
     // ── Seller Funds Summary ──────────────────────────────────────────────
@@ -201,13 +194,12 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<SellerFundsSummaryResponse> getSellerFundsSummaryAsync(
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.sellerFundsSummary().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     // ── Transactions ──────────────────────────────────────────────────────
@@ -217,8 +209,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<Transactions> getTransactionsAsync(
             String filter, String limit, String offset, String sort, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.transaction().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -235,7 +226,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.sort = sort;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -243,8 +234,7 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<TransactionSummaryResponse> getTransactionSummaryAsync(
             String filter, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.transactionSummary().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -252,7 +242,7 @@ public final class SellFinancesV1Client {
                     config.queryParameters.filter = filter;
                 }
             });
-        });
+        }));
     }
 
     // ── Transfer ──────────────────────────────────────────────────────────
@@ -262,12 +252,11 @@ public final class SellFinancesV1Client {
      */
     public CompletableFuture<Transfer> getTransferAsync(
             String transferId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.transfer().byTransfer_Id(transferId).get(config -> {
+            return kiota.transfer().byTransfer_Id(Params.requireValid("transferId", transferId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 }

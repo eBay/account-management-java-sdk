@@ -55,8 +55,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<CustomPolicyResponse> getCustomPoliciesAsync(
             String policyTypes, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.customPolicy().emptyPathSegment().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -64,7 +63,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.policyTypes = policyTypes;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -72,13 +71,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<com.ebay.accountmanagement.generated.sellaccountv1.custom_policy.PostResponse> createCustomPolicyAsync(
             CustomPolicyCreateRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.customPolicy().emptyPathSegment().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -86,13 +84,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<CustomPolicy> getCustomPolicyAsync(
             String customPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.customPolicy().byCustom_policy_id(customPolicyId).get(config -> {
+            return kiota.customPolicy().byCustom_policy_id(Params.requireValid("customPolicyId", customPolicyId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -100,14 +97,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> updateCustomPolicyAsync(
             String customPolicyId, CustomPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.customPolicy().byCustom_policy_id(customPolicyId).put(body, config -> {
+            kiota.customPolicy().byCustom_policy_id(Params.requireValid("customPolicyId", customPolicyId)).put(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     // ── Fulfillment Policy ────────────────────────────────────────────────
@@ -117,13 +113,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetFulfillmentPolicyResponse> createFulfillmentPolicyAsync(
             FulfillmentPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.fulfillmentPolicy().emptyPathSegment().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -131,13 +126,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<FulfillmentPolicy> getFulfillmentPolicyAsync(
             String fulfillmentPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.fulfillmentPolicy().byFulfillmentPolicyId(fulfillmentPolicyId).get(config -> {
+            return kiota.fulfillmentPolicy().byFulfillmentPolicyId(Params.requireValid("fulfillmentPolicyId", fulfillmentPolicyId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -145,13 +139,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetFulfillmentPolicyResponse> updateFulfillmentPolicyAsync(
             String fulfillmentPolicyId, FulfillmentPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.fulfillmentPolicy().byFulfillmentPolicyId(fulfillmentPolicyId).put(body, config -> {
+            return kiota.fulfillmentPolicy().byFulfillmentPolicyId(Params.requireValid("fulfillmentPolicyId", fulfillmentPolicyId)).put(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -159,14 +152,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> deleteFulfillmentPolicyAsync(
             String fulfillmentPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.fulfillmentPolicy().byFulfillmentPolicyId(fulfillmentPolicyId).delete(config -> {
+            kiota.fulfillmentPolicy().byFulfillmentPolicyId(Params.requireValid("fulfillmentPolicyId", fulfillmentPolicyId)).delete(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -174,8 +166,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<FulfillmentPolicyResponse> getFulfillmentPoliciesAsync(
             String marketplaceId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.fulfillmentPolicy().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -183,7 +174,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.marketplaceId = marketplaceId;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -191,8 +182,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<FulfillmentPolicy> getFulfillmentPolicyByNameAsync(
             String marketplaceId, String name, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.fulfillmentPolicy().getByPolicyName().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -203,7 +193,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.name = name;
                 }
             });
-        });
+        }));
     }
 
     // ── Payment Policy ────────────────────────────────────────────────────
@@ -213,8 +203,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<PaymentPolicyResponse> getPaymentPoliciesAsync(
             String marketplaceId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.paymentPolicy().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -222,7 +211,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.marketplaceId = marketplaceId;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -230,13 +219,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetPaymentPolicyResponse> createPaymentPolicyAsync(
             PaymentPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.paymentPolicy().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -244,13 +232,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<PaymentPolicy> getPaymentPolicyAsync(
             String paymentPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.paymentPolicy().byPayment_policy_id(paymentPolicyId).get(config -> {
+            return kiota.paymentPolicy().byPayment_policy_id(Params.requireValid("paymentPolicyId", paymentPolicyId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -258,13 +245,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetPaymentPolicyResponse> updatePaymentPolicyAsync(
             String paymentPolicyId, PaymentPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.paymentPolicy().byPayment_policy_id(paymentPolicyId).put(body, config -> {
+            return kiota.paymentPolicy().byPayment_policy_id(Params.requireValid("paymentPolicyId", paymentPolicyId)).put(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -272,14 +258,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> deletePaymentPolicyAsync(
             String paymentPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.paymentPolicy().byPayment_policy_id(paymentPolicyId).delete(config -> {
+            kiota.paymentPolicy().byPayment_policy_id(Params.requireValid("paymentPolicyId", paymentPolicyId)).delete(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -287,8 +272,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<PaymentPolicy> getPaymentPolicyByNameAsync(
             String marketplaceId, String name, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.paymentPolicy().getByPolicyName().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -299,7 +283,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.name = name;
                 }
             });
-        });
+        }));
     }
 
     // ── Return Policy ─────────────────────────────────────────────────────
@@ -309,8 +293,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<ReturnPolicyResponse> getReturnPoliciesAsync(
             String marketplaceId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.returnPolicy().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -318,7 +301,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.marketplaceId = marketplaceId;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -326,13 +309,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetReturnPolicyResponse> createReturnPolicyAsync(
             ReturnPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.returnPolicy().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -340,13 +322,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<ReturnPolicy> getReturnPolicyAsync(
             String returnPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.returnPolicy().byReturn_policy_id(returnPolicyId).get(config -> {
+            return kiota.returnPolicy().byReturn_policy_id(Params.requireValid("returnPolicyId", returnPolicyId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -354,13 +335,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SetReturnPolicyResponse> updateReturnPolicyAsync(
             String returnPolicyId, ReturnPolicyRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.returnPolicy().byReturn_policy_id(returnPolicyId).put(body, config -> {
+            return kiota.returnPolicy().byReturn_policy_id(Params.requireValid("returnPolicyId", returnPolicyId)).put(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -368,14 +348,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> deleteReturnPolicyAsync(
             String returnPolicyId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.returnPolicy().byReturn_policy_id(returnPolicyId).delete(config -> {
+            kiota.returnPolicy().byReturn_policy_id(Params.requireValid("returnPolicyId", returnPolicyId)).delete(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -383,8 +362,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<ReturnPolicy> getReturnPolicyByNameAsync(
             String marketplaceId, String name, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.returnPolicy().getByPolicyName().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -395,7 +373,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.name = name;
                 }
             });
-        });
+        }));
     }
 
     // ── Sales Tax ─────────────────────────────────────────────────────────
@@ -405,8 +383,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SalesTaxes> getSalesTaxTableAsync(
             String countryCode, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.salesTax().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -414,7 +391,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.countryCode = countryCode;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -422,13 +399,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SalesTax> getSalesTaxAsync(
             String countryCode, String jurisdictionId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.salesTax().byCountryCode(countryCode).byJurisdictionId(jurisdictionId).get(config -> {
+            return kiota.salesTax().byCountryCode(Params.requireValid("countryCode", countryCode)).byJurisdictionId(Params.requireValid("jurisdictionId", jurisdictionId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -436,14 +412,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> createOrReplaceSalesTaxAsync(
             String countryCode, String jurisdictionId, SalesTaxBase body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.salesTax().byCountryCode(countryCode).byJurisdictionId(jurisdictionId).put(body, config -> {
+            kiota.salesTax().byCountryCode(Params.requireValid("countryCode", countryCode)).byJurisdictionId(Params.requireValid("jurisdictionId", jurisdictionId)).put(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -451,14 +426,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> deleteSalesTaxAsync(
             String countryCode, String jurisdictionId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.salesTax().byCountryCode(countryCode).byJurisdictionId(jurisdictionId).delete(config -> {
+            kiota.salesTax().byCountryCode(Params.requireValid("countryCode", countryCode)).byJurisdictionId(Params.requireValid("jurisdictionId", jurisdictionId)).delete(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     /**
@@ -466,14 +440,13 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Void> bulkCreateOrReplaceSalesTaxAsync(
             BulkSalesTaxInput body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.bulkCreateOrReplaceSalesTax().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
-        });
+        }));
     }
 
     // ── Other endpoints ───────────────────────────────────────────────────
@@ -483,8 +456,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SellerEligibilityMultiProgramResponse> getAdvertisingEligibilityAsync(
             String programTypes, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.advertisingEligibility().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -492,46 +464,43 @@ public final class SellAccountV1Client {
                     config.queryParameters.programTypes = programTypes;
                 }
             });
-        });
+        }));
     }
 
     /**
      * Get KYC status.
      */
     public CompletableFuture<KycResponse> getKycAsync(String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.kyc().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
      * Get privileges.
      */
     public CompletableFuture<SellingPrivileges> getPrivilegesAsync(String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.privilege().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
      * Get opted-in programs.
      */
     public CompletableFuture<Programs> getOptedInProgramsAsync(String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.program().getOptedInPrograms().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -539,13 +508,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Object> optInToProgramAsync(
             Program body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.program().optIn().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -553,13 +521,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<Object> optOutOfProgramAsync(
             Program body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.program().optOut().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -567,8 +534,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<RateTableResponse> getRateTablesAsync(
             String countryCode, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.rateTable().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -576,7 +542,7 @@ public final class SellAccountV1Client {
                     config.queryParameters.countryCode = countryCode;
                 }
             });
-        });
+        }));
     }
 
     /**
@@ -584,13 +550,12 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<PaymentsProgramOnboardingResponse> getPaymentsProgramOnboardingAsync(
             String marketplaceId, String paymentsProgramType, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.paymentsProgram().byMarketplace_id(marketplaceId).byPayments_program_type(paymentsProgramType).onboarding().get(config -> {
+            return kiota.paymentsProgram().byMarketplace_id(Params.requireValid("marketplaceId", marketplaceId)).byPayments_program_type(Params.requireValid("paymentsProgramType", paymentsProgramType)).onboarding().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-        });
+        }));
     }
 
     /**
@@ -598,8 +563,7 @@ public final class SellAccountV1Client {
      */
     public CompletableFuture<SubscriptionResponse> getSubscriptionAsync(
             String limit, String continuationToken, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.subscription().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
@@ -610,6 +574,6 @@ public final class SellAccountV1Client {
                     config.queryParameters.continuationToken = continuationToken;
                 }
             });
-        });
+        }));
     }
 }
