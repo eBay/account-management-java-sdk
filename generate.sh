@@ -10,31 +10,31 @@ echo "Generating Account Management Java SDK with Kiota..."
 # Clean previous generated code
 rm -rf src/main/java/com/ebay/accountmanagement/generated
 
-# Generate from sell_account_v1_oas3.yaml
+# Generate from account-v1.yaml
 echo "Generating SellAccountV1 API client..."
 kiota generate \
   -l java \
-  -d specs/sell_account_v1_oas3.yaml \
+  -d specs/openapi/account-v1.yaml \
   -c SellAccountV1ApiClient \
   -n com.ebay.accountmanagement.generated.sellaccountv1 \
   -o src/main/java/com/ebay/accountmanagement/generated/sellaccountv1 \
   --ebc --co
 
-# Generate from sell_account_v2_oas3.yaml
+# Generate from account-v2.yaml
 echo "Generating SellAccountV2 API client..."
 kiota generate \
   -l java \
-  -d specs/sell_account_v2_oas3.yaml \
+  -d specs/openapi/account-v2.yaml \
   -c SellAccountV2ApiClient \
   -n com.ebay.accountmanagement.generated.sellaccountv2 \
   -o src/main/java/com/ebay/accountmanagement/generated/sellaccountv2 \
   --ebc --co
 
-# Generate from sell_finances_v1_oas3.yaml
+# Generate from finances.yaml
 echo "Generating SellFinancesV1 API client..."
 kiota generate \
   -l java \
-  -d specs/sell_finances_v1_oas3.yaml \
+  -d specs/openapi/finances.yaml \
   -c SellFinancesV1ApiClient \
   -n com.ebay.accountmanagement.generated.sellfinancesv1 \
   -o src/main/java/com/ebay/accountmanagement/generated/sellfinancesv1 \
