@@ -1,8 +1,8 @@
 {
   "descriptionHash": "97FF5B7ED8C1A01FDB40F55B4F13FDB549A7737FF885200C58770197D5FB4532CDB35DADBD55EBD49F1FB76C8B746DA4709EE2F3036A4E1BDAA1F570ABB8EEEC",
-  "descriptionLocation": "../../../../../../../../specs/sell_account_v2_oas3.yaml",
+  "descriptionLocation": "../../../../../../../../specs/openapi/account-v2.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "SellAccountV2ApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.accountmanagement.generated.sellaccountv2",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }
