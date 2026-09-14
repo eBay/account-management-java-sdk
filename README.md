@@ -40,7 +40,7 @@ src/main/java/com/ebay/accountmanagement/
 
 ```kotlin
 dependencies {
-    implementation("com.ebay:account-management-java-sdk:1.0.0")
+    implementation("com.ebay:account-management-java-sdk:0.2.0")
 }
 ```
 
