@@ -31,7 +31,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used by the &lt;b&gt;balanceAdjustment&lt;/b&gt; container, which shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
+     * This container shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      */
     private BalanceAdjustment balanceAdjustment;
     /**
@@ -39,7 +39,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<Charge> charges;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the total amount that the seller owes for all of the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      */
     private Amount totalChargeNetAmount;
     /**
@@ -67,7 +67,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the balanceAdjustment property value. This type is used by the &lt;b&gt;balanceAdjustment&lt;/b&gt; container, which shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
+     * Gets the balanceAdjustment property value. This container shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @return a {@link BalanceAdjustment}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the totalChargeNetAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the totalChargeNetAmount property value. This container shows the total amount that the seller owes for all of the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the balanceAdjustment property value. This type is used by the &lt;b&gt;balanceAdjustment&lt;/b&gt; container, which shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
+     * Sets the balanceAdjustment property value. This container shows the seller payout balance that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @param value Value to set for the balanceAdjustment property.
      */
     public void setBalanceAdjustment(@jakarta.annotation.Nullable final BalanceAdjustment value) {
@@ -135,7 +135,7 @@ public class TransferDetail implements AdditionalDataHolder, Parsable {
         this.charges = value;
     }
     /**
-     * Sets the totalChargeNetAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the totalChargeNetAmount property value. This container shows the total amount that the seller owes for all of the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @param value Value to set for the totalChargeNetAmount property.
      */
     public void setTotalChargeNetAmount(@jakarta.annotation.Nullable final Amount value) {

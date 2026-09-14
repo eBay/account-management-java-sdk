@@ -31,35 +31,35 @@ public class Transaction implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the dollar value and currency type of the monetary transaction. This field is always returned even when eBay has yet to initiate a payout for the order.
      */
     private Amount amount;
     /**
-     * The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account. Typically, the &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;CREDIT&lt;/code&gt; transaction types are credits to the seller&apos;s account, and the &lt;code&gt;REFUND&lt;/code&gt;, &lt;code&gt;DISPUTE&lt;/code&gt;, &lt;code&gt;SHIPPING_LABEL&lt;/code&gt;, and &lt;code&gt;TRANSFER&lt;/code&gt; transaction types are debits to the seller&apos;s account. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account.
      */
-    private String bookingEntry;
+    private BookingEntryEnum bookingEntry;
     /**
-     * This type is used to express details about the buyer associated with an order. At this time, the only field in this type is the eBay user ID of the buyer, but more fields may get added at a later date.
+     * This is the unique eBay user ID for the buyer who purchased the order. This field is not returned for &lt;code&gt;TRANSFER&lt;/code&gt; monetary transaction types.
      */
     private Buyer buyer;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This is the amount of sales tax that has been collected by eBay for an order.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Sales tax applies only to &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;REFUND&lt;/code&gt; transactions (&lt;b&gt;transactionType&lt;/b&gt;).&lt;/span&gt;
      */
     private Amount eBayCollectedTaxAmount;
     /**
-     * This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * This container stores information about region-specific fees that are charged to sellers.
      */
     private FeeJurisdiction feeJurisdiction;
     /**
-     * The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout.
      */
-    private String feeType;
+    private FeeTypeEnum feeType;
     /**
      * The unique identifier of the eBay order associated with the monetary transaction.
      */
     private String orderId;
     /**
-     * This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; In certain circumstances, transactional fees like &lt;code&gt;FINAL_VALUE_FEE&lt;/code&gt; and &lt;code&gt;FINAL_VALUE_FEE_FIXED_PER_ORDER&lt;/code&gt; are not deducted from a seller payout, but instead they are billed to the seller&apos;s account as &quot;non-sale charges&quot;. When this happens, the &lt;code&gt;SALE&lt;/code&gt; transaction entity will not have these fees under the &lt;b&gt;orderLineItems&lt;/b&gt; array, but they will appear as separate &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions. When this happens, and you want to see those transactional fees for the order, one thing you can do is make another call to &lt;b&gt;getTransactions&lt;/b&gt; and filter against the &lt;b&gt;orderId&lt;/b&gt;. In the response, you will see the &lt;code&gt;SALE&lt;/code&gt; transaction and the &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions applied against the order. See &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Gettransactionalfeesforanorder-5&quot; &gt;Sample 6: Get transactional fees for an order&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Getnon-salechargesforanorder-9&quot;&gt;Sample 10: Get non-sale charges for an order&lt;/a&gt; for examples.
+     * This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.
      */
     private java.util.List<OrderLineItem> orderLineItems;
     /**
@@ -67,11 +67,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
      */
     private String paymentsEntity;
     /**
-     * This type provide payout details for a split-payout case. This type is only applicable for split payouts.
+     * This container provides the payout details for a split-payout case. This container is only returned for split-payout use cases.
      */
     private PayoutDetails payoutDetails;
     /**
-     * The unique identifier of the seller payout associated with the monetary transaction. This identifier is generated once eBay begins processing the payout for the corresponding order. This field will not be returned if eBay has not yet begun processing the payout for an order.&lt;br&gt;&lt;br&gt;This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter to get monetary transactions associated with the true(actual) payout associated with the &lt;b&gt;PayoutId&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In case of a split payout, always pick the first true(actual) payout id.&lt;/span&gt; 
+     * The unique identifier of the seller payout associated with the monetary transaction.
      */
     private String payoutId;
     /**
@@ -87,11 +87,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<Tax> taxes;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This amount is the total amount of selling fees paid for order.
      */
     private Amount totalFeeAmount;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This amount is the total amount for the order before selling fees are deducted from the seller payout associated with the order.
      */
     private Amount totalFeeBasisAmount;
     /**
@@ -99,21 +99,25 @@ public class Transaction implements AdditionalDataHolder, Parsable {
      */
     private String transactionDate;
     /**
-     * This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction. A monetary transaction can be a sales order, an order refund to the buyer, a credit to the seller&apos;s account, a debit to the seller for the purchase of a shipping label, or a transaction where eBay recouped money from the seller if the seller lost a buyer-initiated payment dispute.
+     * Sales tax collected by eBay, applicable only for SALE and REFUND.
+     */
+    private Amount transactionEbayCollectedTaxAmount;
+    /**
+     * This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction.
      */
     private String transactionId;
     /**
-     * This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees. The following are examples of how the field is used for each transaction type:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Shipping label purchase&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field gives details about a purchase, a refund, or a price adjustment to the cost of the shipping label.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sales transactions with funds on hold&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field provides information on the reason for the hold or when the hold will be released (e.g., &quot;Funds on hold. Estimated release on Jun 1&quot;).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Non-sale charge fees&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field will provide the type of fee that was charged, such as Promoted Offsite Fee.&lt;/li&gt;&lt;/ul&gt;This field is only returned if applicable/available.
+     * This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees.
      */
     private String transactionMemo;
     /**
-     * This enumeration value indicates the current status of the seller payout associated with the monetary transaction. See the &lt;code&gt;TransactionStatusEnum&lt;/code&gt; type for more information on the different states. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the current status of the seller payout associated with the monetary transaction.
      */
-    private String transactionStatus;
+    private TransactionStatusEnum transactionStatus;
     /**
-     * This enumeration value indicates the type of monetary transaction. Examples of monetary transactions include a buyer&apos;s payment for an order, a refund to the buyer for a returned item or cancelled order, or a credit issued by eBay to the seller&apos;s account. For a complete list of monetary transaction types within the &lt;strong&gt;Finances API&lt;/strong&gt;, see the &lt;a href=&quot;/api-docs/sell/finances/types/pay:TransactionTypeEnum&quot;&gt;TransactionTypeEnum&lt;/a&gt; type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the type of monetary transaction.
      */
-    private String transactionType;
+    private TransactionTypeEnum transactionType;
     /**
      * Instantiates a new {@link Transaction} and sets the default values.
      */
@@ -139,7 +143,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. This container shows the dollar value and currency type of the monetary transaction. This field is always returned even when eBay has yet to initiate a payout for the order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -147,15 +151,15 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.amount;
     }
     /**
-     * Gets the bookingEntry property value. The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account. Typically, the &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;CREDIT&lt;/code&gt; transaction types are credits to the seller&apos;s account, and the &lt;code&gt;REFUND&lt;/code&gt;, &lt;code&gt;DISPUTE&lt;/code&gt;, &lt;code&gt;SHIPPING_LABEL&lt;/code&gt;, and &lt;code&gt;TRANSFER&lt;/code&gt; transaction types are debits to the seller&apos;s account. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the bookingEntry property value. The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account.
+     * @return a {@link BookingEntryEnum}
      */
     @jakarta.annotation.Nullable
-    public String getBookingEntry() {
+    public BookingEntryEnum getBookingEntry() {
         return this.bookingEntry;
     }
     /**
-     * Gets the buyer property value. This type is used to express details about the buyer associated with an order. At this time, the only field in this type is the eBay user ID of the buyer, but more fields may get added at a later date.
+     * Gets the buyer property value. This is the unique eBay user ID for the buyer who purchased the order. This field is not returned for &lt;code&gt;TRANSFER&lt;/code&gt; monetary transaction types.
      * @return a {@link Buyer}
      */
     @jakarta.annotation.Nullable
@@ -163,7 +167,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.buyer;
     }
     /**
-     * Gets the eBayCollectedTaxAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the eBayCollectedTaxAmount property value. This is the amount of sales tax that has been collected by eBay for an order.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Sales tax applies only to &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;REFUND&lt;/code&gt; transactions (&lt;b&gt;transactionType&lt;/b&gt;).&lt;/span&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -171,7 +175,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.eBayCollectedTaxAmount;
     }
     /**
-     * Gets the feeJurisdiction property value. This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * Gets the feeJurisdiction property value. This container stores information about region-specific fees that are charged to sellers.
      * @return a {@link FeeJurisdiction}
      */
     @jakarta.annotation.Nullable
@@ -179,11 +183,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.feeJurisdiction;
     }
     /**
-     * Gets the feeType property value. The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the feeType property value. The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout.
+     * @return a {@link FeeTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFeeType() {
+    public FeeTypeEnum getFeeType() {
         return this.feeType;
     }
     /**
@@ -192,13 +196,13 @@ public class Transaction implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(21);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(22);
         deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("bookingEntry", (n) -> { this.setBookingEntry(n.getStringValue()); });
+        deserializerMap.put("bookingEntry", (n) -> { this.setBookingEntry(n.getEnumValue(BookingEntryEnum::forValue)); });
         deserializerMap.put("buyer", (n) -> { this.setBuyer(n.getObjectValue(Buyer::createFromDiscriminatorValue)); });
         deserializerMap.put("eBayCollectedTaxAmount", (n) -> { this.setEBayCollectedTaxAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("feeJurisdiction", (n) -> { this.setFeeJurisdiction(n.getObjectValue(FeeJurisdiction::createFromDiscriminatorValue)); });
-        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getStringValue()); });
+        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getEnumValue(FeeTypeEnum::forValue)); });
         deserializerMap.put("orderId", (n) -> { this.setOrderId(n.getStringValue()); });
         deserializerMap.put("orderLineItems", (n) -> { this.setOrderLineItems(n.getCollectionOfObjectValues(OrderLineItem::createFromDiscriminatorValue)); });
         deserializerMap.put("paymentsEntity", (n) -> { this.setPaymentsEntity(n.getStringValue()); });
@@ -210,10 +214,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         deserializerMap.put("totalFeeAmount", (n) -> { this.setTotalFeeAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("totalFeeBasisAmount", (n) -> { this.setTotalFeeBasisAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("transactionDate", (n) -> { this.setTransactionDate(n.getStringValue()); });
+        deserializerMap.put("ebayCollectedTaxAmount", (n) -> { this.setTransactionEbayCollectedTaxAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("transactionId", (n) -> { this.setTransactionId(n.getStringValue()); });
         deserializerMap.put("transactionMemo", (n) -> { this.setTransactionMemo(n.getStringValue()); });
-        deserializerMap.put("transactionStatus", (n) -> { this.setTransactionStatus(n.getStringValue()); });
-        deserializerMap.put("transactionType", (n) -> { this.setTransactionType(n.getStringValue()); });
+        deserializerMap.put("transactionStatus", (n) -> { this.setTransactionStatus(n.getEnumValue(TransactionStatusEnum::forValue)); });
+        deserializerMap.put("transactionType", (n) -> { this.setTransactionType(n.getEnumValue(TransactionTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -225,7 +230,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.orderId;
     }
     /**
-     * Gets the orderLineItems property value. This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; In certain circumstances, transactional fees like &lt;code&gt;FINAL_VALUE_FEE&lt;/code&gt; and &lt;code&gt;FINAL_VALUE_FEE_FIXED_PER_ORDER&lt;/code&gt; are not deducted from a seller payout, but instead they are billed to the seller&apos;s account as &quot;non-sale charges&quot;. When this happens, the &lt;code&gt;SALE&lt;/code&gt; transaction entity will not have these fees under the &lt;b&gt;orderLineItems&lt;/b&gt; array, but they will appear as separate &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions. When this happens, and you want to see those transactional fees for the order, one thing you can do is make another call to &lt;b&gt;getTransactions&lt;/b&gt; and filter against the &lt;b&gt;orderId&lt;/b&gt;. In the response, you will see the &lt;code&gt;SALE&lt;/code&gt; transaction and the &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions applied against the order. See &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Gettransactionalfeesforanorder-5&quot; &gt;Sample 6: Get transactional fees for an order&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Getnon-salechargesforanorder-9&quot;&gt;Sample 10: Get non-sale charges for an order&lt;/a&gt; for examples.
+     * Gets the orderLineItems property value. This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.
      * @return a {@link java.util.List<OrderLineItem>}
      */
     @jakarta.annotation.Nullable
@@ -241,7 +246,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.paymentsEntity;
     }
     /**
-     * Gets the payoutDetails property value. This type provide payout details for a split-payout case. This type is only applicable for split payouts.
+     * Gets the payoutDetails property value. This container provides the payout details for a split-payout case. This container is only returned for split-payout use cases.
      * @return a {@link PayoutDetails}
      */
     @jakarta.annotation.Nullable
@@ -249,7 +254,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.payoutDetails;
     }
     /**
-     * Gets the payoutId property value. The unique identifier of the seller payout associated with the monetary transaction. This identifier is generated once eBay begins processing the payout for the corresponding order. This field will not be returned if eBay has not yet begun processing the payout for an order.&lt;br&gt;&lt;br&gt;This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter to get monetary transactions associated with the true(actual) payout associated with the &lt;b&gt;PayoutId&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In case of a split payout, always pick the first true(actual) payout id.&lt;/span&gt; 
+     * Gets the payoutId property value. The unique identifier of the seller payout associated with the monetary transaction.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -281,7 +286,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.taxes;
     }
     /**
-     * Gets the totalFeeAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the totalFeeAmount property value. This amount is the total amount of selling fees paid for order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -289,7 +294,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.totalFeeAmount;
     }
     /**
-     * Gets the totalFeeBasisAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the totalFeeBasisAmount property value. This amount is the total amount for the order before selling fees are deducted from the seller payout associated with the order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -305,7 +310,15 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.transactionDate;
     }
     /**
-     * Gets the transactionId property value. This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction. A monetary transaction can be a sales order, an order refund to the buyer, a credit to the seller&apos;s account, a debit to the seller for the purchase of a shipping label, or a transaction where eBay recouped money from the seller if the seller lost a buyer-initiated payment dispute.
+     * Gets the ebayCollectedTaxAmount property value. Sales tax collected by eBay, applicable only for SALE and REFUND.
+     * @return a {@link Amount}
+     */
+    @jakarta.annotation.Nullable
+    public Amount getTransactionEbayCollectedTaxAmount() {
+        return this.transactionEbayCollectedTaxAmount;
+    }
+    /**
+     * Gets the transactionId property value. This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -313,7 +326,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.transactionId;
     }
     /**
-     * Gets the transactionMemo property value. This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees. The following are examples of how the field is used for each transaction type:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Shipping label purchase&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field gives details about a purchase, a refund, or a price adjustment to the cost of the shipping label.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sales transactions with funds on hold&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field provides information on the reason for the hold or when the hold will be released (e.g., &quot;Funds on hold. Estimated release on Jun 1&quot;).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Non-sale charge fees&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field will provide the type of fee that was charged, such as Promoted Offsite Fee.&lt;/li&gt;&lt;/ul&gt;This field is only returned if applicable/available.
+     * Gets the transactionMemo property value. This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -321,19 +334,19 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         return this.transactionMemo;
     }
     /**
-     * Gets the transactionStatus property value. This enumeration value indicates the current status of the seller payout associated with the monetary transaction. See the &lt;code&gt;TransactionStatusEnum&lt;/code&gt; type for more information on the different states. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the transactionStatus property value. This enumeration value indicates the current status of the seller payout associated with the monetary transaction.
+     * @return a {@link TransactionStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getTransactionStatus() {
+    public TransactionStatusEnum getTransactionStatus() {
         return this.transactionStatus;
     }
     /**
-     * Gets the transactionType property value. This enumeration value indicates the type of monetary transaction. Examples of monetary transactions include a buyer&apos;s payment for an order, a refund to the buyer for a returned item or cancelled order, or a credit issued by eBay to the seller&apos;s account. For a complete list of monetary transaction types within the &lt;strong&gt;Finances API&lt;/strong&gt;, see the &lt;a href=&quot;/api-docs/sell/finances/types/pay:TransactionTypeEnum&quot;&gt;TransactionTypeEnum&lt;/a&gt; type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the transactionType property value. This enumeration value indicates the type of monetary transaction.
+     * @return a {@link TransactionTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getTransactionType() {
+    public TransactionTypeEnum getTransactionType() {
         return this.transactionType;
     }
     /**
@@ -343,11 +356,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("amount", this.getAmount());
-        writer.writeStringValue("bookingEntry", this.getBookingEntry());
+        writer.writeEnumValue("bookingEntry", this.getBookingEntry());
         writer.writeObjectValue("buyer", this.getBuyer());
         writer.writeObjectValue("eBayCollectedTaxAmount", this.getEBayCollectedTaxAmount());
         writer.writeObjectValue("feeJurisdiction", this.getFeeJurisdiction());
-        writer.writeStringValue("feeType", this.getFeeType());
+        writer.writeEnumValue("feeType", this.getFeeType());
         writer.writeStringValue("orderId", this.getOrderId());
         writer.writeCollectionOfObjectValues("orderLineItems", this.getOrderLineItems());
         writer.writeStringValue("paymentsEntity", this.getPaymentsEntity());
@@ -359,10 +372,11 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("totalFeeAmount", this.getTotalFeeAmount());
         writer.writeObjectValue("totalFeeBasisAmount", this.getTotalFeeBasisAmount());
         writer.writeStringValue("transactionDate", this.getTransactionDate());
+        writer.writeObjectValue("ebayCollectedTaxAmount", this.getTransactionEbayCollectedTaxAmount());
         writer.writeStringValue("transactionId", this.getTransactionId());
         writer.writeStringValue("transactionMemo", this.getTransactionMemo());
-        writer.writeStringValue("transactionStatus", this.getTransactionStatus());
-        writer.writeStringValue("transactionType", this.getTransactionType());
+        writer.writeEnumValue("transactionStatus", this.getTransactionStatus());
+        writer.writeEnumValue("transactionType", this.getTransactionType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -373,45 +387,45 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. This container shows the dollar value and currency type of the monetary transaction. This field is always returned even when eBay has yet to initiate a payout for the order.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
         this.amount = value;
     }
     /**
-     * Sets the bookingEntry property value. The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account. Typically, the &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;CREDIT&lt;/code&gt; transaction types are credits to the seller&apos;s account, and the &lt;code&gt;REFUND&lt;/code&gt;, &lt;code&gt;DISPUTE&lt;/code&gt;, &lt;code&gt;SHIPPING_LABEL&lt;/code&gt;, and &lt;code&gt;TRANSFER&lt;/code&gt; transaction types are debits to the seller&apos;s account. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the bookingEntry property value. The enumeration value returned in this field indicates if the monetary transaction amount is a (&lt;code&gt;CREDIT&lt;/code&gt;) or a (&lt;code&gt;DEBIT&lt;/code&gt;) to the seller&apos;s account.
      * @param value Value to set for the bookingEntry property.
      */
-    public void setBookingEntry(@jakarta.annotation.Nullable final String value) {
+    public void setBookingEntry(@jakarta.annotation.Nullable final BookingEntryEnum value) {
         this.bookingEntry = value;
     }
     /**
-     * Sets the buyer property value. This type is used to express details about the buyer associated with an order. At this time, the only field in this type is the eBay user ID of the buyer, but more fields may get added at a later date.
+     * Sets the buyer property value. This is the unique eBay user ID for the buyer who purchased the order. This field is not returned for &lt;code&gt;TRANSFER&lt;/code&gt; monetary transaction types.
      * @param value Value to set for the buyer property.
      */
     public void setBuyer(@jakarta.annotation.Nullable final Buyer value) {
         this.buyer = value;
     }
     /**
-     * Sets the eBayCollectedTaxAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the eBayCollectedTaxAmount property value. This is the amount of sales tax that has been collected by eBay for an order.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Sales tax applies only to &lt;code&gt;SALE&lt;/code&gt; and &lt;code&gt;REFUND&lt;/code&gt; transactions (&lt;b&gt;transactionType&lt;/b&gt;).&lt;/span&gt;
      * @param value Value to set for the eBayCollectedTaxAmount property.
      */
     public void setEBayCollectedTaxAmount(@jakarta.annotation.Nullable final Amount value) {
         this.eBayCollectedTaxAmount = value;
     }
     /**
-     * Sets the feeJurisdiction property value. This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * Sets the feeJurisdiction property value. This container stores information about region-specific fees that are charged to sellers.
      * @param value Value to set for the feeJurisdiction property.
      */
     public void setFeeJurisdiction(@jakarta.annotation.Nullable final FeeJurisdiction value) {
         this.feeJurisdiction = value;
     }
     /**
-     * Sets the feeType property value. The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the feeType property value. The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout.
      * @param value Value to set for the feeType property.
      */
-    public void setFeeType(@jakarta.annotation.Nullable final String value) {
+    public void setFeeType(@jakarta.annotation.Nullable final FeeTypeEnum value) {
         this.feeType = value;
     }
     /**
@@ -422,7 +436,7 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         this.orderId = value;
     }
     /**
-     * Sets the orderLineItems property value. This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; In certain circumstances, transactional fees like &lt;code&gt;FINAL_VALUE_FEE&lt;/code&gt; and &lt;code&gt;FINAL_VALUE_FEE_FIXED_PER_ORDER&lt;/code&gt; are not deducted from a seller payout, but instead they are billed to the seller&apos;s account as &quot;non-sale charges&quot;. When this happens, the &lt;code&gt;SALE&lt;/code&gt; transaction entity will not have these fees under the &lt;b&gt;orderLineItems&lt;/b&gt; array, but they will appear as separate &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions. When this happens, and you want to see those transactional fees for the order, one thing you can do is make another call to &lt;b&gt;getTransactions&lt;/b&gt; and filter against the &lt;b&gt;orderId&lt;/b&gt;. In the response, you will see the &lt;code&gt;SALE&lt;/code&gt; transaction and the &lt;code&gt;NON_SALE_CHARGE&lt;/code&gt; transactions applied against the order. See &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Gettransactionalfeesforanorder-5&quot; &gt;Sample 6: Get transactional fees for an order&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions#s0-1-28-4-7-5-6-Getnon-salechargesforanorder-9&quot;&gt;Sample 10: Get non-sale charges for an order&lt;/a&gt; for examples.
+     * Sets the orderLineItems property value. This array either shows the order line item transactional fees related to a &lt;code&gt;SALE&lt;/code&gt; transaction and deducted from the payout associated with that order, or it shows the transactional fee credits going back to the seller in the case of a &lt;code&gt;REFUND&lt;/code&gt; transaction.
      * @param value Value to set for the orderLineItems property.
      */
     public void setOrderLineItems(@jakarta.annotation.Nullable final java.util.List<OrderLineItem> value) {
@@ -436,14 +450,14 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         this.paymentsEntity = value;
     }
     /**
-     * Sets the payoutDetails property value. This type provide payout details for a split-payout case. This type is only applicable for split payouts.
+     * Sets the payoutDetails property value. This container provides the payout details for a split-payout case. This container is only returned for split-payout use cases.
      * @param value Value to set for the payoutDetails property.
      */
     public void setPayoutDetails(@jakarta.annotation.Nullable final PayoutDetails value) {
         this.payoutDetails = value;
     }
     /**
-     * Sets the payoutId property value. The unique identifier of the seller payout associated with the monetary transaction. This identifier is generated once eBay begins processing the payout for the corresponding order. This field will not be returned if eBay has not yet begun processing the payout for an order.&lt;br&gt;&lt;br&gt;This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter to get monetary transactions associated with the true(actual) payout associated with the &lt;b&gt;PayoutId&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In case of a split payout, always pick the first true(actual) payout id.&lt;/span&gt; 
+     * Sets the payoutId property value. The unique identifier of the seller payout associated with the monetary transaction.
      * @param value Value to set for the payoutId property.
      */
     public void setPayoutId(@jakarta.annotation.Nullable final String value) {
@@ -471,14 +485,14 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         this.taxes = value;
     }
     /**
-     * Sets the totalFeeAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the totalFeeAmount property value. This amount is the total amount of selling fees paid for order.
      * @param value Value to set for the totalFeeAmount property.
      */
     public void setTotalFeeAmount(@jakarta.annotation.Nullable final Amount value) {
         this.totalFeeAmount = value;
     }
     /**
-     * Sets the totalFeeBasisAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the totalFeeBasisAmount property value. This amount is the total amount for the order before selling fees are deducted from the seller payout associated with the order.
      * @param value Value to set for the totalFeeBasisAmount property.
      */
     public void setTotalFeeBasisAmount(@jakarta.annotation.Nullable final Amount value) {
@@ -492,31 +506,38 @@ public class Transaction implements AdditionalDataHolder, Parsable {
         this.transactionDate = value;
     }
     /**
-     * Sets the transactionId property value. This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction. A monetary transaction can be a sales order, an order refund to the buyer, a credit to the seller&apos;s account, a debit to the seller for the purchase of a shipping label, or a transaction where eBay recouped money from the seller if the seller lost a buyer-initiated payment dispute.
+     * Sets the ebayCollectedTaxAmount property value. Sales tax collected by eBay, applicable only for SALE and REFUND.
+     * @param value Value to set for the ebayCollectedTaxAmount property.
+     */
+    public void setTransactionEbayCollectedTaxAmount(@jakarta.annotation.Nullable final Amount value) {
+        this.transactionEbayCollectedTaxAmount = value;
+    }
+    /**
+     * Sets the transactionId property value. This field, when combined with the &lt;a href=&quot;#response.transactions.transactionType&quot; &gt;transactionType&lt;/a&gt; field, provide a unique identifier of the monetary transaction.
      * @param value Value to set for the transactionId property.
      */
     public void setTransactionId(@jakarta.annotation.Nullable final String value) {
         this.transactionId = value;
     }
     /**
-     * Sets the transactionMemo property value. This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees. The following are examples of how the field is used for each transaction type:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Shipping label purchase&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field gives details about a purchase, a refund, or a price adjustment to the cost of the shipping label.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sales transactions with funds on hold&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field provides information on the reason for the hold or when the hold will be released (e.g., &quot;Funds on hold. Estimated release on Jun 1&quot;).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Non-sale charge fees&lt;/b&gt;: the &lt;b&gt;transactionMemo&lt;/b&gt; field will provide the type of fee that was charged, such as Promoted Offsite Fee.&lt;/li&gt;&lt;/ul&gt;This field is only returned if applicable/available.
+     * Sets the transactionMemo property value. This field applies to shipping label transactions, sales transactions where payout is on hold, and non-sale charge fees.
      * @param value Value to set for the transactionMemo property.
      */
     public void setTransactionMemo(@jakarta.annotation.Nullable final String value) {
         this.transactionMemo = value;
     }
     /**
-     * Sets the transactionStatus property value. This enumeration value indicates the current status of the seller payout associated with the monetary transaction. See the &lt;code&gt;TransactionStatusEnum&lt;/code&gt; type for more information on the different states. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the transactionStatus property value. This enumeration value indicates the current status of the seller payout associated with the monetary transaction.
      * @param value Value to set for the transactionStatus property.
      */
-    public void setTransactionStatus(@jakarta.annotation.Nullable final String value) {
+    public void setTransactionStatus(@jakarta.annotation.Nullable final TransactionStatusEnum value) {
         this.transactionStatus = value;
     }
     /**
-     * Sets the transactionType property value. This enumeration value indicates the type of monetary transaction. Examples of monetary transactions include a buyer&apos;s payment for an order, a refund to the buyer for a returned item or cancelled order, or a credit issued by eBay to the seller&apos;s account. For a complete list of monetary transaction types within the &lt;strong&gt;Finances API&lt;/strong&gt;, see the &lt;a href=&quot;/api-docs/sell/finances/types/pay:TransactionTypeEnum&quot;&gt;TransactionTypeEnum&lt;/a&gt; type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:TransactionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the transactionType property value. This enumeration value indicates the type of monetary transaction.
      * @param value Value to set for the transactionType property.
      */
-    public void setTransactionType(@jakarta.annotation.Nullable final String value) {
+    public void setTransactionType(@jakarta.annotation.Nullable final TransactionTypeEnum value) {
         this.transactionType = value;
     }
 }

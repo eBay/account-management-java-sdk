@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "97FF5B7ED8C1A01FDB40F55B4F13FDB549A7737FF885200C58770197D5FB4532CDB35DADBD55EBD49F1FB76C8B746DA4709EE2F3036A4E1BDAA1F570ABB8EEEC",
-  "descriptionLocation": "../../../../../../../../specs/openapi/account-v2.yaml",
+  "descriptionHash": "E87CA8806C44E63FBCC0C07A81D18109A7F4551D27FBB3573C5AD5714146A05AA6604BC5B0A373B1CF0AB571508FB570481FA91B0866E3930DCAE24ABE173466",
+  "descriptionLocation": "../../../../../../../../specs/openapi/account-v2.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "AccountV2ApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.accountmanagement.generated.accountv2",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

@@ -31,19 +31,19 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type defines provides the total expenses associated with an order. Expenses represent cost components that reduce the seller&apos;s gross earnings and may include deductions such as marketplace fees, eBay shipping labels, and donations, applied during order processing.
+     * This container provides the total expenses associated with an order, including:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Fees and fee credits (transaction fees, other fees, and ad fees)&lt;/li&gt;&lt;li&gt;Shipping labels&lt;/li&gt;&lt;li&gt;Donations&lt;/li&gt;&lt;/ul&gt;It is used by both the &lt;b&gt;getOrderEarnings&lt;/b&gt; and &lt;b&gt;getOrderEarningsById&lt;/b&gt; methods. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Expenses are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      */
     private Expense expenses;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the gross amount before any eBay deductions. This amount includes the item subtotal, buyer-paid shipping and handling, and seller-collected tax paid by the buyer. &lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;This amount does not include any taxes or fees that eBay collects from the buyer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Gross amount is always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      */
     private Amount grossAmount;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows your earnings after deducting expenses and any refunds from your gross amount.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Order earnings are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      */
     private Amount orderEarnings;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container includes refunds for returns, cases, cancellations, requests, and disputes. It does not include fee credits.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Refunds are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      */
     private Amount refunds;
     /**
@@ -71,7 +71,7 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the expenses property value. This type defines provides the total expenses associated with an order. Expenses represent cost components that reduce the seller&apos;s gross earnings and may include deductions such as marketplace fees, eBay shipping labels, and donations, applied during order processing.
+     * Gets the expenses property value. This container provides the total expenses associated with an order, including:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Fees and fee credits (transaction fees, other fees, and ad fees)&lt;/li&gt;&lt;li&gt;Shipping labels&lt;/li&gt;&lt;li&gt;Donations&lt;/li&gt;&lt;/ul&gt;It is used by both the &lt;b&gt;getOrderEarnings&lt;/b&gt; and &lt;b&gt;getOrderEarningsById&lt;/b&gt; methods. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Expenses are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link Expense}
      */
     @jakarta.annotation.Nullable
@@ -92,7 +92,7 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the grossAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the grossAmount property value. This container shows the gross amount before any eBay deductions. This amount includes the item subtotal, buyer-paid shipping and handling, and seller-collected tax paid by the buyer. &lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;This amount does not include any taxes or fees that eBay collects from the buyer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Gross amount is always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -100,7 +100,7 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
         return this.grossAmount;
     }
     /**
-     * Gets the orderEarnings property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the orderEarnings property value. This container shows your earnings after deducting expenses and any refunds from your gross amount.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Order earnings are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -108,7 +108,7 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
         return this.orderEarnings;
     }
     /**
-     * Gets the refunds property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the refunds property value. This container includes refunds for returns, cases, cancellations, requests, and disputes. It does not include fee credits.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Refunds are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -135,28 +135,28 @@ public class EarningsSummary implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the expenses property value. This type defines provides the total expenses associated with an order. Expenses represent cost components that reduce the seller&apos;s gross earnings and may include deductions such as marketplace fees, eBay shipping labels, and donations, applied during order processing.
+     * Sets the expenses property value. This container provides the total expenses associated with an order, including:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Fees and fee credits (transaction fees, other fees, and ad fees)&lt;/li&gt;&lt;li&gt;Shipping labels&lt;/li&gt;&lt;li&gt;Donations&lt;/li&gt;&lt;/ul&gt;It is used by both the &lt;b&gt;getOrderEarnings&lt;/b&gt; and &lt;b&gt;getOrderEarningsById&lt;/b&gt; methods. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Expenses are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the expenses property.
      */
     public void setExpenses(@jakarta.annotation.Nullable final Expense value) {
         this.expenses = value;
     }
     /**
-     * Sets the grossAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the grossAmount property value. This container shows the gross amount before any eBay deductions. This amount includes the item subtotal, buyer-paid shipping and handling, and seller-collected tax paid by the buyer. &lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;This amount does not include any taxes or fees that eBay collects from the buyer.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Gross amount is always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the grossAmount property.
      */
     public void setGrossAmount(@jakarta.annotation.Nullable final Amount value) {
         this.grossAmount = value;
     }
     /**
-     * Sets the orderEarnings property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the orderEarnings property value. This container shows your earnings after deducting expenses and any refunds from your gross amount.&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Order earnings are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the orderEarnings property.
      */
     public void setOrderEarnings(@jakarta.annotation.Nullable final Amount value) {
         this.orderEarnings = value;
     }
     /**
-     * Sets the refunds property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the refunds property value. This container includes refunds for returns, cases, cancellations, requests, and disputes. It does not include fee credits.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Refunds are always in the seller&apos;s payout currency. Conversion-related fields (such as &lt;b&gt;exchangeRate&lt;/b&gt; or converted from/to fields) in this container do not apply to the &lt;b&gt;order_earnings&lt;/b&gt; resource.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the refunds property.
      */
     public void setRefunds(@jakarta.annotation.Nullable final Amount value) {

@@ -31,13 +31,13 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The monetary amount of the expense.
      */
     private Amount amount;
     /**
-     * The classification of the fee applied to the order. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The classification of the fee applied to the order.
      */
-    private String feeType;
+    private FeeTypeEnum feeType;
     /**
      * Instantiates a new {@link OrderEarningFee} and sets the default values.
      */
@@ -63,7 +63,7 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. The monetary amount of the expense.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -71,11 +71,11 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
         return this.amount;
     }
     /**
-     * Gets the feeType property value. The classification of the fee applied to the order. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the feeType property value. The classification of the fee applied to the order.
+     * @return a {@link FeeTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFeeType() {
+    public FeeTypeEnum getFeeType() {
         return this.feeType;
     }
     /**
@@ -86,7 +86,7 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getStringValue()); });
+        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getEnumValue(FeeTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -96,7 +96,7 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("amount", this.getAmount());
-        writer.writeStringValue("feeType", this.getFeeType());
+        writer.writeEnumValue("feeType", this.getFeeType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +107,17 @@ public class OrderEarningFee implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. The monetary amount of the expense.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
         this.amount = value;
     }
     /**
-     * Sets the feeType property value. The classification of the fee applied to the order. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the feeType property value. The classification of the fee applied to the order.
      * @param value Value to set for the feeType property.
      */
-    public void setFeeType(@jakarta.annotation.Nullable final String value) {
+    public void setFeeType(@jakarta.annotation.Nullable final FeeTypeEnum value) {
         this.feeType = value;
     }
 }

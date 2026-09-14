@@ -31,13 +31,13 @@ public class ShippingCarrierRatePreferencesType implements AdditionalDataHolder,
      */
     private Map<String, Object> additionalData;
     /**
-     * This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:FedexRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
      */
-    private String fedexRateOption;
+    private FedexRateOptionEnum fedexRateOption;
     /**
-     * This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:UPSRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
      */
-    private String upsRateOption;
+    private UPSRateOptionEnum upsRateOption;
     /**
      * Instantiates a new {@link ShippingCarrierRatePreferencesType} and sets the default values.
      */
@@ -63,11 +63,11 @@ public class ShippingCarrierRatePreferencesType implements AdditionalDataHolder,
         return this.additionalData;
     }
     /**
-     * Gets the fedexRateOption property value. This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:FedexRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the fedexRateOption property value. This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
+     * @return a {@link FedexRateOptionEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFedexRateOption() {
+    public FedexRateOptionEnum getFedexRateOption() {
         return this.fedexRateOption;
     }
     /**
@@ -77,16 +77,16 @@ public class ShippingCarrierRatePreferencesType implements AdditionalDataHolder,
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("fedexRateOption", (n) -> { this.setFedexRateOption(n.getStringValue()); });
-        deserializerMap.put("upsRateOption", (n) -> { this.setUpsRateOption(n.getStringValue()); });
+        deserializerMap.put("fedexRateOption", (n) -> { this.setFedexRateOption(n.getEnumValue(FedexRateOptionEnum::forValue)); });
+        deserializerMap.put("upsRateOption", (n) -> { this.setUpsRateOption(n.getEnumValue(UPSRateOptionEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the upsRateOption property value. This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:UPSRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the upsRateOption property value. This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
+     * @return a {@link UPSRateOptionEnum}
      */
     @jakarta.annotation.Nullable
-    public String getUpsRateOption() {
+    public UPSRateOptionEnum getUpsRateOption() {
         return this.upsRateOption;
     }
     /**
@@ -95,8 +95,8 @@ public class ShippingCarrierRatePreferencesType implements AdditionalDataHolder,
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("fedexRateOption", this.getFedexRateOption());
-        writer.writeStringValue("upsRateOption", this.getUpsRateOption());
+        writer.writeEnumValue("fedexRateOption", this.getFedexRateOption());
+        writer.writeEnumValue("upsRateOption", this.getUpsRateOption());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +107,17 @@ public class ShippingCarrierRatePreferencesType implements AdditionalDataHolder,
         this.additionalData = value;
     }
     /**
-     * Sets the fedexRateOption property value. This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:FedexRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the fedexRateOption property value. This enum is included if the seller wishes to add or modify the FedEx shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
      * @param value Value to set for the fedexRateOption property.
      */
-    public void setFedexRateOption(@jakarta.annotation.Nullable final String value) {
+    public void setFedexRateOption(@jakarta.annotation.Nullable final FedexRateOptionEnum value) {
         this.fedexRateOption = value;
     }
     /**
-     * Sets the upsRateOption property value. This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:UPSRateOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the upsRateOption property value. This enum is included if the seller wishes to add or modify the UPS shipping carrier rate. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This preference is only applicable to the eBay US marketplace.
      * @param value Value to set for the upsRateOption property.
      */
-    public void setUpsRateOption(@jakarta.annotation.Nullable final String value) {
+    public void setUpsRateOption(@jakarta.annotation.Nullable final UPSRateOptionEnum value) {
         this.upsRateOption = value;
     }
 }

@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.payment_policy.get_by_policy_name;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.PaymentPolicy;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -52,6 +53,8 @@ public class GetByPolicyNameRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the details of a specific payment policy. Supply both the policy &lt;code&gt;name&lt;/code&gt; and its associated &lt;code&gt;marketplace_id&lt;/code&gt; in the request query parameters.
      * @return a {@link PaymentPolicy}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PaymentPolicy get() {
@@ -61,11 +64,16 @@ public class GetByPolicyNameRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the details of a specific payment policy. Supply both the policy &lt;code&gt;name&lt;/code&gt; and its associated &lt;code&gt;marketplace_id&lt;/code&gt; in the request query parameters.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link PaymentPolicy}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PaymentPolicy get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, PaymentPolicy::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, PaymentPolicy::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the details of a specific payment policy. Supply both the policy &lt;code&gt;name&lt;/code&gt; and its associated &lt;code&gt;marketplace_id&lt;/code&gt; in the request query parameters.
@@ -103,12 +111,12 @@ public class GetByPolicyNameRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum
+         * This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/develop/api/sell/account_api_v1#sell-account_api_v1-payment_policy-getpaymentpolicies.marketplaceidenum
          */
         @jakarta.annotation.Nullable
         public String marketplaceId;
         /**
-         * This query parameter specifies the seller-defined name of the payment policy you want to retrieve.&lt;br&gt;&lt;br&gt; This value can be retrieved for a payment policy by using the &lt;a href=&quot;/api-docs/sell/account/resources/payment_policy/methods/getPaymentPolicies&quot; target=&quot;_blank &quot;&gt;getPaymentPolicies&lt;/a&gt; method.
+         * This query parameter specifies the seller-defined name of the payment policy you want to retrieve.&lt;br&gt;&lt;br&gt; This value can be retrieved for a payment policy by using the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-payment_policy-getpaymentpolicies&quot; target=&quot;_blank &quot;&gt;getPaymentPolicies&lt;/a&gt; method.
          */
         @jakarta.annotation.Nullable
         public String name;

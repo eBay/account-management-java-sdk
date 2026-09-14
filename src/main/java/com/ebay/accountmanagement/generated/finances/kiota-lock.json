@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "41F691FC6D4AB466F39037BFD45E465D601054D30D5497EC14A6A067A754499731715D7E3E2F938E3C62333CFCB65A4D831D4A30ADA852516775821560480C08",
-  "descriptionLocation": "../../../../../../../../specs/openapi/finances.yaml",
+  "descriptionHash": "9BA8AB03E99183638FD95820BC2A19921767A835659326BA851614D5112D11C2BAF68E527B322583EB21861DBE9C56CE1F6949B1BDFB32F0A3D2E3F8F70F7CF4",
+  "descriptionLocation": "../../../../../../../../specs/openapi/finances.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "FinancesApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.accountmanagement.generated.finances",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

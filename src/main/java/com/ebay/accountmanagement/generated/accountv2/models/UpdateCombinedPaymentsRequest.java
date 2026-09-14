@@ -31,9 +31,9 @@ public class UpdateCombinedPaymentsRequest implements AdditionalDataHolder, Pars
      */
     private Map<String, Object> additionalData;
     /**
-     * This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
      */
-    private String combinedDuration;
+    private CombinedPaymentPeriodEnum combinedDuration;
     /**
      * Instantiates a new {@link UpdateCombinedPaymentsRequest} and sets the default values.
      */
@@ -59,11 +59,11 @@ public class UpdateCombinedPaymentsRequest implements AdditionalDataHolder, Pars
         return this.additionalData;
     }
     /**
-     * Gets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
+     * @return a {@link CombinedPaymentPeriodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedDuration() {
+    public CombinedPaymentPeriodEnum getCombinedDuration() {
         return this.combinedDuration;
     }
     /**
@@ -73,7 +73,7 @@ public class UpdateCombinedPaymentsRequest implements AdditionalDataHolder, Pars
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getStringValue()); });
+        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getEnumValue(CombinedPaymentPeriodEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,7 +82,7 @@ public class UpdateCombinedPaymentsRequest implements AdditionalDataHolder, Pars
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedDuration", this.getCombinedDuration());
+        writer.writeEnumValue("combinedDuration", this.getCombinedDuration());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -93,10 +93,10 @@ public class UpdateCombinedPaymentsRequest implements AdditionalDataHolder, Pars
         this.additionalData = value;
     }
     /**
-     * Sets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt;One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
      * @param value Value to set for the combinedDuration property.
      */
-    public void setCombinedDuration(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedDuration(@jakarta.annotation.Nullable final CombinedPaymentPeriodEnum value) {
         this.combinedDuration = value;
     }
 }

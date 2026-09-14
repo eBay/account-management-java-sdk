@@ -35,9 +35,9 @@ public class RecipientAccountReference implements AdditionalDataHolder, Parsable
      */
     private String referenceId;
     /**
-     * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: DO NOT USE THIS FIELD. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:RecipientAccountReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This type is no longer applicable. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; | - **PAYPAL_EMAIL**: This is the PayPal email address of the seller.
      */
-    private String referenceType;
+    private RecipientAccountReferenceTypeEnum referenceType;
     /**
      * Instantiates a new {@link RecipientAccountReference} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class RecipientAccountReference implements AdditionalDataHolder, Parsable
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("referenceId", (n) -> { this.setReferenceId(n.getStringValue()); });
-        deserializerMap.put("referenceType", (n) -> { this.setReferenceType(n.getStringValue()); });
+        deserializerMap.put("referenceType", (n) -> { this.setReferenceType(n.getEnumValue(RecipientAccountReferenceTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,11 +82,11 @@ public class RecipientAccountReference implements AdditionalDataHolder, Parsable
         return this.referenceId;
     }
     /**
-     * Gets the referenceType property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: DO NOT USE THIS FIELD. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:RecipientAccountReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the referenceType property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This type is no longer applicable. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; | - **PAYPAL_EMAIL**: This is the PayPal email address of the seller.
+     * @return a {@link RecipientAccountReferenceTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getReferenceType() {
+    public RecipientAccountReferenceTypeEnum getReferenceType() {
         return this.referenceType;
     }
     /**
@@ -96,7 +96,7 @@ public class RecipientAccountReference implements AdditionalDataHolder, Parsable
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("referenceId", this.getReferenceId());
-        writer.writeStringValue("referenceType", this.getReferenceType());
+        writer.writeEnumValue("referenceType", this.getReferenceType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class RecipientAccountReference implements AdditionalDataHolder, Parsable
         this.referenceId = value;
     }
     /**
-     * Sets the referenceType property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: DO NOT USE THIS FIELD. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:RecipientAccountReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the referenceType property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This type is no longer applicable. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt; | - **PAYPAL_EMAIL**: This is the PayPal email address of the seller.
      * @param value Value to set for the referenceType property.
      */
-    public void setReferenceType(@jakarta.annotation.Nullable final String value) {
+    public void setReferenceType(@jakarta.annotation.Nullable final RecipientAccountReferenceTypeEnum value) {
         this.referenceType = value;
     }
 }

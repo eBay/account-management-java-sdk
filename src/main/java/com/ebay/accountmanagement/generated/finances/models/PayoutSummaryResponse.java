@@ -31,17 +31,17 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the total value (and currency type used) of the seller payouts that match the input criteria. This field is not returned if there are no payouts that match the input criteria.
      */
     private Amount amount;
     /**
      * This integer value indicates the total count of payouts to the seller that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;).
      */
-    private Integer payoutCount;
+    private Long payoutCount;
     /**
      * This integer value indicates the total count of monetary transactions (order payments, buyer refunds, and seller credits) associated with the payouts that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;). If there is at least one payout that matches the input criteria, the value in this field will be at least &lt;code&gt;1&lt;/code&gt;.
      */
-    private Integer transactionCount;
+    private Long transactionCount;
     /**
      * Instantiates a new {@link PayoutSummaryResponse} and sets the default values.
      */
@@ -67,7 +67,7 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. This container shows the total value (and currency type used) of the seller payouts that match the input criteria. This field is not returned if there are no payouts that match the input criteria.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -82,24 +82,24 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("payoutCount", (n) -> { this.setPayoutCount(n.getIntegerValue()); });
-        deserializerMap.put("transactionCount", (n) -> { this.setTransactionCount(n.getIntegerValue()); });
+        deserializerMap.put("payoutCount", (n) -> { this.setPayoutCount(n.getLongValue()); });
+        deserializerMap.put("transactionCount", (n) -> { this.setTransactionCount(n.getLongValue()); });
         return deserializerMap;
     }
     /**
      * Gets the payoutCount property value. This integer value indicates the total count of payouts to the seller that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;).
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getPayoutCount() {
+    public Long getPayoutCount() {
         return this.payoutCount;
     }
     /**
      * Gets the transactionCount property value. This integer value indicates the total count of monetary transactions (order payments, buyer refunds, and seller credits) associated with the payouts that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;). If there is at least one payout that matches the input criteria, the value in this field will be at least &lt;code&gt;1&lt;/code&gt;.
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getTransactionCount() {
+    public Long getTransactionCount() {
         return this.transactionCount;
     }
     /**
@@ -109,8 +109,8 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("amount", this.getAmount());
-        writer.writeIntegerValue("payoutCount", this.getPayoutCount());
-        writer.writeIntegerValue("transactionCount", this.getTransactionCount());
+        writer.writeLongValue("payoutCount", this.getPayoutCount());
+        writer.writeLongValue("transactionCount", this.getTransactionCount());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -121,7 +121,7 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. This container shows the total value (and currency type used) of the seller payouts that match the input criteria. This field is not returned if there are no payouts that match the input criteria.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
@@ -131,14 +131,14 @@ public class PayoutSummaryResponse implements AdditionalDataHolder, Parsable {
      * Sets the payoutCount property value. This integer value indicates the total count of payouts to the seller that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;).
      * @param value Value to set for the payoutCount property.
      */
-    public void setPayoutCount(@jakarta.annotation.Nullable final Integer value) {
+    public void setPayoutCount(@jakarta.annotation.Nullable final Long value) {
         this.payoutCount = value;
     }
     /**
      * Sets the transactionCount property value. This integer value indicates the total count of monetary transactions (order payments, buyer refunds, and seller credits) associated with the payouts that match the input criteria. This field is always returned, even if there are no payouts that match the input criteria (its value will show &lt;code&gt;0&lt;/code&gt;). If there is at least one payout that matches the input criteria, the value in this field will be at least &lt;code&gt;1&lt;/code&gt;.
      * @param value Value to set for the transactionCount property.
      */
-    public void setTransactionCount(@jakarta.annotation.Nullable final Integer value) {
+    public void setTransactionCount(@jakarta.annotation.Nullable final Long value) {
         this.transactionCount = value;
     }
 }

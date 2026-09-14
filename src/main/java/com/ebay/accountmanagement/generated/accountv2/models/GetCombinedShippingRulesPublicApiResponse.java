@@ -31,23 +31,23 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
      */
     private Map<String, Object> additionalData;
     /**
-     * This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * This container will show one or more calculated shipping rules set up for that seller on that ebay marketplace.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This will not be returned if a calculated handling rule is not set up for that seller on that eBay marketplace
      */
     private CalculatedHandlingRuleType calculatedHandlingRule;
     /**
-     * This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * This container specifies the type of combined-shipping rule applied, such as flat-rate, weight-based, or cost-based.
      */
     private CalculatedShippingRuleType calculatedShippingRule;
     /**
-     * This field is represented by one of the values in the CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field is represented by one of the values in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      */
-    private String combinedDuration;
+    private CombinedPaymentPeriodEnum combinedDuration;
     /**
-     * This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * This container will show one or more flat shipping rules set up for that seller on that ebay marketplace.
      */
     private FlatShippingRuleType flatShippingRule;
     /**
-     * This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * This container shows the promotional shipping rule that is currently set up on the seller&apos;s account for the eBay marketplace. &lt;br&gt;&lt;br&gt;This container will not be returned if no promotional shipping rule is currently set up on the seller&apos;s account for the eBay marketplace.
      */
     private PromotionalShippingRuleType promotionalShippingRule;
     /**
@@ -75,7 +75,7 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         return this.additionalData;
     }
     /**
-     * Gets the calculatedHandlingRule property value. This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * Gets the calculatedHandlingRule property value. This container will show one or more calculated shipping rules set up for that seller on that ebay marketplace.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This will not be returned if a calculated handling rule is not set up for that seller on that eBay marketplace
      * @return a {@link CalculatedHandlingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -83,7 +83,7 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         return this.calculatedHandlingRule;
     }
     /**
-     * Gets the calculatedShippingRule property value. This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * Gets the calculatedShippingRule property value. This container specifies the type of combined-shipping rule applied, such as flat-rate, weight-based, or cost-based.
      * @return a {@link CalculatedShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -91,11 +91,11 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         return this.calculatedShippingRule;
     }
     /**
-     * Gets the combinedDuration property value. This field is represented by one of the values in the CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedDuration property value. This field is represented by one of the values in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
+     * @return a {@link CombinedPaymentPeriodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedDuration() {
+    public CombinedPaymentPeriodEnum getCombinedDuration() {
         return this.combinedDuration;
     }
     /**
@@ -107,13 +107,13 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
         deserializerMap.put("calculatedHandlingRule", (n) -> { this.setCalculatedHandlingRule(n.getObjectValue(CalculatedHandlingRuleType::createFromDiscriminatorValue)); });
         deserializerMap.put("calculatedShippingRule", (n) -> { this.setCalculatedShippingRule(n.getObjectValue(CalculatedShippingRuleType::createFromDiscriminatorValue)); });
-        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getStringValue()); });
+        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getEnumValue(CombinedPaymentPeriodEnum::forValue)); });
         deserializerMap.put("flatShippingRule", (n) -> { this.setFlatShippingRule(n.getObjectValue(FlatShippingRuleType::createFromDiscriminatorValue)); });
         deserializerMap.put("promotionalShippingRule", (n) -> { this.setPromotionalShippingRule(n.getObjectValue(PromotionalShippingRuleType::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the flatShippingRule property value. This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * Gets the flatShippingRule property value. This container will show one or more flat shipping rules set up for that seller on that ebay marketplace.
      * @return a {@link FlatShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         return this.flatShippingRule;
     }
     /**
-     * Gets the promotionalShippingRule property value. This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * Gets the promotionalShippingRule property value. This container shows the promotional shipping rule that is currently set up on the seller&apos;s account for the eBay marketplace. &lt;br&gt;&lt;br&gt;This container will not be returned if no promotional shipping rule is currently set up on the seller&apos;s account for the eBay marketplace.
      * @return a {@link PromotionalShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -136,7 +136,7 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         Objects.requireNonNull(writer);
         writer.writeObjectValue("calculatedHandlingRule", this.getCalculatedHandlingRule());
         writer.writeObjectValue("calculatedShippingRule", this.getCalculatedShippingRule());
-        writer.writeStringValue("combinedDuration", this.getCombinedDuration());
+        writer.writeEnumValue("combinedDuration", this.getCombinedDuration());
         writer.writeObjectValue("flatShippingRule", this.getFlatShippingRule());
         writer.writeObjectValue("promotionalShippingRule", this.getPromotionalShippingRule());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -149,35 +149,35 @@ public class GetCombinedShippingRulesPublicApiResponse implements AdditionalData
         this.additionalData = value;
     }
     /**
-     * Sets the calculatedHandlingRule property value. This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * Sets the calculatedHandlingRule property value. This container will show one or more calculated shipping rules set up for that seller on that ebay marketplace.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This will not be returned if a calculated handling rule is not set up for that seller on that eBay marketplace
      * @param value Value to set for the calculatedHandlingRule property.
      */
     public void setCalculatedHandlingRule(@jakarta.annotation.Nullable final CalculatedHandlingRuleType value) {
         this.calculatedHandlingRule = value;
     }
     /**
-     * Sets the calculatedShippingRule property value. This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * Sets the calculatedShippingRule property value. This container specifies the type of combined-shipping rule applied, such as flat-rate, weight-based, or cost-based.
      * @param value Value to set for the calculatedShippingRule property.
      */
     public void setCalculatedShippingRule(@jakarta.annotation.Nullable final CalculatedShippingRuleType value) {
         this.calculatedShippingRule = value;
     }
     /**
-     * Sets the combinedDuration property value. This field is represented by one of the values in the CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedDuration property value. This field is represented by one of the values in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      * @param value Value to set for the combinedDuration property.
      */
-    public void setCombinedDuration(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedDuration(@jakarta.annotation.Nullable final CombinedPaymentPeriodEnum value) {
         this.combinedDuration = value;
     }
     /**
-     * Sets the flatShippingRule property value. This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * Sets the flatShippingRule property value. This container will show one or more flat shipping rules set up for that seller on that ebay marketplace.
      * @param value Value to set for the flatShippingRule property.
      */
     public void setFlatShippingRule(@jakarta.annotation.Nullable final FlatShippingRuleType value) {
         this.flatShippingRule = value;
     }
     /**
-     * Sets the promotionalShippingRule property value. This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * Sets the promotionalShippingRule property value. This container shows the promotional shipping rule that is currently set up on the seller&apos;s account for the eBay marketplace. &lt;br&gt;&lt;br&gt;This container will not be returned if no promotional shipping rule is currently set up on the seller&apos;s account for the eBay marketplace.
      * @param value Value to set for the promotionalShippingRule property.
      */
     public void setPromotionalShippingRule(@jakarta.annotation.Nullable final PromotionalShippingRuleType value) {

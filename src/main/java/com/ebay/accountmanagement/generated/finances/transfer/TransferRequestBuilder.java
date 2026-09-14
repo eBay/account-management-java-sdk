@@ -14,7 +14,7 @@
 
 package com.ebay.accountmanagement.generated.finances.transfer;
 
-import com.ebay.accountmanagement.generated.finances.transfer.item.WithTransferItemRequestBuilder;
+import com.ebay.accountmanagement.generated.finances.transfer.item.TransferItemRequestBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
 import java.util.HashMap;
@@ -26,15 +26,15 @@ import java.util.Objects;
 public class TransferRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.accountmanagement.generated.finances.transfer.item collection
-     * @param transfer_Id This path parameter is used to specify the unique identifier of the &lt;code&gt;TRANSFER&lt;/code&gt; transaction type you wish to retrieve.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/finances/resources/transaction/methods/getTransactions&quot; target=&quot;_blank &quot;&gt;getTransactions&lt;/a&gt; method to retrieve this value by setting the &lt;b&gt;transactionType&lt;/b&gt; filter to &lt;code&gt;TRANSFER&lt;/code&gt;. The &lt;b&gt;transfer_id&lt;/b&gt; value will then be returned in the &lt;b&gt;transaction_id&lt;/b&gt; field of the response.
-     * @return a {@link WithTransferItemRequestBuilder}
+     * @param transfer_Id This path parameter is used to specify the unique identifier of the &lt;code&gt;TRANSFER&lt;/code&gt; transaction type you wish to retrieve.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/finances_api#sell-finances_api-transaction-gettransactions&quot;&gt;getTransactions&lt;/a&gt; method to retrieve this value by setting the &lt;b&gt;transactionType&lt;/b&gt; filter to &lt;code&gt;TRANSFER&lt;/code&gt;. The &lt;b&gt;transfer_id&lt;/b&gt; value will then be returned in the &lt;b&gt;transaction_id&lt;/b&gt; field of the response.
+     * @return a {@link TransferItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
-    public WithTransferItemRequestBuilder byTransfer_Id(@jakarta.annotation.Nonnull final String transfer_Id) {
+    public TransferItemRequestBuilder byTransfer_Id(@jakarta.annotation.Nonnull final String transfer_Id) {
         Objects.requireNonNull(transfer_Id);
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("transfer_Id", transfer_Id);
-        return new WithTransferItemRequestBuilder(urlTplParams, requestAdapter);
+        urlTplParams.put("transfer_%2Did", transfer_Id);
+        return new TransferItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Instantiates a new {@link TransferRequestBuilder} and sets the default values.

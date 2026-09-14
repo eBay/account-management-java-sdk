@@ -16,6 +16,7 @@ package com.ebay.accountmanagement.generated.accountv1.fulfillment_policy;
 
 import com.ebay.accountmanagement.generated.accountv1.fulfillment_policy.get_by_policy_name.GetByPolicyNameRequestBuilder;
 import com.ebay.accountmanagement.generated.accountv1.fulfillment_policy.item.WithFulfillmentPolicyItemRequestBuilder;
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.FulfillmentPolicyResponse;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -53,7 +54,7 @@ public class FulfillmentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the com.ebay.accountmanagement.generated.accountv1.fulfillment_policy.item collection
-     * @param fulfillmentPolicyId This path parameter specifies the ID of the fulfillment policy you want to retrieve.&lt;br&gt;&lt;br&gt; This ID can be retrieved for a fulfillment policy by using the &lt;a href=&quot;/api-docs/sell/account/resources/fulfillment_policy/methods/getFulfillmentPolicies&quot; target=&quot;_blank &quot;&gt;getFulfillmentPolicies&lt;/a&gt; method.
+     * @param fulfillmentPolicyId This path parameter specifies the ID of the fulfillment policy you want to retrieve.&lt;br&gt;&lt;br&gt; This ID can be retrieved for a fulfillment policy by using the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-fulfillment_policy-getfulfillmentpolicies&quot; target=&quot;_blank &quot;&gt;getFulfillmentPolicies&lt;/a&gt; method.
      * @return a {@link WithFulfillmentPolicyItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -82,6 +83,8 @@ public class FulfillmentPolicyRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves all the fulfillment policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
      * @return a {@link FulfillmentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public FulfillmentPolicyResponse get() {
@@ -91,11 +94,16 @@ public class FulfillmentPolicyRequestBuilder extends BaseRequestBuilder {
      * This method retrieves all the fulfillment policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link FulfillmentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public FulfillmentPolicyResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, FulfillmentPolicyResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, FulfillmentPolicyResponse::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves all the fulfillment policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
@@ -133,7 +141,7 @@ public class FulfillmentPolicyRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum
+         * This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/develop/api/sell/account_api_v1#sell-account_api_v1-fulfillment_policy-getfulfillmentpolicies.marketplaceidenum
          */
         @jakarta.annotation.Nullable
         public String marketplaceId;

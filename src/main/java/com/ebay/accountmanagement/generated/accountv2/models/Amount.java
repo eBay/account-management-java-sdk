@@ -31,9 +31,9 @@ public class Amount implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;.
      */
-    private String currency;
+    private CurrencyCodeEnum currency;
     /**
      * The monetary amount in the specified &lt;b&gt;currency&lt;/b&gt;.
      */
@@ -63,11 +63,11 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the currency property value. The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the currency property value. The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;.
+     * @return a {@link CurrencyCodeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCurrency() {
+    public CurrencyCodeEnum getCurrency() {
         return this.currency;
     }
     /**
@@ -77,7 +77,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("currency", (n) -> { this.setCurrency(n.getStringValue()); });
+        deserializerMap.put("currency", (n) -> { this.setCurrency(n.getEnumValue(CurrencyCodeEnum::forValue)); });
         deserializerMap.put("value", (n) -> { this.setValue(n.getStringValue()); });
         return deserializerMap;
     }
@@ -95,7 +95,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("currency", this.getCurrency());
+        writer.writeEnumValue("currency", this.getCurrency());
         writer.writeStringValue("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,10 +107,10 @@ public class Amount implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the currency property value. The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the currency property value. The base currency applied to the &lt;b&gt;value&lt;/b&gt; field to establish a monetary amount.&lt;br/&gt;&lt;br/&gt;The currency is represented as a 3-letter ISO 4217 currency code. For example, the code for the Canadian Dollar is &lt;code&gt;CAD&lt;/code&gt;.
      * @param value Value to set for the currency property.
      */
-    public void setCurrency(@jakarta.annotation.Nullable final String value) {
+    public void setCurrency(@jakarta.annotation.Nullable final CurrencyCodeEnum value) {
         this.currency = value;
     }
     /**

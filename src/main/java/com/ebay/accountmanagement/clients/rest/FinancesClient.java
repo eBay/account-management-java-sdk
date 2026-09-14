@@ -43,7 +43,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<OrderEarnings> getOrderEarningsAsync(
-            String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.orderEarnings().get(config -> {
@@ -69,7 +69,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<OrderEarningsSummary> getOrderEarningsSummaryAsync(
-            String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.orderEarningsSummary().get(config -> {
@@ -92,7 +92,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<Payouts> getPayoutsAsync(
-            String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.payout().get(config -> {
@@ -107,7 +107,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<PayoutSummaryResponse> getPayoutSummaryAsync(
-            String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.payoutSummary().get(config -> {
@@ -130,7 +130,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<Transactions> getTransactionsAsync(
-            String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.transaction().get(config -> {
@@ -145,7 +145,7 @@ public final class FinancesClient {
     }
 
     public CompletableFuture<TransactionSummaryResponse> getTransactionSummaryAsync(
-            String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.transactionSummary().get(config -> {

@@ -27,7 +27,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class RateUpdate implements AdditionalDataHolder, Parsable {
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      */
     private Amount additionalCost;
     /**
@@ -39,7 +39,7 @@ public class RateUpdate implements AdditionalDataHolder, Parsable {
      */
     private String rateId;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This is the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      */
     private Amount shippingCost;
     /**
@@ -59,7 +59,7 @@ public class RateUpdate implements AdditionalDataHolder, Parsable {
         return new RateUpdate();
     }
     /**
-     * Gets the additionalCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the additionalCost property value. An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class RateUpdate implements AdditionalDataHolder, Parsable {
         return this.rateId;
     }
     /**
-     * Gets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the shippingCost property value. This is the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class RateUpdate implements AdditionalDataHolder, Parsable {
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
-     * Sets the additionalCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the additionalCost property value. An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      * @param value Value to set for the additionalCost property.
      */
     public void setAdditionalCost(@jakarta.annotation.Nullable final Amount value) {
@@ -135,7 +135,7 @@ public class RateUpdate implements AdditionalDataHolder, Parsable {
         this.rateId = value;
     }
     /**
-     * Sets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the shippingCost property value. This is the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the shippingCost property.
      */
     public void setShippingCost(@jakarta.annotation.Nullable final Amount value) {

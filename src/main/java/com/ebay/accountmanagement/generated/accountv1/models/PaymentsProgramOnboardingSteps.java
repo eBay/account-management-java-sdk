@@ -35,9 +35,9 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
      */
     private String name;
     /**
-     * This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStepStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
      */
-    private String status;
+    private PaymentsProgramOnboardingStepStatus status;
     /**
      * This URL provides access to the &lt;code&gt;IN_PROGRESS&lt;/code&gt; step.
      */
@@ -74,7 +74,7 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(PaymentsProgramOnboardingStepStatus::forValue)); });
         deserializerMap.put("webUrl", (n) -> { this.setWebUrl(n.getStringValue()); });
         return deserializerMap;
     }
@@ -87,11 +87,11 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
         return this.name;
     }
     /**
-     * Gets the status property value. This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStepStatus&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
+     * @return a {@link PaymentsProgramOnboardingStepStatus}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public PaymentsProgramOnboardingStepStatus getStatus() {
         return this.status;
     }
     /**
@@ -109,7 +109,7 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("name", this.getName());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeStringValue("webUrl", this.getWebUrl());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -128,10 +128,10 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
         this.name = value;
     }
     /**
-     * Sets the status property value. This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStepStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final PaymentsProgramOnboardingStepStatus value) {
         this.status = value;
     }
     /**

@@ -1,0 +1,144 @@
+// Copyright 2026 eBay Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package com.ebay.accountmanagement.generated.finances.models;
+
+import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
+
+/**
+ * The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout.
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public enum FeeTypeEnum implements ValuedEnum {
+    BELOW_STANDARD_FEE("BELOW_STANDARD_FEE"),
+    BELOW_STANDARD_SHIPPING_FEE("BELOW_STANDARD_SHIPPING_FEE"),
+    FINAL_VALUE_FEE_FIXED_PER_ORDER("FINAL_VALUE_FEE_FIXED_PER_ORDER"),
+    FINAL_VALUE_FEE("FINAL_VALUE_FEE"),
+    INTERNATIONAL_FEE("INTERNATIONAL_FEE"),
+    HIGH_ITEM_NOT_AS_DESCRIBED_FEE("HIGH_ITEM_NOT_AS_DESCRIBED_FEE"),
+    HIGH_ITEM_NOT_AS_DESCRIBED_SHIPPING_FEE("HIGH_ITEM_NOT_AS_DESCRIBED_SHIPPING_FEE"),
+    PAYMENT_PROCESSING_FEE("PAYMENT_PROCESSING_FEE"),
+    FINAL_VALUE_SHIPPING_FEE("FINAL_VALUE_SHIPPING_FEE"),
+    INSERTION_FEE("INSERTION_FEE"),
+    BOLD_FEE("BOLD_FEE"),
+    FINANCE_FEE("FINANCE_FEE"),
+    CATEGORY_FEATURED_FEE("CATEGORY_FEATURED_FEE"),
+    NSFCHECK_FEE("NSFCHECK_FEE"),
+    PROMOTIONAL_CREDIT("PROMOTIONAL_CREDIT"),
+    GALLERY_FEE("GALLERY_FEE"),
+    FEATURED_GALLERY_FEE("FEATURED_GALLERY_FEE"),
+    RESERVE_PRICE_FEE("RESERVE_PRICE_FEE"),
+    IPIXPHOTO_FEE("IPIXPHOTO_FEE"),
+    LARGE_PICTURE_FEE("LARGE_PICTURE_FEE"),
+    EBAY_STORE_SUBSCRIPTION_FEE("EBAY_STORE_SUBSCRIPTION_FEE"),
+    BUY_IT_NOW_FEE("BUY_IT_NOW_FEE"),
+    SUBTITLE_FEE("SUBTITLE_FEE"),
+    INTERNATIONAL_LISTING_FEE("INTERNATIONAL_LISTING_FEE"),
+    PRO_PACK_BUNDLE_FEE("PRO_PACK_BUNDLE_FEE"),
+    MARKETPLACE_RESEARCH_PRO_SUBSCRIPTION_FEE("MARKETPLACE_RESEARCH_PRO_SUBSCRIPTION_FEE"),
+    VEHICLE_LOCAL_SUBSCRIPTION_FEE("VEHICLE_LOCAL_SUBSCRIPTION_FEE"),
+    VEHICLE_LOCAL_INSERTION_FEE("VEHICLE_LOCAL_INSERTION_FEE"),
+    VALUE_PACK_BUNDLE_FEE("VALUE_PACK_BUNDLE_FEE"),
+    PRO_PACK_PLUS_BUNDLE_FEE("PRO_PACK_PLUS_BUNDLE_FEE"),
+    GALLERY_PLUS_FEE("GALLERY_PLUS_FEE"),
+    EBAY_MOTORS_PRO_FEE("EBAY_MOTORS_PRO_FEE"),
+    PRIVATE_LISTING_FEE("PRIVATE_LISTING_FEE"),
+    AUCTION_END_EARLY_FEE("AUCTION_END_EARLY_FEE"),
+    STORE_SUBSCRIPTION_EARLY_TERMINATION_FEE("STORE_SUBSCRIPTION_EARLY_TERMINATION_FEE"),
+    AD_FEE("AD_FEE"),
+    EBAY_PLUS_SUBSCRIPTION_FEE("EBAY_PLUS_SUBSCRIPTION_FEE"),
+    VEHICLE_SUBSCRIPTION_FEE("VEHICLE_SUBSCRIPTION_FEE"),
+    CO_FUNDING_COUPON_FEE("CO_FUNDING_COUPON_FEE"),
+    PAYMENT_DISPUTE_FEE("PAYMENT_DISPUTE_FEE"),
+    PREMIUM_AD_FEES("PREMIUM_AD_FEES"),
+    VEHICLES_BASIC_PACKAGE_FEE("VEHICLES_BASIC_PACKAGE_FEE"),
+    VEHICLES_PLUS_PACKAGE_FEE("VEHICLES_PLUS_PACKAGE_FEE"),
+    VEHICLES_PREMIUM_PACKAGE_FEE("VEHICLES_PREMIUM_PACKAGE_FEE"),
+    DEPOSIT_PROCESSING_FEE("DEPOSIT_PROCESSING_FEE"),
+    EXPRESS_PAYOUT_FEE("EXPRESS_PAYOUT_FEE"),
+    TAX_DEDUCTION_AT_SOURCE("TAX_DEDUCTION_AT_SOURCE"),
+    INCOME_TAX_WITHHOLDING("INCOME_TAX_WITHHOLDING"),
+    VAT_WITHHOLDING("VAT_WITHHOLDING"),
+    BANK_PAYOUT_FEE("BANK_PAYOUT_FEE"),
+    CHARITY_DONATION("CHARITY_DONATION"),
+    REGULATORY_OPERATING_FEE("REGULATORY_OPERATING_FEE"),
+    OTHER_FEES("OTHER_FEES");
+    public final String value;
+    FeeTypeEnum(final String value) {
+        this.value = value;
+    }
+    @jakarta.annotation.Nonnull
+    public String getValue() { return this.value; }
+    @jakarta.annotation.Nullable
+    public static FeeTypeEnum forValue(@jakarta.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue);
+        switch(searchValue) {
+            case "BELOW_STANDARD_FEE": return BELOW_STANDARD_FEE;
+            case "BELOW_STANDARD_SHIPPING_FEE": return BELOW_STANDARD_SHIPPING_FEE;
+            case "FINAL_VALUE_FEE_FIXED_PER_ORDER": return FINAL_VALUE_FEE_FIXED_PER_ORDER;
+            case "FINAL_VALUE_FEE": return FINAL_VALUE_FEE;
+            case "INTERNATIONAL_FEE": return INTERNATIONAL_FEE;
+            case "HIGH_ITEM_NOT_AS_DESCRIBED_FEE": return HIGH_ITEM_NOT_AS_DESCRIBED_FEE;
+            case "HIGH_ITEM_NOT_AS_DESCRIBED_SHIPPING_FEE": return HIGH_ITEM_NOT_AS_DESCRIBED_SHIPPING_FEE;
+            case "PAYMENT_PROCESSING_FEE": return PAYMENT_PROCESSING_FEE;
+            case "FINAL_VALUE_SHIPPING_FEE": return FINAL_VALUE_SHIPPING_FEE;
+            case "INSERTION_FEE": return INSERTION_FEE;
+            case "BOLD_FEE": return BOLD_FEE;
+            case "FINANCE_FEE": return FINANCE_FEE;
+            case "CATEGORY_FEATURED_FEE": return CATEGORY_FEATURED_FEE;
+            case "NSFCHECK_FEE": return NSFCHECK_FEE;
+            case "PROMOTIONAL_CREDIT": return PROMOTIONAL_CREDIT;
+            case "GALLERY_FEE": return GALLERY_FEE;
+            case "FEATURED_GALLERY_FEE": return FEATURED_GALLERY_FEE;
+            case "RESERVE_PRICE_FEE": return RESERVE_PRICE_FEE;
+            case "IPIXPHOTO_FEE": return IPIXPHOTO_FEE;
+            case "LARGE_PICTURE_FEE": return LARGE_PICTURE_FEE;
+            case "EBAY_STORE_SUBSCRIPTION_FEE": return EBAY_STORE_SUBSCRIPTION_FEE;
+            case "BUY_IT_NOW_FEE": return BUY_IT_NOW_FEE;
+            case "SUBTITLE_FEE": return SUBTITLE_FEE;
+            case "INTERNATIONAL_LISTING_FEE": return INTERNATIONAL_LISTING_FEE;
+            case "PRO_PACK_BUNDLE_FEE": return PRO_PACK_BUNDLE_FEE;
+            case "MARKETPLACE_RESEARCH_PRO_SUBSCRIPTION_FEE": return MARKETPLACE_RESEARCH_PRO_SUBSCRIPTION_FEE;
+            case "VEHICLE_LOCAL_SUBSCRIPTION_FEE": return VEHICLE_LOCAL_SUBSCRIPTION_FEE;
+            case "VEHICLE_LOCAL_INSERTION_FEE": return VEHICLE_LOCAL_INSERTION_FEE;
+            case "VALUE_PACK_BUNDLE_FEE": return VALUE_PACK_BUNDLE_FEE;
+            case "PRO_PACK_PLUS_BUNDLE_FEE": return PRO_PACK_PLUS_BUNDLE_FEE;
+            case "GALLERY_PLUS_FEE": return GALLERY_PLUS_FEE;
+            case "EBAY_MOTORS_PRO_FEE": return EBAY_MOTORS_PRO_FEE;
+            case "PRIVATE_LISTING_FEE": return PRIVATE_LISTING_FEE;
+            case "AUCTION_END_EARLY_FEE": return AUCTION_END_EARLY_FEE;
+            case "STORE_SUBSCRIPTION_EARLY_TERMINATION_FEE": return STORE_SUBSCRIPTION_EARLY_TERMINATION_FEE;
+            case "AD_FEE": return AD_FEE;
+            case "EBAY_PLUS_SUBSCRIPTION_FEE": return EBAY_PLUS_SUBSCRIPTION_FEE;
+            case "VEHICLE_SUBSCRIPTION_FEE": return VEHICLE_SUBSCRIPTION_FEE;
+            case "CO_FUNDING_COUPON_FEE": return CO_FUNDING_COUPON_FEE;
+            case "PAYMENT_DISPUTE_FEE": return PAYMENT_DISPUTE_FEE;
+            case "PREMIUM_AD_FEES": return PREMIUM_AD_FEES;
+            case "VEHICLES_BASIC_PACKAGE_FEE": return VEHICLES_BASIC_PACKAGE_FEE;
+            case "VEHICLES_PLUS_PACKAGE_FEE": return VEHICLES_PLUS_PACKAGE_FEE;
+            case "VEHICLES_PREMIUM_PACKAGE_FEE": return VEHICLES_PREMIUM_PACKAGE_FEE;
+            case "DEPOSIT_PROCESSING_FEE": return DEPOSIT_PROCESSING_FEE;
+            case "EXPRESS_PAYOUT_FEE": return EXPRESS_PAYOUT_FEE;
+            case "TAX_DEDUCTION_AT_SOURCE": return TAX_DEDUCTION_AT_SOURCE;
+            case "INCOME_TAX_WITHHOLDING": return INCOME_TAX_WITHHOLDING;
+            case "VAT_WITHHOLDING": return VAT_WITHHOLDING;
+            case "BANK_PAYOUT_FEE": return BANK_PAYOUT_FEE;
+            case "CHARITY_DONATION": return CHARITY_DONATION;
+            case "REGULATORY_OPERATING_FEE": return REGULATORY_OPERATING_FEE;
+            case "OTHER_FEES": return OTHER_FEES;
+            default: return null;
+        }
+    }
+}

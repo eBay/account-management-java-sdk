@@ -31,7 +31,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type defines identifying information about the buyer associated with an order.
+     * Information about the buyer associated with the order. Includes buyer name and public user id.
      */
     private BuyerWithId buyer;
     /**
@@ -39,7 +39,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
      */
     private String orderCreationDate;
     /**
-     * This type defines a summarized view of earnings information derived from one order. It defines fields that provides a summarized view of earnings information derived from one order including aggregated financial values for gross amount, expenses, earnings, and refunds. 
+     * This container defines a summarized view of earnings information derived from one order. It provides aggregated financial values for order earnings, gross amount, expenses, and refunds. Order earnings includes earnings after deducting expenses and refunds from the gross amount.
      */
     private EarningsSummary orderEarningsSummary;
     /**
@@ -51,7 +51,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
      */
     private String orderLastModifiedDate;
     /**
-     * This type provides order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
+     * The container for order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
      */
     private OrderSummary orderSummary;
     /**
@@ -79,7 +79,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the buyer property value. This type defines identifying information about the buyer associated with an order.
+     * Gets the buyer property value. Information about the buyer associated with the order. Includes buyer name and public user id.
      * @return a {@link BuyerWithId}
      */
     @jakarta.annotation.Nullable
@@ -110,7 +110,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         return this.orderCreationDate;
     }
     /**
-     * Gets the orderEarningsSummary property value. This type defines a summarized view of earnings information derived from one order. It defines fields that provides a summarized view of earnings information derived from one order including aggregated financial values for gross amount, expenses, earnings, and refunds. 
+     * Gets the orderEarningsSummary property value. This container defines a summarized view of earnings information derived from one order. It provides aggregated financial values for order earnings, gross amount, expenses, and refunds. Order earnings includes earnings after deducting expenses and refunds from the gross amount.
      * @return a {@link EarningsSummary}
      */
     @jakarta.annotation.Nullable
@@ -134,7 +134,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         return this.orderLastModifiedDate;
     }
     /**
-     * Gets the orderSummary property value. This type provides order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
+     * Gets the orderSummary property value. The container for order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
      * @return a {@link OrderSummary}
      */
     @jakarta.annotation.Nullable
@@ -163,7 +163,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the buyer property value. This type defines identifying information about the buyer associated with an order.
+     * Sets the buyer property value. Information about the buyer associated with the order. Includes buyer name and public user id.
      * @param value Value to set for the buyer property.
      */
     public void setBuyer(@jakarta.annotation.Nullable final BuyerWithId value) {
@@ -177,7 +177,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         this.orderCreationDate = value;
     }
     /**
-     * Sets the orderEarningsSummary property value. This type defines a summarized view of earnings information derived from one order. It defines fields that provides a summarized view of earnings information derived from one order including aggregated financial values for gross amount, expenses, earnings, and refunds. 
+     * Sets the orderEarningsSummary property value. This container defines a summarized view of earnings information derived from one order. It provides aggregated financial values for order earnings, gross amount, expenses, and refunds. Order earnings includes earnings after deducting expenses and refunds from the gross amount.
      * @param value Value to set for the orderEarningsSummary property.
      */
     public void setOrderEarningsSummary(@jakarta.annotation.Nullable final EarningsSummary value) {
@@ -198,7 +198,7 @@ public class OrderEarning implements AdditionalDataHolder, Parsable {
         this.orderLastModifiedDate = value;
     }
     /**
-     * Sets the orderSummary property value. This type provides order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
+     * Sets the orderSummary property value. The container for order cost details, including line item subtotal, shipping and handling, seller-collected taxes, and any seller applied discounts. Always provided in the listing currency.
      * @param value Value to set for the orderSummary property.
      */
     public void setOrderSummary(@jakarta.annotation.Nullable final OrderSummary value) {

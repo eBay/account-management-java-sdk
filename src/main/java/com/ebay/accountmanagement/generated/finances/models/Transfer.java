@@ -31,7 +31,7 @@ public class Transfer implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type defines the source of funds used to finance a transfer, such as available seller funds, a credit card, or a bank account.
+     * This container provides details about the seller&apos;s funding source to reimburse eBay for the transfer, such as a bank account, a credit card, or available seller payout funds.
      */
     private FundingSource fundingSource;
     /**
@@ -39,11 +39,11 @@ public class Transfer implements AdditionalDataHolder, Parsable {
      */
     private String transactionDate;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The amount of the transfer being deducted from the funding source.
      */
     private Amount transferAmount;
     /**
-     * This type is used by the &lt;b&gt;transferDetail&lt;/b&gt; container, which provides more details about the transfer and the charge(s) associated with the transfer.
+     * This container provides more details about the transfer, including details on the charge(s) associated with the transfer. Multiple charges can be addressed with one transfer.
      */
     private TransferDetail transferDetail;
     /**
@@ -89,7 +89,7 @@ public class Transfer implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the fundingSource property value. This type defines the source of funds used to finance a transfer, such as available seller funds, a credit card, or a bank account.
+     * Gets the fundingSource property value. This container provides details about the seller&apos;s funding source to reimburse eBay for the transfer, such as a bank account, a credit card, or available seller payout funds.
      * @return a {@link FundingSource}
      */
     @jakarta.annotation.Nullable
@@ -105,7 +105,7 @@ public class Transfer implements AdditionalDataHolder, Parsable {
         return this.transactionDate;
     }
     /**
-     * Gets the transferAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the transferAmount property value. The amount of the transfer being deducted from the funding source.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -113,7 +113,7 @@ public class Transfer implements AdditionalDataHolder, Parsable {
         return this.transferAmount;
     }
     /**
-     * Gets the transferDetail property value. This type is used by the &lt;b&gt;transferDetail&lt;/b&gt; container, which provides more details about the transfer and the charge(s) associated with the transfer.
+     * Gets the transferDetail property value. This container provides more details about the transfer, including details on the charge(s) associated with the transfer. Multiple charges can be addressed with one transfer.
      * @return a {@link TransferDetail}
      */
     @jakarta.annotation.Nullable
@@ -149,7 +149,7 @@ public class Transfer implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the fundingSource property value. This type defines the source of funds used to finance a transfer, such as available seller funds, a credit card, or a bank account.
+     * Sets the fundingSource property value. This container provides details about the seller&apos;s funding source to reimburse eBay for the transfer, such as a bank account, a credit card, or available seller payout funds.
      * @param value Value to set for the fundingSource property.
      */
     public void setFundingSource(@jakarta.annotation.Nullable final FundingSource value) {
@@ -163,14 +163,14 @@ public class Transfer implements AdditionalDataHolder, Parsable {
         this.transactionDate = value;
     }
     /**
-     * Sets the transferAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the transferAmount property value. The amount of the transfer being deducted from the funding source.
      * @param value Value to set for the transferAmount property.
      */
     public void setTransferAmount(@jakarta.annotation.Nullable final Amount value) {
         this.transferAmount = value;
     }
     /**
-     * Sets the transferDetail property value. This type is used by the &lt;b&gt;transferDetail&lt;/b&gt; container, which provides more details about the transfer and the charge(s) associated with the transfer.
+     * Sets the transferDetail property value. This container provides more details about the transfer, including details on the charge(s) associated with the transfer. Multiple charges can be addressed with one transfer.
      * @param value Value to set for the transferDetail property.
      */
     public void setTransferDetail(@jakarta.annotation.Nullable final TransferDetail value) {

@@ -16,6 +16,7 @@ package com.ebay.accountmanagement.generated.accountv1.custom_policy;
 
 import com.ebay.accountmanagement.generated.accountv1.models.CustomPolicyCreateRequest;
 import com.ebay.accountmanagement.generated.accountv1.models.CustomPolicyResponse;
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -53,6 +54,8 @@ public class EmptyPathSegmentRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the list of custom policies defined for a seller&apos;s account. To limit the returned custom policies, specify the &lt;b&gt;policy_types&lt;/b&gt; query parameter.
      * @return a {@link CustomPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public CustomPolicyResponse get() {
@@ -62,16 +65,24 @@ public class EmptyPathSegmentRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the list of custom policies defined for a seller&apos;s account. To limit the returned custom policies, specify the &lt;b&gt;policy_types&lt;/b&gt; query parameter.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link CustomPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public CustomPolicyResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, CustomPolicyResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, CustomPolicyResponse::createFromDiscriminatorValue);
     }
     /**
      * This method creates a new custom policy that specifies the seller&apos;s terms for complying with local governmental regulations. Each Custom Policy targets a &lt;b&gt;policyType&lt;/b&gt;. Multiple policies may be created as using the following custom policy types:&lt;ul&gt;&lt;li&gt;PRODUCT_COMPLIANCE: Product Compliance policies disclose product information as required for regulatory compliance. &lt;br/&gt;&lt;br/&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; A maximum of 60 Product Compliance policies per seller may be created.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;TAKE_BACK: Takeback policies describe the seller&apos;s legal obligation to take back a previously purchased item when the buyer purchases a new one. &lt;br/&gt;&lt;br/&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; A maximum of 18 Takeback policies per seller may be created.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;A successful create policy call returns an HTTP status code of &lt;b&gt;201 Created&lt;/b&gt; with the system-generated policy ID included in the Location response header.
      * @param body This type is used by the request payload of the createCustomPolicy method to define a new custom policy for a specific marketplace.
      * @return a {@link PostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PostResponse post(@jakarta.annotation.Nonnull final CustomPolicyCreateRequest body) {
@@ -82,12 +93,19 @@ public class EmptyPathSegmentRequestBuilder extends BaseRequestBuilder {
      * @param body This type is used by the request payload of the createCustomPolicy method to define a new custom policy for a specific marketplace.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link PostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PostResponse post(@jakarta.annotation.Nonnull final CustomPolicyCreateRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, PostResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("409", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, PostResponse::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the list of custom policies defined for a seller&apos;s account. To limit the returned custom policies, specify the &lt;b&gt;policy_types&lt;/b&gt; query parameter.
@@ -149,7 +167,7 @@ public class EmptyPathSegmentRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * This query parameter specifies the type of custom policies to be returned.&lt;br&gt;&lt;br&gt;Multiple policy types may be requested in a single call by providing a comma-delimited set of all policy types to be returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Omitting this query parameter from a request will also return policies of all policy types.&lt;/span&gt;&lt;br&gt; See the &lt;a href=&quot;/api-docs/sell/account/types/api:CustomPolicyTypeEnum&quot; target=&quot;_blank &quot;&gt;CustomPolicyTypeEnum&lt;/a&gt; type for a list of supported values.
+         * This query parameter specifies the type of custom policies to be returned.&lt;br&gt;&lt;br&gt;Multiple policy types may be requested in a single call by providing a comma-delimited set of all policy types to be returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Omitting this query parameter from a request will also return policies of all policy types.&lt;/span&gt;&lt;br&gt; See the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-createcustompolicy.custompolicytypeenum&quot; target=&quot;_blank &quot;&gt;CustomPolicyTypeEnum&lt;/a&gt; type for a list of supported values.
          */
         @jakarta.annotation.Nullable
         public String policyTypes;

@@ -31,9 +31,9 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
      */
     private Map<String, Object> additionalData;
     /**
-     * This field sets/indicates if the seller offers replacement items to the buyer in the case of an international return. The buyer must be willing to accept a replacement item; otherwise, the seller will need to issue a refund for a return. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnMethodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
      */
-    private String returnMethod;
+    private ReturnMethodEnum returnMethod;
     /**
      * A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
      */
@@ -43,9 +43,9 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
      */
     private Boolean returnsAccepted;
     /**
-     * This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for &apos;significantly not as described&apos; (SNAD) issues.  &lt;br&gt;&lt;br&gt;This field is conditionally required if the &lt;b&gt;internationalOverride.returnsAccepted&lt;/b&gt; field is set to &lt;code&gt;true&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnShippingCostPayerEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
      */
-    private String returnShippingCostPayer;
+    private ReturnShippingCostPayerEnum returnShippingCostPayer;
     /**
      * Instantiates a new {@link InternationalReturnOverrideType} and sets the default values.
      */
@@ -77,18 +77,18 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
-        deserializerMap.put("returnMethod", (n) -> { this.setReturnMethod(n.getStringValue()); });
+        deserializerMap.put("returnMethod", (n) -> { this.setReturnMethod(n.getEnumValue(ReturnMethodEnum::forValue)); });
         deserializerMap.put("returnPeriod", (n) -> { this.setReturnPeriod(n.getObjectValue(TimeDuration::createFromDiscriminatorValue)); });
         deserializerMap.put("returnsAccepted", (n) -> { this.setReturnsAccepted(n.getBooleanValue()); });
-        deserializerMap.put("returnShippingCostPayer", (n) -> { this.setReturnShippingCostPayer(n.getStringValue()); });
+        deserializerMap.put("returnShippingCostPayer", (n) -> { this.setReturnShippingCostPayer(n.getEnumValue(ReturnShippingCostPayerEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the returnMethod property value. This field sets/indicates if the seller offers replacement items to the buyer in the case of an international return. The buyer must be willing to accept a replacement item; otherwise, the seller will need to issue a refund for a return. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnMethodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the returnMethod property value. This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
+     * @return a {@link ReturnMethodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getReturnMethod() {
+    public ReturnMethodEnum getReturnMethod() {
         return this.returnMethod;
     }
     /**
@@ -108,11 +108,11 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
         return this.returnsAccepted;
     }
     /**
-     * Gets the returnShippingCostPayer property value. This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for &apos;significantly not as described&apos; (SNAD) issues.  &lt;br&gt;&lt;br&gt;This field is conditionally required if the &lt;b&gt;internationalOverride.returnsAccepted&lt;/b&gt; field is set to &lt;code&gt;true&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnShippingCostPayerEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the returnShippingCostPayer property value. This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
+     * @return a {@link ReturnShippingCostPayerEnum}
      */
     @jakarta.annotation.Nullable
-    public String getReturnShippingCostPayer() {
+    public ReturnShippingCostPayerEnum getReturnShippingCostPayer() {
         return this.returnShippingCostPayer;
     }
     /**
@@ -121,10 +121,10 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("returnMethod", this.getReturnMethod());
+        writer.writeEnumValue("returnMethod", this.getReturnMethod());
         writer.writeObjectValue("returnPeriod", this.getReturnPeriod());
         writer.writeBooleanValue("returnsAccepted", this.getReturnsAccepted());
-        writer.writeStringValue("returnShippingCostPayer", this.getReturnShippingCostPayer());
+        writer.writeEnumValue("returnShippingCostPayer", this.getReturnShippingCostPayer());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -135,10 +135,10 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
         this.additionalData = value;
     }
     /**
-     * Sets the returnMethod property value. This field sets/indicates if the seller offers replacement items to the buyer in the case of an international return. The buyer must be willing to accept a replacement item; otherwise, the seller will need to issue a refund for a return. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnMethodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the returnMethod property value. This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
      * @param value Value to set for the returnMethod property.
      */
-    public void setReturnMethod(@jakarta.annotation.Nullable final String value) {
+    public void setReturnMethod(@jakarta.annotation.Nullable final ReturnMethodEnum value) {
         this.returnMethod = value;
     }
     /**
@@ -156,10 +156,10 @@ public class InternationalReturnOverrideType implements AdditionalDataHolder, Pa
         this.returnsAccepted = value;
     }
     /**
-     * Sets the returnShippingCostPayer property value. This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for &apos;significantly not as described&apos; (SNAD) issues.  &lt;br&gt;&lt;br&gt;This field is conditionally required if the &lt;b&gt;internationalOverride.returnsAccepted&lt;/b&gt; field is set to &lt;code&gt;true&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ReturnShippingCostPayerEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the returnShippingCostPayer property value. This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
      * @param value Value to set for the returnShippingCostPayer property.
      */
-    public void setReturnShippingCostPayer(@jakarta.annotation.Nullable final String value) {
+    public void setReturnShippingCostPayer(@jakarta.annotation.Nullable final ReturnShippingCostPayerEnum value) {
         this.returnShippingCostPayer = value;
     }
 }

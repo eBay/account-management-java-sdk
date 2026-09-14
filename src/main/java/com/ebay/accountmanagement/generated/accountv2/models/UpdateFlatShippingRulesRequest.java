@@ -31,11 +31,11 @@ public class UpdateFlatShippingRulesRequest implements AdditionalDataHolder, Par
      */
     private Map<String, Object> additionalData;
     /**
-     * This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
      */
-    private String combinedDuration;
+    private CombinedPaymentPeriodEnum combinedDuration;
     /**
-     * This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * This container defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
      */
     private FlatShippingRuleType flatShippingRule;
     /**
@@ -63,11 +63,11 @@ public class UpdateFlatShippingRulesRequest implements AdditionalDataHolder, Par
         return this.additionalData;
     }
     /**
-     * Gets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
+     * @return a {@link CombinedPaymentPeriodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedDuration() {
+    public CombinedPaymentPeriodEnum getCombinedDuration() {
         return this.combinedDuration;
     }
     /**
@@ -77,12 +77,12 @@ public class UpdateFlatShippingRulesRequest implements AdditionalDataHolder, Par
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getStringValue()); });
+        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getEnumValue(CombinedPaymentPeriodEnum::forValue)); });
         deserializerMap.put("flatShippingRule", (n) -> { this.setFlatShippingRule(n.getObjectValue(FlatShippingRuleType::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the flatShippingRule property value. This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * Gets the flatShippingRule property value. This container defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
      * @return a {@link FlatShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class UpdateFlatShippingRulesRequest implements AdditionalDataHolder, Par
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedDuration", this.getCombinedDuration());
+        writer.writeEnumValue("combinedDuration", this.getCombinedDuration());
         writer.writeObjectValue("flatShippingRule", this.getFlatShippingRule());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,14 +107,14 @@ public class UpdateFlatShippingRulesRequest implements AdditionalDataHolder, Par
         this.additionalData = value;
     }
     /**
-     * Sets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in the CombinedPaymentPeriodEnum type must be used in this field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedDuration property value. This field specifies the duration within which multiple unpaid orders may be combined into a single invoice. &lt;br&gt;&lt;br&gt; One of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt; must be used in this field.
      * @param value Value to set for the combinedDuration property.
      */
-    public void setCombinedDuration(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedDuration(@jakarta.annotation.Nullable final CombinedPaymentPeriodEnum value) {
         this.combinedDuration = value;
     }
     /**
-     * Sets the flatShippingRule property value. This type defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
+     * Sets the flatShippingRule property value. This container defines the flat-rate combined-shipping rule, which applies a fixed shipping cost for multiple items shipped together.
      * @param value Value to set for the flatShippingRule property.
      */
     public void setFlatShippingRule(@jakarta.annotation.Nullable final FlatShippingRuleType value) {

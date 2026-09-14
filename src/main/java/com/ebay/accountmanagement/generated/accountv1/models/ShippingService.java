@@ -63,7 +63,7 @@ public class ShippingService implements AdditionalDataHolder, Parsable {
      */
     private RegionSet shipToLocations;
     /**
-     * The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Min&lt;/b&gt;: 1. &lt;b&gt;Max&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
+     * The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Minimum&lt;/b&gt;: 1&lt;br&gt;&lt;b&gt;Maximum&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
      */
     private Integer sortOrder;
     /**
@@ -178,7 +178,7 @@ public class ShippingService implements AdditionalDataHolder, Parsable {
         return this.shipToLocations;
     }
     /**
-     * Gets the sortOrder property value. The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Min&lt;/b&gt;: 1. &lt;b&gt;Max&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
+     * Gets the sortOrder property value. The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Minimum&lt;/b&gt;: 1&lt;br&gt;&lt;b&gt;Maximum&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -275,7 +275,7 @@ public class ShippingService implements AdditionalDataHolder, Parsable {
         this.shipToLocations = value;
     }
     /**
-     * Sets the sortOrder property value. The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Min&lt;/b&gt;: 1. &lt;b&gt;Max&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
+     * Sets the sortOrder property value. The integer value set in this field controls the order of the corresponding domestic or international shipping service option in the View Item and Checkout pages. &lt;br&gt;&lt;br&gt;If the &lt;b&gt;sortOrder&lt;/b&gt; field is not supplied, the order of domestic and international shipping service options is determined by the order in which they are listed in the API call. &lt;br&gt;&lt;br&gt;&lt;b&gt;Minimum&lt;/b&gt;: 1&lt;br&gt;&lt;b&gt;Maximum&lt;/b&gt;: 4 (for domestic shipping service) or 5 (for international shipping service).
      * @param value Value to set for the sortOrder property.
      */
     public void setSortOrder(@jakarta.annotation.Nullable final Integer value) {

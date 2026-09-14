@@ -33,11 +33,11 @@ public class PaymentMethod implements AdditionalDataHolder, Parsable {
     /**
      * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This array is no longer applicable and should not be used. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods, including any credit card brands accepted. &lt;/span&gt;
      */
-    private java.util.List<String> brands;
+    private java.util.List<PaymentInstrumentBrandEnum> brands;
     /**
-     * This array is only applicable for listings supporting offline payment methods. See the &lt;b&gt;PaymentMethodTypeEnum&lt;/b&gt; type for supported offline payment method enum values. If offline payments are enabled for the policy, provide at least one offline payment method.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentMethodTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration type that defines the supported payment methods.&lt;br&gt;&lt;br&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: eBay manages all electronic payment methods that are available to buyers, so sellers only need to specify one or more offline payment methods for listings that support or require payment that occurs off of the eBay platform. All electronic payment method enum values are no longer applicable, and are marked as such. &lt;/span&gt; | - **CASH_IN_PERSON**: This enumeration value indicates that the payment method will be cash, and the transaction will occur in-person. - **CASH_ON_DELIVERY**: This enumeration value indicates that the payment method will be cash, and the transaction will occur after the item is delivered to the buyer. - **CASH_ON_PICKUP**: This enumeration value indicates that the payment method will be cash, and the transaction will occur when the buyer picks up the item. - **CASHIER_CHECK**: This enumeration value indicates that the payment method will be a Cashier Check. - **CREDIT_CARD**: This payment method is no longer valid. - **ESCROW**: This enumeration value indicates that escrow was used as the payment method to pay for the order. This form of payment is used for high-value orders. - **INTEGRATED_MERCHANT_CREDIT_CARD**: This payment method is no longer valid. - **LOAN_CHECK**: This payment method is no longer valid. - **MONEY_ORDER**: This enumeration value indicates that the payment method will be by a Money Order. - **PAISA_PAY**: This payment method is no longer valid. - **PAISA_PAY_ESCROW**: This payment method is no longer valid. - **PAISA_PAY_ESCROW_EMI**: This payment method is no longer valid. - **PAYPAL**: This payment method is no longer valid. - **PERSONAL_CHECK**: This enumeration value indicates that the payment method will be a Personal check. - **OTHER**: This enumeration value indicates that the seller is offering an offline payment method not otherwise covered.
      */
-    private String paymentMethodType;
+    private PaymentMethodTypeEnum paymentMethodType;
     /**
      * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This type is no longer applicable. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods.&lt;/span&gt;
      */
@@ -68,10 +68,10 @@ public class PaymentMethod implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the brands property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This array is no longer applicable and should not be used. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods, including any credit card brands accepted. &lt;/span&gt;
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<PaymentInstrumentBrandEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getBrands() {
+    public java.util.List<PaymentInstrumentBrandEnum> getBrands() {
         return this.brands;
     }
     /**
@@ -81,17 +81,17 @@ public class PaymentMethod implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
-        deserializerMap.put("brands", (n) -> { this.setBrands(n.getCollectionOfPrimitiveValues(String.class)); });
-        deserializerMap.put("paymentMethodType", (n) -> { this.setPaymentMethodType(n.getStringValue()); });
+        deserializerMap.put("brands", (n) -> { this.setBrands(n.getCollectionOfEnumValues(PaymentInstrumentBrandEnum::forValue)); });
+        deserializerMap.put("paymentMethodType", (n) -> { this.setPaymentMethodType(n.getEnumValue(PaymentMethodTypeEnum::forValue)); });
         deserializerMap.put("recipientAccountReference", (n) -> { this.setRecipientAccountReference(n.getObjectValue(RecipientAccountReference::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the paymentMethodType property value. This array is only applicable for listings supporting offline payment methods. See the &lt;b&gt;PaymentMethodTypeEnum&lt;/b&gt; type for supported offline payment method enum values. If offline payments are enabled for the policy, provide at least one offline payment method.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentMethodTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the paymentMethodType property value. An enumeration type that defines the supported payment methods.&lt;br&gt;&lt;br&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: eBay manages all electronic payment methods that are available to buyers, so sellers only need to specify one or more offline payment methods for listings that support or require payment that occurs off of the eBay platform. All electronic payment method enum values are no longer applicable, and are marked as such. &lt;/span&gt; | - **CASH_IN_PERSON**: This enumeration value indicates that the payment method will be cash, and the transaction will occur in-person. - **CASH_ON_DELIVERY**: This enumeration value indicates that the payment method will be cash, and the transaction will occur after the item is delivered to the buyer. - **CASH_ON_PICKUP**: This enumeration value indicates that the payment method will be cash, and the transaction will occur when the buyer picks up the item. - **CASHIER_CHECK**: This enumeration value indicates that the payment method will be a Cashier Check. - **CREDIT_CARD**: This payment method is no longer valid. - **ESCROW**: This enumeration value indicates that escrow was used as the payment method to pay for the order. This form of payment is used for high-value orders. - **INTEGRATED_MERCHANT_CREDIT_CARD**: This payment method is no longer valid. - **LOAN_CHECK**: This payment method is no longer valid. - **MONEY_ORDER**: This enumeration value indicates that the payment method will be by a Money Order. - **PAISA_PAY**: This payment method is no longer valid. - **PAISA_PAY_ESCROW**: This payment method is no longer valid. - **PAISA_PAY_ESCROW_EMI**: This payment method is no longer valid. - **PAYPAL**: This payment method is no longer valid. - **PERSONAL_CHECK**: This enumeration value indicates that the payment method will be a Personal check. - **OTHER**: This enumeration value indicates that the seller is offering an offline payment method not otherwise covered.
+     * @return a {@link PaymentMethodTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPaymentMethodType() {
+    public PaymentMethodTypeEnum getPaymentMethodType() {
         return this.paymentMethodType;
     }
     /**
@@ -108,8 +108,8 @@ public class PaymentMethod implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeCollectionOfPrimitiveValues("brands", this.getBrands());
-        writer.writeStringValue("paymentMethodType", this.getPaymentMethodType());
+        writer.writeCollectionOfEnumValues("brands", this.getBrands());
+        writer.writeEnumValue("paymentMethodType", this.getPaymentMethodType());
         writer.writeObjectValue("recipientAccountReference", this.getRecipientAccountReference());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -124,14 +124,14 @@ public class PaymentMethod implements AdditionalDataHolder, Parsable {
      * Sets the brands property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: This array is no longer applicable and should not be used. eBay now controls all electronic payment methods available for a marketplace, and a seller never has to specify any electronic payment methods, including any credit card brands accepted. &lt;/span&gt;
      * @param value Value to set for the brands property.
      */
-    public void setBrands(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setBrands(@jakarta.annotation.Nullable final java.util.List<PaymentInstrumentBrandEnum> value) {
         this.brands = value;
     }
     /**
-     * Sets the paymentMethodType property value. This array is only applicable for listings supporting offline payment methods. See the &lt;b&gt;PaymentMethodTypeEnum&lt;/b&gt; type for supported offline payment method enum values. If offline payments are enabled for the policy, provide at least one offline payment method.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentMethodTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the paymentMethodType property value. An enumeration type that defines the supported payment methods.&lt;br&gt;&lt;br&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: eBay manages all electronic payment methods that are available to buyers, so sellers only need to specify one or more offline payment methods for listings that support or require payment that occurs off of the eBay platform. All electronic payment method enum values are no longer applicable, and are marked as such. &lt;/span&gt; | - **CASH_IN_PERSON**: This enumeration value indicates that the payment method will be cash, and the transaction will occur in-person. - **CASH_ON_DELIVERY**: This enumeration value indicates that the payment method will be cash, and the transaction will occur after the item is delivered to the buyer. - **CASH_ON_PICKUP**: This enumeration value indicates that the payment method will be cash, and the transaction will occur when the buyer picks up the item. - **CASHIER_CHECK**: This enumeration value indicates that the payment method will be a Cashier Check. - **CREDIT_CARD**: This payment method is no longer valid. - **ESCROW**: This enumeration value indicates that escrow was used as the payment method to pay for the order. This form of payment is used for high-value orders. - **INTEGRATED_MERCHANT_CREDIT_CARD**: This payment method is no longer valid. - **LOAN_CHECK**: This payment method is no longer valid. - **MONEY_ORDER**: This enumeration value indicates that the payment method will be by a Money Order. - **PAISA_PAY**: This payment method is no longer valid. - **PAISA_PAY_ESCROW**: This payment method is no longer valid. - **PAISA_PAY_ESCROW_EMI**: This payment method is no longer valid. - **PAYPAL**: This payment method is no longer valid. - **PERSONAL_CHECK**: This enumeration value indicates that the payment method will be a Personal check. - **OTHER**: This enumeration value indicates that the seller is offering an offline payment method not otherwise covered.
      * @param value Value to set for the paymentMethodType property.
      */
-    public void setPaymentMethodType(@jakarta.annotation.Nullable final String value) {
+    public void setPaymentMethodType(@jakarta.annotation.Nullable final PaymentMethodTypeEnum value) {
         this.paymentMethodType = value;
     }
     /**

@@ -37,7 +37,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     /**
      * The maximum number of order earnings records returned in a single page of results.
      */
-    private Integer limit;
+    private Long limit;
     /**
      * The URI for the next page of results. This field is only returned if there is a next page of results to retrieve.
      */
@@ -45,7 +45,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     /**
      * The number of order earnings records skipped before returning the current page of results.
      */
-    private Integer offset;
+    private Long offset;
     /**
      * The list of order earnings records returned in the current page of results. This array will be returned as empty if no orders match the request criteria.
      */
@@ -57,7 +57,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     /**
      * The total number of order earnings records that match the request criteria.
      */
-    private Integer total;
+    private Long total;
     /**
      * Instantiates a new {@link OrderEarnings} and sets the default values.
      */
@@ -90,12 +90,12 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(7);
         deserializerMap.put("href", (n) -> { this.setHref(n.getStringValue()); });
-        deserializerMap.put("limit", (n) -> { this.setLimit(n.getIntegerValue()); });
+        deserializerMap.put("limit", (n) -> { this.setLimit(n.getLongValue()); });
         deserializerMap.put("next", (n) -> { this.setNext(n.getStringValue()); });
-        deserializerMap.put("offset", (n) -> { this.setOffset(n.getIntegerValue()); });
+        deserializerMap.put("offset", (n) -> { this.setOffset(n.getLongValue()); });
         deserializerMap.put("orders", (n) -> { this.setOrders(n.getCollectionOfObjectValues(OrderEarning::createFromDiscriminatorValue)); });
         deserializerMap.put("prev", (n) -> { this.setPrev(n.getStringValue()); });
-        deserializerMap.put("total", (n) -> { this.setTotal(n.getIntegerValue()); });
+        deserializerMap.put("total", (n) -> { this.setTotal(n.getLongValue()); });
         return deserializerMap;
     }
     /**
@@ -108,10 +108,10 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the limit property value. The maximum number of order earnings records returned in a single page of results.
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getLimit() {
+    public Long getLimit() {
         return this.limit;
     }
     /**
@@ -124,10 +124,10 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the offset property value. The number of order earnings records skipped before returning the current page of results.
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getOffset() {
+    public Long getOffset() {
         return this.offset;
     }
     /**
@@ -148,10 +148,10 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the total property value. The total number of order earnings records that match the request criteria.
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getTotal() {
+    public Long getTotal() {
         return this.total;
     }
     /**
@@ -161,12 +161,12 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("href", this.getHref());
-        writer.writeIntegerValue("limit", this.getLimit());
+        writer.writeLongValue("limit", this.getLimit());
         writer.writeStringValue("next", this.getNext());
-        writer.writeIntegerValue("offset", this.getOffset());
+        writer.writeLongValue("offset", this.getOffset());
         writer.writeCollectionOfObjectValues("orders", this.getOrders());
         writer.writeStringValue("prev", this.getPrev());
-        writer.writeIntegerValue("total", this.getTotal());
+        writer.writeLongValue("total", this.getTotal());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -187,7 +187,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
      * Sets the limit property value. The maximum number of order earnings records returned in a single page of results.
      * @param value Value to set for the limit property.
      */
-    public void setLimit(@jakarta.annotation.Nullable final Integer value) {
+    public void setLimit(@jakarta.annotation.Nullable final Long value) {
         this.limit = value;
     }
     /**
@@ -201,7 +201,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
      * Sets the offset property value. The number of order earnings records skipped before returning the current page of results.
      * @param value Value to set for the offset property.
      */
-    public void setOffset(@jakarta.annotation.Nullable final Integer value) {
+    public void setOffset(@jakarta.annotation.Nullable final Long value) {
         this.offset = value;
     }
     /**
@@ -222,7 +222,7 @@ public class OrderEarnings implements AdditionalDataHolder, Parsable {
      * Sets the total property value. The total number of order earnings records that match the request criteria.
      * @param value Value to set for the total property.
      */
-    public void setTotal(@jakarta.annotation.Nullable final Integer value) {
+    public void setTotal(@jakarta.annotation.Nullable final Long value) {
         this.total = value;
     }
 }

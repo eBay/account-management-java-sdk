@@ -21,6 +21,9 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * This type is used to request a list of custom policies.
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
     /**
@@ -28,15 +31,15 @@ public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
+     * Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
      */
     private String description;
     /**
-     * Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      */
     private String label;
     /**
-     * The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller. &lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      */
     private String name;
     /**
@@ -64,7 +67,7 @@ public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the description property value. Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
+     * Gets the description property value. Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -84,7 +87,7 @@ public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the label property value. Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * Gets the label property value. Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -92,7 +95,7 @@ public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
         return this.label;
     }
     /**
-     * Gets the name property value. The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller. &lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * Gets the name property value. The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -118,21 +121,21 @@ public class CustomPolicyRequest implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the description property value. Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
+     * Sets the description property value. Contains the seller specified policy and policy terms.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 15,000
      * @param value Value to set for the description property.
      */
     public void setDescription(@jakarta.annotation.Nullable final String value) {
         this.description = value;
     }
     /**
-     * Sets the label property value. Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * Sets the label property value. Customer-facing label shown on View Item pages for items to which the policy applies. This seller-defined string is displayed as a system-generated hyperlink pointing to seller specified policy information.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      * @param value Value to set for the label property.
      */
     public void setLabel(@jakarta.annotation.Nullable final String value) {
         this.label = value;
     }
     /**
-     * Sets the name property value. The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller. &lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;/api-docs/sell/account/resources/custom_policy/methods/getCustomPolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
+     * Sets the name property value. The seller-defined name for the custom policy. Names must be unique for policies assigned to the same seller and policy type.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field is visible only to the seller.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Always supply this field. If this field is not specified, any previous value is removed. Call the &lt;a href=&quot;develop/api/sell/account_api_v1#sell-account_api_v1-custom_policy-getcustompolicy&quot;&gt;getCustomPolicy&lt;/a&gt; method to return the present field value for this policy.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 65
      * @param value Value to set for the name property.
      */
     public void setName(@jakarta.annotation.Nullable final String value) {

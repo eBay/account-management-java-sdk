@@ -31,17 +31,17 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
      */
     private Map<String, Object> additionalData;
     /**
-     * This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * This container defines the calculated handling fee rules applied to combined orders, specifying how handling costs are determined or discounted &lt;br&gt;&lt;br&gt;based on combined-shipping parameters.
      */
     private CalculatedHandlingRuleType calculatedHandlingRule;
     /**
-     * This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * This container defines the calculated shipping rule applied to combined orders, detailing how shipping discounts or costs are computed &lt;br&gt;&lt;br&gt;based on item count, total weight, or order value.
      */
     private CalculatedShippingRuleType calculatedShippingRule;
     /**
-     * This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated value specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      */
-    private String combinedDuration;
+    private CombinedPaymentPeriodEnum combinedDuration;
     /**
      * Instantiates a new {@link CreateCalculatedShippingRulesRequest} and sets the default values.
      */
@@ -67,7 +67,7 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         return this.additionalData;
     }
     /**
-     * Gets the calculatedHandlingRule property value. This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * Gets the calculatedHandlingRule property value. This container defines the calculated handling fee rules applied to combined orders, specifying how handling costs are determined or discounted &lt;br&gt;&lt;br&gt;based on combined-shipping parameters.
      * @return a {@link CalculatedHandlingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -75,7 +75,7 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         return this.calculatedHandlingRule;
     }
     /**
-     * Gets the calculatedShippingRule property value. This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * Gets the calculatedShippingRule property value. This container defines the calculated shipping rule applied to combined orders, detailing how shipping discounts or costs are computed &lt;br&gt;&lt;br&gt;based on item count, total weight, or order value.
      * @return a {@link CalculatedShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -83,11 +83,11 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         return this.calculatedShippingRule;
     }
     /**
-     * Gets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedDuration property value. This enumerated value specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
+     * @return a {@link CombinedPaymentPeriodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedDuration() {
+    public CombinedPaymentPeriodEnum getCombinedDuration() {
         return this.combinedDuration;
     }
     /**
@@ -99,7 +99,7 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("calculatedHandlingRule", (n) -> { this.setCalculatedHandlingRule(n.getObjectValue(CalculatedHandlingRuleType::createFromDiscriminatorValue)); });
         deserializerMap.put("calculatedShippingRule", (n) -> { this.setCalculatedShippingRule(n.getObjectValue(CalculatedShippingRuleType::createFromDiscriminatorValue)); });
-        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getStringValue()); });
+        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getEnumValue(CombinedPaymentPeriodEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -110,7 +110,7 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         Objects.requireNonNull(writer);
         writer.writeObjectValue("calculatedHandlingRule", this.getCalculatedHandlingRule());
         writer.writeObjectValue("calculatedShippingRule", this.getCalculatedShippingRule());
-        writer.writeStringValue("combinedDuration", this.getCombinedDuration());
+        writer.writeEnumValue("combinedDuration", this.getCombinedDuration());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -121,24 +121,24 @@ public class CreateCalculatedShippingRulesRequest implements AdditionalDataHolde
         this.additionalData = value;
     }
     /**
-     * Sets the calculatedHandlingRule property value. This type defines the structure for calculated handling fee discounts applicable when combining multiple orders.
+     * Sets the calculatedHandlingRule property value. This container defines the calculated handling fee rules applied to combined orders, specifying how handling costs are determined or discounted &lt;br&gt;&lt;br&gt;based on combined-shipping parameters.
      * @param value Value to set for the calculatedHandlingRule property.
      */
     public void setCalculatedHandlingRule(@jakarta.annotation.Nullable final CalculatedHandlingRuleType value) {
         this.calculatedHandlingRule = value;
     }
     /**
-     * Sets the calculatedShippingRule property value. This type describes calculated discount rules determining total shipping cost reductions for combined items.
+     * Sets the calculatedShippingRule property value. This container defines the calculated shipping rule applied to combined orders, detailing how shipping discounts or costs are computed &lt;br&gt;&lt;br&gt;based on item count, total weight, or order value.
      * @param value Value to set for the calculatedShippingRule property.
      */
     public void setCalculatedShippingRule(@jakarta.annotation.Nullable final CalculatedShippingRuleType value) {
         this.calculatedShippingRule = value;
     }
     /**
-     * Sets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedDuration property value. This enumerated value specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      * @param value Value to set for the combinedDuration property.
      */
-    public void setCombinedDuration(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedDuration(@jakarta.annotation.Nullable final CombinedPaymentPeriodEnum value) {
         this.combinedDuration = value;
     }
 }

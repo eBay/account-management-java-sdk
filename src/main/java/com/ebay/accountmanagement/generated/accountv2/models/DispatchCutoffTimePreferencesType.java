@@ -31,7 +31,7 @@ public class DispatchCutoffTimePreferencesType implements AdditionalDataHolder, 
      */
     private Map<String, Object> additionalData;
     /**
-     * This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.
+     * This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller.&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.&lt;/span&gt;
      */
     private String cutoffTime;
     /**
@@ -59,7 +59,7 @@ public class DispatchCutoffTimePreferencesType implements AdditionalDataHolder, 
         return this.additionalData;
     }
     /**
-     * Gets the cutoffTime property value. This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.
+     * Gets the cutoffTime property value. This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller.&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class DispatchCutoffTimePreferencesType implements AdditionalDataHolder, 
         this.additionalData = value;
     }
     /**
-     * Sets the cutoffTime property value. This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller. &lt;/br&gt; &lt;b&gt;Note&lt;/b&gt;: If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.
+     * Sets the cutoffTime property value. This field indicates the dispatch cut-off time in Zulu format (&lt;code&gt;HH:mm:ss.SSSZ&lt;/code&gt;) - 24-hour format with milliseconds and Z timezone indicator.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Despite the Z that is returned in the timestamp, the cut-off time is actually based on the default timezone of the eBay marketplace for the seller.&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If an eBay listing supports same-day shipping, and an order is paid for before the cut-off time, the seller is expected to ship the order out that same business day.&lt;/span&gt;
      * @param value Value to set for the cutoffTime property.
      */
     public void setCutoffTime(@jakarta.annotation.Nullable final String value) {

@@ -192,7 +192,7 @@ public final class AccountV2Client {
     }
 
     public CompletableFuture<Void> setUserPreferencesAsync(
-            UntypedNode body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
+            SetUserPreferencesRequest body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             kiota.userPreferences().patch(body, config -> {

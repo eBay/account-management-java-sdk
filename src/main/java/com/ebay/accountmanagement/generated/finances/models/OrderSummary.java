@@ -31,19 +31,19 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The total amount of item-level promotions or discounts offered by the seller for a sale (order).
      */
     private Amount discounts;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The sum of the listing price(s) for all items in the order, before applying any seller discounts.
      */
     private Amount itemSubtotal;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The total amount of &lt;a href=&quot;https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121&quot; target=&quot;_blank&quot;&gt;tax collected by the seller&lt;/a&gt; on all sold items for the order.
      */
     private Amount sellerCollectedTaxes;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The total amount collected from the buyer to cover shipping and handling for all items in the order.
      */
     private Amount shippingAndHandlingCosts;
     /**
@@ -71,7 +71,7 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the discounts property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the discounts property value. The total amount of item-level promotions or discounts offered by the seller for a sale (order).
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -92,7 +92,7 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the itemSubtotal property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the itemSubtotal property value. The sum of the listing price(s) for all items in the order, before applying any seller discounts.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -100,7 +100,7 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
         return this.itemSubtotal;
     }
     /**
-     * Gets the sellerCollectedTaxes property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the sellerCollectedTaxes property value. The total amount of &lt;a href=&quot;https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121&quot; target=&quot;_blank&quot;&gt;tax collected by the seller&lt;/a&gt; on all sold items for the order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -108,7 +108,7 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
         return this.sellerCollectedTaxes;
     }
     /**
-     * Gets the shippingAndHandlingCosts property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the shippingAndHandlingCosts property value. The total amount collected from the buyer to cover shipping and handling for all items in the order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -135,28 +135,28 @@ public class OrderSummary implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the discounts property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the discounts property value. The total amount of item-level promotions or discounts offered by the seller for a sale (order).
      * @param value Value to set for the discounts property.
      */
     public void setDiscounts(@jakarta.annotation.Nullable final Amount value) {
         this.discounts = value;
     }
     /**
-     * Sets the itemSubtotal property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the itemSubtotal property value. The sum of the listing price(s) for all items in the order, before applying any seller discounts.
      * @param value Value to set for the itemSubtotal property.
      */
     public void setItemSubtotal(@jakarta.annotation.Nullable final Amount value) {
         this.itemSubtotal = value;
     }
     /**
-     * Sets the sellerCollectedTaxes property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the sellerCollectedTaxes property value. The total amount of &lt;a href=&quot;https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121&quot; target=&quot;_blank&quot;&gt;tax collected by the seller&lt;/a&gt; on all sold items for the order.
      * @param value Value to set for the sellerCollectedTaxes property.
      */
     public void setSellerCollectedTaxes(@jakarta.annotation.Nullable final Amount value) {
         this.sellerCollectedTaxes = value;
     }
     /**
-     * Sets the shippingAndHandlingCosts property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the shippingAndHandlingCosts property value. The total amount collected from the buyer to cover shipping and handling for all items in the order.
      * @param value Value to set for the shippingAndHandlingCosts property.
      */
     public void setShippingAndHandlingCosts(@jakarta.annotation.Nullable final Amount value) {

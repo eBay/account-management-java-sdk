@@ -35,9 +35,9 @@ public class Region implements AdditionalDataHolder, Parsable {
      */
     private String regionName;
     /**
-     * Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
      */
-    private String regionType;
+    private RegionTypeEnum regionType;
     /**
      * Instantiates a new {@link Region} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class Region implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("regionName", (n) -> { this.setRegionName(n.getStringValue()); });
-        deserializerMap.put("regionType", (n) -> { this.setRegionType(n.getStringValue()); });
+        deserializerMap.put("regionType", (n) -> { this.setRegionType(n.getEnumValue(RegionTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,11 +82,11 @@ public class Region implements AdditionalDataHolder, Parsable {
         return this.regionName;
     }
     /**
-     * Gets the regionType property value. Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the regionType property value. This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
+     * @return a {@link RegionTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getRegionType() {
+    public RegionTypeEnum getRegionType() {
         return this.regionType;
     }
     /**
@@ -96,7 +96,7 @@ public class Region implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("regionName", this.getRegionName());
-        writer.writeStringValue("regionType", this.getRegionType());
+        writer.writeEnumValue("regionType", this.getRegionType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class Region implements AdditionalDataHolder, Parsable {
         this.regionName = value;
     }
     /**
-     * Sets the regionType property value. Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/ba:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the regionType property value. This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
      * @param value Value to set for the regionType property.
      */
-    public void setRegionType(@jakarta.annotation.Nullable final String value) {
+    public void setRegionType(@jakarta.annotation.Nullable final RegionTypeEnum value) {
         this.regionType = value;
     }
 }

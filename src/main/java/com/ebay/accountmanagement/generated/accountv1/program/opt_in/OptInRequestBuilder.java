@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.program.opt_in;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.Program;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -49,28 +50,41 @@ public class OptInRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/program/opt_in", rawUrl);
     }
     /**
-     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/api-docs/sell/account/overview.html#opt-in&quot; target=&quot;_blank&quot;&gt;Account API overview&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/api-docs/sell/account/resources/program/methods/getOptedInPrograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
+     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-optintoprogram.programtypeenum&quot; target=&quot;_blank&quot;&gt;ProgramTypeEnum&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-getoptedinprograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
      * @param body The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request.
      * @return a {@link OptInPostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public OptInPostResponse post(@jakarta.annotation.Nonnull final Program body) {
         return post(body, null);
     }
     /**
-     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/api-docs/sell/account/overview.html#opt-in&quot; target=&quot;_blank&quot;&gt;Account API overview&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/api-docs/sell/account/resources/program/methods/getOptedInPrograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
+     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-optintoprogram.programtypeenum&quot; target=&quot;_blank&quot;&gt;ProgramTypeEnum&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-getoptedinprograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
      * @param body The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link OptInPostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public OptInPostResponse post(@jakarta.annotation.Nonnull final Program body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, OptInPostResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("409", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, OptInPostResponse::createFromDiscriminatorValue);
     }
     /**
-     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/api-docs/sell/account/overview.html#opt-in&quot; target=&quot;_blank&quot;&gt;Account API overview&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/api-docs/sell/account/resources/program/methods/getOptedInPrograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
+     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-optintoprogram.programtypeenum&quot; target=&quot;_blank&quot;&gt;ProgramTypeEnum&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-getoptedinprograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
      * @param body The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request.
      * @return a {@link RequestInformation}
      */
@@ -79,7 +93,7 @@ public class OptInRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/api-docs/sell/account/overview.html#opt-in&quot; target=&quot;_blank&quot;&gt;Account API overview&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/api-docs/sell/account/resources/program/methods/getOptedInPrograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
+     * This method opts the seller in to an eBay seller program. Refer to the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-optintoprogram.programtypeenum&quot; target=&quot;_blank&quot;&gt;ProgramTypeEnum&lt;/a&gt; for information about available eBay seller programs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-program-getoptedinprograms&quot; target=&quot;_blank&quot;&gt;getOptedInPrograms&lt;/a&gt; call to check the status of your request after the processing period has passed.&lt;/span&gt;
      * @param body The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}

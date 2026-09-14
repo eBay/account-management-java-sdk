@@ -20,17 +20,17 @@ echo "Generating Account Management Java SDK with Kiota..."
 rm -rf src/main/java/com/ebay/accountmanagement/generated
 
 echo "Generating AccountV1ApiClient..."
-kiota generate -l java -d specs/openapi/account-v1.yaml \
+kiota generate -l java -d specs/openapi/account-v1.json \
   -c AccountV1ApiClient -n com.ebay.accountmanagement.generated.accountv1 \
   -o src/main/java/com/ebay/accountmanagement/generated/accountv1 --ebc --co
 
 echo "Generating AccountV2ApiClient..."
-kiota generate -l java -d specs/openapi/account-v2.yaml \
+kiota generate -l java -d specs/openapi/account-v2.json \
   -c AccountV2ApiClient -n com.ebay.accountmanagement.generated.accountv2 \
   -o src/main/java/com/ebay/accountmanagement/generated/accountv2 --ebc --co
 
 echo "Generating FinancesApiClient..."
-kiota generate -l java -d specs/openapi/finances.yaml \
+kiota generate -l java -d specs/openapi/finances.json \
   -c FinancesApiClient -n com.ebay.accountmanagement.generated.finances \
   -o src/main/java/com/ebay/accountmanagement/generated/finances --ebc --co
 

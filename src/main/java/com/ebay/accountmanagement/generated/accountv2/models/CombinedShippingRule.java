@@ -39,11 +39,11 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
      */
     private String combinedShippingRuleName;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This containter defines the additional monetary charge applied for each extra item when multiple items are shipped together.
      */
     private Amount eachAdditionalAmount;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container defines the fixed discount amount deducted from the total shipping cost for each additional item.
      */
     private Amount eachAdditionalAmountOffShippingCost;
     /**
@@ -55,7 +55,7 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
      */
     private String mappedCombinedShippingRuleId;
     /**
-     * This type displays measurement type with value, unit, and measurement system.
+     * This container specifies the total weight reduction applied when combining multiple items into one shipment.
      */
     private MeasureType weightOffTotalWeight;
     /**
@@ -99,7 +99,7 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
         return this.combinedShippingRuleName;
     }
     /**
-     * Gets the eachAdditionalAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the eachAdditionalAmount property value. This containter defines the additional monetary charge applied for each extra item when multiple items are shipped together.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
         return this.eachAdditionalAmount;
     }
     /**
-     * Gets the eachAdditionalAmountOffShippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the eachAdditionalAmountOffShippingCost property value. This container defines the fixed discount amount deducted from the total shipping cost for each additional item.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -147,7 +147,7 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
         return this.mappedCombinedShippingRuleId;
     }
     /**
-     * Gets the weightOffTotalWeight property value. This type displays measurement type with value, unit, and measurement system.
+     * Gets the weightOffTotalWeight property value. This container specifies the total weight reduction applied when combining multiple items into one shipment.
      * @return a {@link MeasureType}
      */
     @jakarta.annotation.Nullable
@@ -191,14 +191,14 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
         this.combinedShippingRuleName = value;
     }
     /**
-     * Sets the eachAdditionalAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the eachAdditionalAmount property value. This containter defines the additional monetary charge applied for each extra item when multiple items are shipped together.
      * @param value Value to set for the eachAdditionalAmount property.
      */
     public void setEachAdditionalAmount(@jakarta.annotation.Nullable final Amount value) {
         this.eachAdditionalAmount = value;
     }
     /**
-     * Sets the eachAdditionalAmountOffShippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the eachAdditionalAmountOffShippingCost property value. This container defines the fixed discount amount deducted from the total shipping cost for each additional item.
      * @param value Value to set for the eachAdditionalAmountOffShippingCost property.
      */
     public void setEachAdditionalAmountOffShippingCost(@jakarta.annotation.Nullable final Amount value) {
@@ -219,7 +219,7 @@ public class CombinedShippingRule implements AdditionalDataHolder, Parsable {
         this.mappedCombinedShippingRuleId = value;
     }
     /**
-     * Sets the weightOffTotalWeight property value. This type displays measurement type with value, unit, and measurement system.
+     * Sets the weightOffTotalWeight property value. This container specifies the total weight reduction applied when combining multiple items into one shipment.
      * @param value Value to set for the weightOffTotalWeight property.
      */
     public void setWeightOffTotalWeight(@jakarta.annotation.Nullable final MeasureType value) {

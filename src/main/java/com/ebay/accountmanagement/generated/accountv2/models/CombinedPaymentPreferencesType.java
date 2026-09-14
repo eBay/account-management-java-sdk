@@ -31,9 +31,9 @@ public class CombinedPaymentPreferencesType implements AdditionalDataHolder, Par
      */
     private Map<String, Object> additionalData;
     /**
-     * This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value.
      */
-    private String combinedPaymentOption;
+    private CombinedPaymentOptionEnum combinedPaymentOption;
     /**
      * Instantiates a new {@link CombinedPaymentPreferencesType} and sets the default values.
      */
@@ -59,11 +59,11 @@ public class CombinedPaymentPreferencesType implements AdditionalDataHolder, Par
         return this.additionalData;
     }
     /**
-     * Gets the combinedPaymentOption property value. This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedPaymentOption property value. This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value.
+     * @return a {@link CombinedPaymentOptionEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedPaymentOption() {
+    public CombinedPaymentOptionEnum getCombinedPaymentOption() {
         return this.combinedPaymentOption;
     }
     /**
@@ -73,7 +73,7 @@ public class CombinedPaymentPreferencesType implements AdditionalDataHolder, Par
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("combinedPaymentOption", (n) -> { this.setCombinedPaymentOption(n.getStringValue()); });
+        deserializerMap.put("combinedPaymentOption", (n) -> { this.setCombinedPaymentOption(n.getEnumValue(CombinedPaymentOptionEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,7 +82,7 @@ public class CombinedPaymentPreferencesType implements AdditionalDataHolder, Par
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedPaymentOption", this.getCombinedPaymentOption());
+        writer.writeEnumValue("combinedPaymentOption", this.getCombinedPaymentOption());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -93,10 +93,10 @@ public class CombinedPaymentPreferencesType implements AdditionalDataHolder, Par
         this.additionalData = value;
     }
     /**
-     * Sets the combinedPaymentOption property value. This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentOptionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedPaymentOption property value. This enum type defines the available options for handling combined payments when a seller allows multiple line items from the same buyer to be paid for with a single payment. See &lt;code&gt;CombinedPaymentOptionEnum&lt;/code&gt; for a description of each value.
      * @param value Value to set for the combinedPaymentOption property.
      */
-    public void setCombinedPaymentOption(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedPaymentOption(@jakarta.annotation.Nullable final CombinedPaymentOptionEnum value) {
         this.combinedPaymentOption = value;
     }
 }
