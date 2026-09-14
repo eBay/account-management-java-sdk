@@ -31,9 +31,9 @@ public class MeasureType implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:WeightUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field.
      */
-    private String unit;
+    private WeightUnitOfMeasureEnum unit;
     /**
      * This field defines the numeric value representing the measurement, weight, in the specified unit.
      */
@@ -69,16 +69,16 @@ public class MeasureType implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("unit", (n) -> { this.setUnit(n.getStringValue()); });
+        deserializerMap.put("unit", (n) -> { this.setUnit(n.getEnumValue(WeightUnitOfMeasureEnum::forValue)); });
         deserializerMap.put("value", (n) -> { this.setValue(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the unit property value. This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:WeightUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the unit property value. This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field.
+     * @return a {@link WeightUnitOfMeasureEnum}
      */
     @jakarta.annotation.Nullable
-    public String getUnit() {
+    public WeightUnitOfMeasureEnum getUnit() {
         return this.unit;
     }
     /**
@@ -95,7 +95,7 @@ public class MeasureType implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("unit", this.getUnit());
+        writer.writeEnumValue("unit", this.getUnit());
         writer.writeStringValue("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,10 +107,10 @@ public class MeasureType implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the unit property value. This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:WeightUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the unit property value. This field defines the unit of measure (e.g., kilograms, pounds) associated with the value field.
      * @param value Value to set for the unit property.
      */
-    public void setUnit(@jakarta.annotation.Nullable final String value) {
+    public void setUnit(@jakarta.annotation.Nullable final WeightUnitOfMeasureEnum value) {
         this.unit = value;
     }
     /**

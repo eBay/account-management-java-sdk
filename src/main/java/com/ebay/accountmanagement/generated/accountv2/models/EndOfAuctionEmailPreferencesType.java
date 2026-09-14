@@ -39,9 +39,9 @@ public class EndOfAuctionEmailPreferencesType implements AdditionalDataHolder, P
      */
     private Boolean logoCustomized;
     /**
-     * This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:EndOfAuctionLogoTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types.
      */
-    private String logoType;
+    private EndOfAuctionLogoTypeEnum logoType;
     /**
      * This field shows the URL path to a sellers custom logo image that is being used in the email sent to winning bidders. This field is only returned if the seller is using a customized logo in emails.
      */
@@ -95,7 +95,7 @@ public class EndOfAuctionEmailPreferencesType implements AdditionalDataHolder, P
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(6);
         deserializerMap.put("emailCustomized", (n) -> { this.setEmailCustomized(n.getBooleanValue()); });
         deserializerMap.put("logoCustomized", (n) -> { this.setLogoCustomized(n.getBooleanValue()); });
-        deserializerMap.put("logoType", (n) -> { this.setLogoType(n.getStringValue()); });
+        deserializerMap.put("logoType", (n) -> { this.setLogoType(n.getEnumValue(EndOfAuctionLogoTypeEnum::forValue)); });
         deserializerMap.put("logoUrl", (n) -> { this.setLogoUrl(n.getStringValue()); });
         deserializerMap.put("templateText", (n) -> { this.setTemplateText(n.getStringValue()); });
         deserializerMap.put("textCustomized", (n) -> { this.setTextCustomized(n.getBooleanValue()); });
@@ -110,11 +110,11 @@ public class EndOfAuctionEmailPreferencesType implements AdditionalDataHolder, P
         return this.logoCustomized;
     }
     /**
-     * Gets the logoType property value. This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:EndOfAuctionLogoTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the logoType property value. This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types.
+     * @return a {@link EndOfAuctionLogoTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getLogoType() {
+    public EndOfAuctionLogoTypeEnum getLogoType() {
         return this.logoType;
     }
     /**
@@ -149,7 +149,7 @@ public class EndOfAuctionEmailPreferencesType implements AdditionalDataHolder, P
         Objects.requireNonNull(writer);
         writer.writeBooleanValue("emailCustomized", this.getEmailCustomized());
         writer.writeBooleanValue("logoCustomized", this.getLogoCustomized());
-        writer.writeStringValue("logoType", this.getLogoType());
+        writer.writeEnumValue("logoType", this.getLogoType());
         writer.writeStringValue("logoUrl", this.getLogoUrl());
         writer.writeStringValue("templateText", this.getTemplateText());
         writer.writeBooleanValue("textCustomized", this.getTextCustomized());
@@ -177,10 +177,10 @@ public class EndOfAuctionEmailPreferencesType implements AdditionalDataHolder, P
         this.logoCustomized = value;
     }
     /**
-     * Sets the logoType property value. This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:EndOfAuctionLogoTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the logoType property value. This enum indicates the type of logo that is used in the email that is sent to winning bidders. See EndOfAuctionLogoTypeEnum type for descriptions of the different logo types.
      * @param value Value to set for the logoType property.
      */
-    public void setLogoType(@jakarta.annotation.Nullable final String value) {
+    public void setLogoType(@jakarta.annotation.Nullable final EndOfAuctionLogoTypeEnum value) {
         this.logoType = value;
     }
     /**

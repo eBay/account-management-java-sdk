@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv2.combined_shipping_rules.update_calculated_shipping_rules;
 
+import com.ebay.accountmanagement.generated.accountv2.models.Error;
 import com.ebay.accountmanagement.generated.accountv2.models.UpdateCalculatedShippingRulesRequest;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -50,24 +51,31 @@ public class UpdateCalculatedShippingRulesRequestBuilder extends BaseRequestBuil
     }
     /**
      * This method updates previously defined calculated shipping rules to modify discount percentages, weight offsets, or amount parameters for the seller.
-     * @param body This type is used to update calculated shipping rules.
+     * @param body This type is used for creating and updating calculated combined-shipping rules.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final UpdateCalculatedShippingRulesRequest body) {
         post(body, null);
     }
     /**
      * This method updates previously defined calculated shipping rules to modify discount percentages, weight offsets, or amount parameters for the seller.
-     * @param body This type is used to update calculated shipping rules.
+     * @param body This type is used for creating and updating calculated combined-shipping rules.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final UpdateCalculatedShippingRulesRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method updates previously defined calculated shipping rules to modify discount percentages, weight offsets, or amount parameters for the seller.
-     * @param body This type is used to update calculated shipping rules.
+     * @param body This type is used for creating and updating calculated combined-shipping rules.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -76,7 +84,7 @@ public class UpdateCalculatedShippingRulesRequestBuilder extends BaseRequestBuil
     }
     /**
      * This method updates previously defined calculated shipping rules to modify discount percentages, weight offsets, or amount parameters for the seller.
-     * @param body This type is used to update calculated shipping rules.
+     * @param body This type is used for creating and updating calculated combined-shipping rules.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -85,6 +93,7 @@ public class UpdateCalculatedShippingRulesRequestBuilder extends BaseRequestBuil
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

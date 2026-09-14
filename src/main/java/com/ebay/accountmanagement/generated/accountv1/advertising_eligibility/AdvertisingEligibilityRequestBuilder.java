@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.advertising_eligibility;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.SellerEligibilityMultiProgramResponse;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -52,6 +53,8 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
     /**
      * This method allows developers to check the seller eligibility status for eBay advertising programs.
      * @return a {@link SellerEligibilityMultiProgramResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SellerEligibilityMultiProgramResponse get() {
@@ -61,11 +64,16 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
      * This method allows developers to check the seller eligibility status for eBay advertising programs.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SellerEligibilityMultiProgramResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SellerEligibilityMultiProgramResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, SellerEligibilityMultiProgramResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, SellerEligibilityMultiProgramResponse::createFromDiscriminatorValue);
     }
     /**
      * This method allows developers to check the seller eligibility status for eBay advertising programs.
@@ -103,7 +111,7 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * A comma-separated list of eBay advertising programs for which eligibility status will be returned.&lt;br&gt;&lt;br&gt; See the &lt;a href=&quot;/api-docs/sell/account/types/plser:AdvertisingProgramEnum&quot; target=&quot;_blank&quot;&gt; AdvertisingProgramEnum&lt;/a&gt; type for a list of supported values.&lt;br&gt;&lt;br&gt;If no programs are specified, the results will be returned for all programs.
+         * A comma-separated list of eBay advertising programs for which eligibility status will be returned.&lt;br&gt;&lt;br&gt; See the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-advertising_eligibility-getadvertisingeligibility.advertisingprogramenum&quot; target=&quot;_blank&quot;&gt;AdvertisingProgramEnum&lt;/a&gt; type for a list of supported values.&lt;br&gt;&lt;br&gt;If no programs are specified, the results will be returned for all programs.
          */
         @jakarta.annotation.Nullable
         public String programTypes;

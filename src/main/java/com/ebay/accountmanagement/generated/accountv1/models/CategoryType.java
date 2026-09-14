@@ -35,9 +35,9 @@ public class CategoryType implements AdditionalDataHolder, Parsable {
      */
     private Boolean defaultEscaped;
     /**
-     * The category type to which the policy applies (motor vehicles or non-motor vehicles). &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;MOTORS_VEHICLES&lt;/code&gt; category type is not valid for return policies. eBay flows do not support the return of motor vehicles.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CategoryTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enum type that describes the category type (motor vehicles or non-motor vehicles). | - **MOTORS_VEHICLES**: This values indicates that the business policy applies to motor vehicle listings. - **ALL_EXCLUDING_MOTORS_VEHICLES**: This values indicates that the business policy applies to all listings besides motor vehicle listings.
      */
-    private String name;
+    private CategoryTypeEnum name;
     /**
      * Instantiates a new {@link CategoryType} and sets the default values.
      */
@@ -78,15 +78,15 @@ public class CategoryType implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("default", (n) -> { this.setDefault(n.getBooleanValue()); });
-        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
+        deserializerMap.put("name", (n) -> { this.setName(n.getEnumValue(CategoryTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the name property value. The category type to which the policy applies (motor vehicles or non-motor vehicles). &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;MOTORS_VEHICLES&lt;/code&gt; category type is not valid for return policies. eBay flows do not support the return of motor vehicles.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CategoryTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the name property value. An enum type that describes the category type (motor vehicles or non-motor vehicles). | - **MOTORS_VEHICLES**: This values indicates that the business policy applies to motor vehicle listings. - **ALL_EXCLUDING_MOTORS_VEHICLES**: This values indicates that the business policy applies to all listings besides motor vehicle listings.
+     * @return a {@link CategoryTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getName() {
+    public CategoryTypeEnum getName() {
         return this.name;
     }
     /**
@@ -96,7 +96,7 @@ public class CategoryType implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeBooleanValue("default", this.getDefault());
-        writer.writeStringValue("name", this.getName());
+        writer.writeEnumValue("name", this.getName());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class CategoryType implements AdditionalDataHolder, Parsable {
         this.defaultEscaped = value;
     }
     /**
-     * Sets the name property value. The category type to which the policy applies (motor vehicles or non-motor vehicles). &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;MOTORS_VEHICLES&lt;/code&gt; category type is not valid for return policies. eBay flows do not support the return of motor vehicles.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CategoryTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the name property value. An enum type that describes the category type (motor vehicles or non-motor vehicles). | - **MOTORS_VEHICLES**: This values indicates that the business policy applies to motor vehicle listings. - **ALL_EXCLUDING_MOTORS_VEHICLES**: This values indicates that the business policy applies to all listings besides motor vehicle listings.
      * @param value Value to set for the name property.
      */
-    public void setName(@jakarta.annotation.Nullable final String value) {
+    public void setName(@jakarta.annotation.Nullable final CategoryTypeEnum value) {
         this.name = value;
     }
 }

@@ -35,7 +35,7 @@ public class PayoutDetails implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<String> payoutIds;
     /**
-     * This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account.  This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      */
     private String payoutReference;
     /**
@@ -82,7 +82,7 @@ public class PayoutDetails implements AdditionalDataHolder, Parsable {
         return this.payoutIds;
     }
     /**
-     * Gets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account.  This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * Gets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class PayoutDetails implements AdditionalDataHolder, Parsable {
         this.payoutIds = value;
     }
     /**
-     * Sets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account.  This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * Sets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. This value can be used by the &lt;b&gt;filter&lt;/b&gt; query parameter of the &lt;b&gt;getPayouts&lt;/b&gt; method to get the monetary details of each true(actual) payout associated with the payoutReference. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      * @param value Value to set for the payoutReference property.
      */
     public void setPayoutReference(@jakarta.annotation.Nullable final String value) {

@@ -31,19 +31,19 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
      */
     private Map<String, Object> additionalData;
     /**
-     * This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, &lt;br&gt;&lt;br&gt;as defined in the CombinedShippingRuleTypeEnum. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, as defined in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.flatshippingruletype.combinedshippingruletype&quot; target=&quot;_blank&quot;&gt;CombinedShippingRuleTypeEnum&lt;/a&gt;.
      */
-    private String combinedShippingRuleType;
+    private CombinedShippingRuleTypeEnum combinedShippingRuleType;
     /**
      * This integer indicates the quantity of items that must be purchased by the buyer in order for that buyer to qualify for the promotional discount.
      */
     private Integer itemCount;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container specifies the minimum order amount required to qualify for the associated discount or promotional rule.
      */
     private Amount orderAmount;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container represents the total shipping cost or discounted shipping charge for the combined order.
      */
     private Amount shippingCost;
     /**
@@ -71,11 +71,11 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
         return this.additionalData;
     }
     /**
-     * Gets the combinedShippingRuleType property value. This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, &lt;br&gt;&lt;br&gt;as defined in the CombinedShippingRuleTypeEnum. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedShippingRuleType property value. This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, as defined in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.flatshippingruletype.combinedshippingruletype&quot; target=&quot;_blank&quot;&gt;CombinedShippingRuleTypeEnum&lt;/a&gt;.
+     * @return a {@link CombinedShippingRuleTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedShippingRuleType() {
+    public CombinedShippingRuleTypeEnum getCombinedShippingRuleType() {
         return this.combinedShippingRuleType;
     }
     /**
@@ -85,7 +85,7 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
-        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getStringValue()); });
+        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getEnumValue(CombinedShippingRuleTypeEnum::forValue)); });
         deserializerMap.put("itemCount", (n) -> { this.setItemCount(n.getIntegerValue()); });
         deserializerMap.put("orderAmount", (n) -> { this.setOrderAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("shippingCost", (n) -> { this.setShippingCost(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
@@ -100,7 +100,7 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
         return this.itemCount;
     }
     /**
-     * Gets the orderAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the orderAmount property value. This container specifies the minimum order amount required to qualify for the associated discount or promotional rule.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -108,7 +108,7 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
         return this.orderAmount;
     }
     /**
-     * Gets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the shippingCost property value. This container represents the total shipping cost or discounted shipping charge for the combined order.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
+        writer.writeEnumValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
         writer.writeIntegerValue("itemCount", this.getItemCount());
         writer.writeObjectValue("orderAmount", this.getOrderAmount());
         writer.writeObjectValue("shippingCost", this.getShippingCost());
@@ -135,10 +135,10 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
         this.additionalData = value;
     }
     /**
-     * Sets the combinedShippingRuleType property value. This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, &lt;br&gt;&lt;br&gt;as defined in the CombinedShippingRuleTypeEnum. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedShippingRuleType property value. This field specifies the type of combined-shipping rule applied, such as flat-rate or cost-based, as defined in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.flatshippingruletype.combinedshippingruletype&quot; target=&quot;_blank&quot;&gt;CombinedShippingRuleTypeEnum&lt;/a&gt;.
      * @param value Value to set for the combinedShippingRuleType property.
      */
-    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final CombinedShippingRuleTypeEnum value) {
         this.combinedShippingRuleType = value;
     }
     /**
@@ -149,14 +149,14 @@ public class PromotionalShippingRuleType implements AdditionalDataHolder, Parsab
         this.itemCount = value;
     }
     /**
-     * Sets the orderAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the orderAmount property value. This container specifies the minimum order amount required to qualify for the associated discount or promotional rule.
      * @param value Value to set for the orderAmount property.
      */
     public void setOrderAmount(@jakarta.annotation.Nullable final Amount value) {
         this.orderAmount = value;
     }
     /**
-     * Sets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the shippingCost property value. This container represents the total shipping cost or discounted shipping charge for the combined order.
      * @param value Value to set for the shippingCost property.
      */
     public void setShippingCost(@jakarta.annotation.Nullable final Amount value) {

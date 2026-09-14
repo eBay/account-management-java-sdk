@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.program.get_opted_in_programs;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.Programs;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,6 +52,9 @@ public class GetOptedInProgramsRequestBuilder extends BaseRequestBuilder {
     /**
      * This method gets a list of the seller programs that the seller has opted-in to.
      * @return a {@link Programs}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Programs get() {
@@ -60,11 +64,18 @@ public class GetOptedInProgramsRequestBuilder extends BaseRequestBuilder {
      * This method gets a list of the seller programs that the seller has opted-in to.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Programs}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Programs get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, Programs::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, Programs::createFromDiscriminatorValue);
     }
     /**
      * This method gets a list of the seller programs that the seller has opted-in to.

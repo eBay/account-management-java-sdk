@@ -21,6 +21,9 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * The response payload for requests that return a list of custom policies.
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CustomPolicyResponse implements AdditionalDataHolder, Parsable {
     /**

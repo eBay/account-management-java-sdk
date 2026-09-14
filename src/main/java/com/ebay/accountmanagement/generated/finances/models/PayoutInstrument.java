@@ -35,7 +35,7 @@ public class PayoutInstrument implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
+     * This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
      */
     private String instrumentType;
     /**
@@ -92,7 +92,7 @@ public class PayoutInstrument implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the instrumentType property value. This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
+     * Gets the instrumentType property value. This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -142,7 +142,7 @@ public class PayoutInstrument implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the instrumentType property value. This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
+     * Sets the instrumentType property value. This value indicates the type of account that received the payout. The value returned in this field may be:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;BANK&lt;/code&gt;: indicates that the payout was made to a seller&apos;s bank account.&lt;/li&gt;&lt;li&gt;&lt;code&gt;CARD&lt;/code&gt;: indicates that the payout went to a seller&apos;s debit card&lt;/li&gt;&lt;li&gt;The name of a digital wallet provider or payment processor (e.g., &lt;code&gt;PAYONEER&lt;/code&gt;)&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Only Payoneer is currently supported for sellers in mainland China. Card payouts are not currently available for sellers in mainland China.&lt;/span&gt;
      * @param value Value to set for the instrumentType property.
      */
     public void setInstrumentType(@jakarta.annotation.Nullable final String value) {

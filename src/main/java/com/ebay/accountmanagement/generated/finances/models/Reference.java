@@ -35,9 +35,9 @@ public class Reference implements AdditionalDataHolder, Parsable {
      */
     private String referenceId;
     /**
-     * An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:ReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;.
      */
-    private String referenceType;
+    private ReferenceTypeEnum referenceType;
     /**
      * Instantiates a new {@link Reference} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class Reference implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("referenceId", (n) -> { this.setReferenceId(n.getStringValue()); });
-        deserializerMap.put("referenceType", (n) -> { this.setReferenceType(n.getStringValue()); });
+        deserializerMap.put("referenceType", (n) -> { this.setReferenceType(n.getEnumValue(ReferenceTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,11 +82,11 @@ public class Reference implements AdditionalDataHolder, Parsable {
         return this.referenceId;
     }
     /**
-     * Gets the referenceType property value. An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:ReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the referenceType property value. An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;.
+     * @return a {@link ReferenceTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getReferenceType() {
+    public ReferenceTypeEnum getReferenceType() {
         return this.referenceType;
     }
     /**
@@ -96,7 +96,7 @@ public class Reference implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("referenceId", this.getReferenceId());
-        writer.writeStringValue("referenceType", this.getReferenceType());
+        writer.writeEnumValue("referenceType", this.getReferenceType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class Reference implements AdditionalDataHolder, Parsable {
         this.referenceId = value;
     }
     /**
-     * Sets the referenceType property value. An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:ReferenceTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the referenceType property value. An enumeration value that identifies the reference type associated with the &lt;strong&gt;referenceId&lt;/strong&gt;.
      * @param value Value to set for the referenceType property.
      */
-    public void setReferenceType(@jakarta.annotation.Nullable final String value) {
+    public void setReferenceType(@jakarta.annotation.Nullable final ReferenceTypeEnum value) {
         this.referenceType = value;
     }
 }

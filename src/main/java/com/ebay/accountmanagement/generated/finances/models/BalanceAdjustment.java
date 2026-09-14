@@ -31,13 +31,13 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The seller payout balance amount that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      */
     private Amount adjustmentAmount;
     /**
-     * The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being tranferred from the seller to eBay. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being transferred from the seller to eBay.
      */
-    private String adjustmentType;
+    private BookingEntryEnum adjustmentType;
     /**
      * Instantiates a new {@link BalanceAdjustment} and sets the default values.
      */
@@ -63,7 +63,7 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the adjustmentAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the adjustmentAmount property value. The seller payout balance amount that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -71,11 +71,11 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
         return this.adjustmentAmount;
     }
     /**
-     * Gets the adjustmentType property value. The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being tranferred from the seller to eBay. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the adjustmentType property value. The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being transferred from the seller to eBay.
+     * @return a {@link BookingEntryEnum}
      */
     @jakarta.annotation.Nullable
-    public String getAdjustmentType() {
+    public BookingEntryEnum getAdjustmentType() {
         return this.adjustmentType;
     }
     /**
@@ -86,7 +86,7 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("adjustmentAmount", (n) -> { this.setAdjustmentAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("adjustmentType", (n) -> { this.setAdjustmentType(n.getStringValue()); });
+        deserializerMap.put("adjustmentType", (n) -> { this.setAdjustmentType(n.getEnumValue(BookingEntryEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -96,7 +96,7 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("adjustmentAmount", this.getAdjustmentAmount());
-        writer.writeStringValue("adjustmentType", this.getAdjustmentType());
+        writer.writeEnumValue("adjustmentType", this.getAdjustmentType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +107,17 @@ public class BalanceAdjustment implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the adjustmentAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the adjustmentAmount property value. The seller payout balance amount that will be applied toward the charges outlined in the &lt;b&gt;charges&lt;/b&gt; array.
      * @param value Value to set for the adjustmentAmount property.
      */
     public void setAdjustmentAmount(@jakarta.annotation.Nullable final Amount value) {
         this.adjustmentAmount = value;
     }
     /**
-     * Sets the adjustmentType property value. The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being tranferred from the seller to eBay. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:BookingEntryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the adjustmentType property value. The enumeration value returned here indicates if the charge is a &lt;code&gt;DEBIT&lt;/code&gt; or a &lt;code&gt;CREDIT&lt;/code&gt; to the seller. Generally, all transfer transaction types are going to be &lt;code&gt;DEBIT&lt;/code&gt;, since the money is being transferred from the seller to eBay.
      * @param value Value to set for the adjustmentType property.
      */
-    public void setAdjustmentType(@jakarta.annotation.Nullable final String value) {
+    public void setAdjustmentType(@jakarta.annotation.Nullable final BookingEntryEnum value) {
         this.adjustmentType = value;
     }
 }

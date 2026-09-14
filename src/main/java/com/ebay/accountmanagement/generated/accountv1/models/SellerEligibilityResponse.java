@@ -31,17 +31,17 @@ public class SellerEligibilityResponse implements AdditionalDataHolder, Parsable
      */
     private Map<String, Object> additionalData;
     /**
-     * The eBay advertising program for which a seller may be eligible. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:AdvertisingProgramEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumerated type that defines the eBay advertising program for which a seller may be eligible. | - **PROMOTED_LISTINGS_STANDARD**: This value indicates that the eBay advertising program is Promoted Listings general campaign strategy (formerly Promoted Listings Standard (PLS)). - **PROMOTED_LISTINGS_ADVANCED**: This value indicates that the eBay advertising program is Promoted listings priority campaign strategy (formerly Promoted Listings Advanced (PLA)). - **OFFSITE_ADS**: This value indicates that the eBay advertising program is Promoted Listings Promoted Offsite (formerly Offsite Ads).
      */
-    private String programType;
+    private AdvertisingProgramEnum programType;
     /**
-     * The reason why a seller is ineligible for the specified eBay advertising program.&lt;br /&gt;&lt;br /&gt;This field is only returned if the seller is ineligible for the eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:SellerIneligibleReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines the reason why a seller is ineligible for an eBay advertising program. | - **NOT_ENOUGH_ACTIVITY**: This value indicates that the seller is ineligible for the eBay advertising program due to lack of activity.&lt;br&gt;&lt;br&gt;New accounts take a few weeks to become eligible for eBay Promoted Listings. If the seller account is in good standing (Above Standard or Top Rated), the account should become eligible within a few weeks. - **NOT_IN_GOOD_STANDING**: This value indicates that the seller is ineligible for the eBay advertising program because their account is not currently in good standing.&lt;br&gt;&lt;br&gt;Below Standard sellers cannot use eBay advertising programs to create new campaigns or edit their existing campaigns. Existing campaigns will be paused by the system. - **RESTRICTED**: This value indicates that the seller is currently restricted from using the corresponding eBay advertising program.
      */
-    private String reason;
+    private SellerIneligibleReasonEnum reason;
     /**
-     * The seller eligibility status for the specified eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/cmlib:SellerEligibilityEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines the seller eligibility status for a specified eBay advertising program. | - **ELIGIBLE**: This value indicates that the seller is eligible for the specified eBay advertising program. - **INELIGIBLE**: This value indicates that the seller is ineligible for the specified eBay advertising program.
      */
-    private String status;
+    private SellerEligibilityEnum status;
     /**
      * Instantiates a new {@link SellerEligibilityResponse} and sets the default values.
      */
@@ -73,33 +73,33 @@ public class SellerEligibilityResponse implements AdditionalDataHolder, Parsable
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
-        deserializerMap.put("programType", (n) -> { this.setProgramType(n.getStringValue()); });
-        deserializerMap.put("reason", (n) -> { this.setReason(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("programType", (n) -> { this.setProgramType(n.getEnumValue(AdvertisingProgramEnum::forValue)); });
+        deserializerMap.put("reason", (n) -> { this.setReason(n.getEnumValue(SellerIneligibleReasonEnum::forValue)); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(SellerEligibilityEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the programType property value. The eBay advertising program for which a seller may be eligible. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:AdvertisingProgramEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the programType property value. An enumerated type that defines the eBay advertising program for which a seller may be eligible. | - **PROMOTED_LISTINGS_STANDARD**: This value indicates that the eBay advertising program is Promoted Listings general campaign strategy (formerly Promoted Listings Standard (PLS)). - **PROMOTED_LISTINGS_ADVANCED**: This value indicates that the eBay advertising program is Promoted listings priority campaign strategy (formerly Promoted Listings Advanced (PLA)). - **OFFSITE_ADS**: This value indicates that the eBay advertising program is Promoted Listings Promoted Offsite (formerly Offsite Ads).
+     * @return a {@link AdvertisingProgramEnum}
      */
     @jakarta.annotation.Nullable
-    public String getProgramType() {
+    public AdvertisingProgramEnum getProgramType() {
         return this.programType;
     }
     /**
-     * Gets the reason property value. The reason why a seller is ineligible for the specified eBay advertising program.&lt;br /&gt;&lt;br /&gt;This field is only returned if the seller is ineligible for the eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:SellerIneligibleReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the reason property value. This enumerated type defines the reason why a seller is ineligible for an eBay advertising program. | - **NOT_ENOUGH_ACTIVITY**: This value indicates that the seller is ineligible for the eBay advertising program due to lack of activity.&lt;br&gt;&lt;br&gt;New accounts take a few weeks to become eligible for eBay Promoted Listings. If the seller account is in good standing (Above Standard or Top Rated), the account should become eligible within a few weeks. - **NOT_IN_GOOD_STANDING**: This value indicates that the seller is ineligible for the eBay advertising program because their account is not currently in good standing.&lt;br&gt;&lt;br&gt;Below Standard sellers cannot use eBay advertising programs to create new campaigns or edit their existing campaigns. Existing campaigns will be paused by the system. - **RESTRICTED**: This value indicates that the seller is currently restricted from using the corresponding eBay advertising program.
+     * @return a {@link SellerIneligibleReasonEnum}
      */
     @jakarta.annotation.Nullable
-    public String getReason() {
+    public SellerIneligibleReasonEnum getReason() {
         return this.reason;
     }
     /**
-     * Gets the status property value. The seller eligibility status for the specified eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/cmlib:SellerEligibilityEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. This enumerated type defines the seller eligibility status for a specified eBay advertising program. | - **ELIGIBLE**: This value indicates that the seller is eligible for the specified eBay advertising program. - **INELIGIBLE**: This value indicates that the seller is ineligible for the specified eBay advertising program.
+     * @return a {@link SellerEligibilityEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public SellerEligibilityEnum getStatus() {
         return this.status;
     }
     /**
@@ -108,9 +108,9 @@ public class SellerEligibilityResponse implements AdditionalDataHolder, Parsable
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("programType", this.getProgramType());
-        writer.writeStringValue("reason", this.getReason());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("programType", this.getProgramType());
+        writer.writeEnumValue("reason", this.getReason());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -121,24 +121,24 @@ public class SellerEligibilityResponse implements AdditionalDataHolder, Parsable
         this.additionalData = value;
     }
     /**
-     * Sets the programType property value. The eBay advertising program for which a seller may be eligible. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:AdvertisingProgramEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the programType property value. An enumerated type that defines the eBay advertising program for which a seller may be eligible. | - **PROMOTED_LISTINGS_STANDARD**: This value indicates that the eBay advertising program is Promoted Listings general campaign strategy (formerly Promoted Listings Standard (PLS)). - **PROMOTED_LISTINGS_ADVANCED**: This value indicates that the eBay advertising program is Promoted listings priority campaign strategy (formerly Promoted Listings Advanced (PLA)). - **OFFSITE_ADS**: This value indicates that the eBay advertising program is Promoted Listings Promoted Offsite (formerly Offsite Ads).
      * @param value Value to set for the programType property.
      */
-    public void setProgramType(@jakarta.annotation.Nullable final String value) {
+    public void setProgramType(@jakarta.annotation.Nullable final AdvertisingProgramEnum value) {
         this.programType = value;
     }
     /**
-     * Sets the reason property value. The reason why a seller is ineligible for the specified eBay advertising program.&lt;br /&gt;&lt;br /&gt;This field is only returned if the seller is ineligible for the eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/plser:SellerIneligibleReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the reason property value. This enumerated type defines the reason why a seller is ineligible for an eBay advertising program. | - **NOT_ENOUGH_ACTIVITY**: This value indicates that the seller is ineligible for the eBay advertising program due to lack of activity.&lt;br&gt;&lt;br&gt;New accounts take a few weeks to become eligible for eBay Promoted Listings. If the seller account is in good standing (Above Standard or Top Rated), the account should become eligible within a few weeks. - **NOT_IN_GOOD_STANDING**: This value indicates that the seller is ineligible for the eBay advertising program because their account is not currently in good standing.&lt;br&gt;&lt;br&gt;Below Standard sellers cannot use eBay advertising programs to create new campaigns or edit their existing campaigns. Existing campaigns will be paused by the system. - **RESTRICTED**: This value indicates that the seller is currently restricted from using the corresponding eBay advertising program.
      * @param value Value to set for the reason property.
      */
-    public void setReason(@jakarta.annotation.Nullable final String value) {
+    public void setReason(@jakarta.annotation.Nullable final SellerIneligibleReasonEnum value) {
         this.reason = value;
     }
     /**
-     * Sets the status property value. The seller eligibility status for the specified eBay advertising program. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/cmlib:SellerEligibilityEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. This enumerated type defines the seller eligibility status for a specified eBay advertising program. | - **ELIGIBLE**: This value indicates that the seller is eligible for the specified eBay advertising program. - **INELIGIBLE**: This value indicates that the seller is ineligible for the specified eBay advertising program.
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final SellerEligibilityEnum value) {
         this.status = value;
     }
 }

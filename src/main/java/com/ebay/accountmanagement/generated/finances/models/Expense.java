@@ -31,9 +31,9 @@ public class Expense implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This field shows the three-letter currency code that represents the currency used for all of the order expenses For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field shows the three-letter currency code that represents the currency used for all of the order expenses.
      */
-    private String currency;
+    private CurrencyCodeEnum currency;
     /**
      * This array shows the amount(s) of one or more donations that are submitted to eBay charity organizations for one or more orders. &lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Donations are always tied to specific items. When an item is listed with a charity contribution (for example, 10%), the donation is calculated per item at the time of sale. Order earnings factor in only the items within the order that are eligible for donation.&lt;/span&gt;&lt;/p&gt;
      */
@@ -43,7 +43,7 @@ public class Expense implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<OrderEarningFee> marketplaceFees;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the total amount paid by the seller for eBay shipping labels for one or more orders.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Charges and credits for shipping labels purchased with non-eBay payment methods (for example, PayPal) are excluded from the order earnings calculation.&lt;/span&gt;&lt;/p&gt;
      */
     private Amount shippingLabels;
     /**
@@ -75,11 +75,11 @@ public class Expense implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the currency property value. This field shows the three-letter currency code that represents the currency used for all of the order expenses For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the currency property value. This field shows the three-letter currency code that represents the currency used for all of the order expenses.
+     * @return a {@link CurrencyCodeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCurrency() {
+    public CurrencyCodeEnum getCurrency() {
         return this.currency;
     }
     /**
@@ -97,7 +97,7 @@ public class Expense implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("currency", (n) -> { this.setCurrency(n.getStringValue()); });
+        deserializerMap.put("currency", (n) -> { this.setCurrency(n.getEnumValue(CurrencyCodeEnum::forValue)); });
         deserializerMap.put("donations", (n) -> { this.setDonations(n.getCollectionOfObjectValues(OrderEarningFee::createFromDiscriminatorValue)); });
         deserializerMap.put("marketplaceFees", (n) -> { this.setMarketplaceFees(n.getCollectionOfObjectValues(OrderEarningFee::createFromDiscriminatorValue)); });
         deserializerMap.put("shippingLabels", (n) -> { this.setShippingLabels(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
@@ -113,7 +113,7 @@ public class Expense implements AdditionalDataHolder, Parsable {
         return this.marketplaceFees;
     }
     /**
-     * Gets the shippingLabels property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the shippingLabels property value. This container shows the total amount paid by the seller for eBay shipping labels for one or more orders.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Charges and credits for shipping labels purchased with non-eBay payment methods (for example, PayPal) are excluded from the order earnings calculation.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -134,7 +134,7 @@ public class Expense implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("currency", this.getCurrency());
+        writer.writeEnumValue("currency", this.getCurrency());
         writer.writeCollectionOfObjectValues("donations", this.getDonations());
         writer.writeCollectionOfObjectValues("marketplaceFees", this.getMarketplaceFees());
         writer.writeObjectValue("shippingLabels", this.getShippingLabels());
@@ -149,10 +149,10 @@ public class Expense implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the currency property value. This field shows the three-letter currency code that represents the currency used for all of the order expenses For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/ba:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the currency property value. This field shows the three-letter currency code that represents the currency used for all of the order expenses.
      * @param value Value to set for the currency property.
      */
-    public void setCurrency(@jakarta.annotation.Nullable final String value) {
+    public void setCurrency(@jakarta.annotation.Nullable final CurrencyCodeEnum value) {
         this.currency = value;
     }
     /**
@@ -170,7 +170,7 @@ public class Expense implements AdditionalDataHolder, Parsable {
         this.marketplaceFees = value;
     }
     /**
-     * Sets the shippingLabels property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the shippingLabels property value. This container shows the total amount paid by the seller for eBay shipping labels for one or more orders.&lt;br&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Charges and credits for shipping labels purchased with non-eBay payment methods (for example, PayPal) are excluded from the order earnings calculation.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the shippingLabels property.
      */
     public void setShippingLabels(@jakarta.annotation.Nullable final Amount value) {

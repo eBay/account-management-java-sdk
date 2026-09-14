@@ -14,7 +14,9 @@
 
 package com.ebay.accountmanagement.generated.accountv2.user_preferences;
 
+import com.ebay.accountmanagement.generated.accountv2.models.Error;
 import com.ebay.accountmanagement.generated.accountv2.models.GetUserPreferencesResponse;
+import com.ebay.accountmanagement.generated.accountv2.models.SetUserPreferencesRequest;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -24,7 +26,6 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import com.microsoft.kiota.serialization.UntypedNode;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,6 +54,8 @@ public class UserPreferencesRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the seller&apos;s preferences for a specific eBay marketplace, such as combined payment preferences, same-day shipping cutoff time, excluded shipping locations, and opt-in status for Business Policies and Out-of-Stock control. The &lt;b&gt;fieldgroups&lt;/b&gt; query parameter specifies the type of seller preferences to retrieve. If &lt;b&gt;fieldgroups&lt;/b&gt; = &lt;code&gt;ALL&lt;/code&gt; or the parameter is omitted, all the supported seller preferences are returned. To retrieve only specific preferences, include the &lt;b&gt;fieldgroups&lt;/b&gt; parameter with one or more supported values, delimited by commas.
      * @return a {@link GetUserPreferencesResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetUserPreferencesResponse get() {
@@ -62,28 +65,40 @@ public class UserPreferencesRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the seller&apos;s preferences for a specific eBay marketplace, such as combined payment preferences, same-day shipping cutoff time, excluded shipping locations, and opt-in status for Business Policies and Out-of-Stock control. The &lt;b&gt;fieldgroups&lt;/b&gt; query parameter specifies the type of seller preferences to retrieve. If &lt;b&gt;fieldgroups&lt;/b&gt; = &lt;code&gt;ALL&lt;/code&gt; or the parameter is omitted, all the supported seller preferences are returned. To retrieve only specific preferences, include the &lt;b&gt;fieldgroups&lt;/b&gt; parameter with one or more supported values, delimited by commas.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link GetUserPreferencesResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetUserPreferencesResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, GetUserPreferencesResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, GetUserPreferencesResponse::createFromDiscriminatorValue);
     }
     /**
      * This method is used to modify one or more preferences for a seller on a specific marketplace. The preferences that can be modified include combined payment preferences, same-day shipping cutoff time, and opt-in status for Business Policies and Out-of-stock control. This is a PATCH operation, so you only need to include the fields that correspond to the preferences/settings that you are changing.
-     * @param body The request body
+     * @param body This type defines the request fields for the seller preferences configuration for eBay services.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
-    public void patch(@jakarta.annotation.Nonnull final UntypedNode body) {
+    public void patch(@jakarta.annotation.Nonnull final SetUserPreferencesRequest body) {
         patch(body, null);
     }
     /**
      * This method is used to modify one or more preferences for a seller on a specific marketplace. The preferences that can be modified include combined payment preferences, same-day shipping cutoff time, and opt-in status for Business Policies and Out-of-stock control. This is a PATCH operation, so you only need to include the fields that correspond to the preferences/settings that you are changing.
-     * @param body The request body
+     * @param body This type defines the request fields for the seller preferences configuration for eBay services.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
-    public void patch(@jakarta.annotation.Nonnull final UntypedNode body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+    public void patch(@jakarta.annotation.Nonnull final SetUserPreferencesRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method retrieves the seller&apos;s preferences for a specific eBay marketplace, such as combined payment preferences, same-day shipping cutoff time, excluded shipping locations, and opt-in status for Business Policies and Out-of-Stock control. The &lt;b&gt;fieldgroups&lt;/b&gt; query parameter specifies the type of seller preferences to retrieve. If &lt;b&gt;fieldgroups&lt;/b&gt; = &lt;code&gt;ALL&lt;/code&gt; or the parameter is omitted, all the supported seller preferences are returned. To retrieve only specific preferences, include the &lt;b&gt;fieldgroups&lt;/b&gt; parameter with one or more supported values, delimited by commas.
@@ -107,25 +122,26 @@ public class UserPreferencesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method is used to modify one or more preferences for a seller on a specific marketplace. The preferences that can be modified include combined payment preferences, same-day shipping cutoff time, and opt-in status for Business Policies and Out-of-stock control. This is a PATCH operation, so you only need to include the fields that correspond to the preferences/settings that you are changing.
-     * @param body The request body
+     * @param body This type defines the request fields for the seller preferences configuration for eBay services.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
-    public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final UntypedNode body) {
+    public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final SetUserPreferencesRequest body) {
         return toPatchRequestInformation(body, null);
     }
     /**
      * This method is used to modify one or more preferences for a seller on a specific marketplace. The preferences that can be modified include combined payment preferences, same-day shipping cutoff time, and opt-in status for Business Policies and Out-of-stock control. This is a PATCH operation, so you only need to include the fields that correspond to the preferences/settings that you are changing.
-     * @param body The request body
+     * @param body This type defines the request fields for the seller preferences configuration for eBay services.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
-    public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final UntypedNode body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+    public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final SetUserPreferencesRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
-        requestInfo.setContentFromScalar(requestAdapter, "application/json", body);
+        requestInfo.headers.tryAdd("Accept", "application/json");
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }
     /**

@@ -1,5 +1,18 @@
 # ChangeLog
 
+## 2.0.0 (09/14/2026)
+
+**Breaking changes**
+- The following operations changed signature on `AccountV2Client`:
+  - `setUserPreferencesAsync`: `(UntypedNode, String, String, RequestOptions)` → `(SetUserPreferencesRequest, String, String, RequestOptions)`
+- The following operations changed signature on `FinancesClient`:
+  - `getOrderEarningsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
+  - `getOrderEarningsSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
+  - `getPayoutsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
+  - `getPayoutSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
+  - `getTransactionsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
+  - `getTransactionSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
+
 ## 1.0.0 (09/14/2026)
 
 **Breaking changes**

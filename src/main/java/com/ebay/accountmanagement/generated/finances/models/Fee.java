@@ -31,11 +31,11 @@ public class Fee implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * The monetary amount charged for the fee.
      */
     private Amount amount;
     /**
-     * This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * This type defines the jurisdiction associated with a fee. It identifies the geographic or regulatory context under which a specific fee is applied to an order.
      */
     private FeeJurisdiction feeJurisdiction;
     /**
@@ -43,9 +43,9 @@ public class Fee implements AdditionalDataHolder, Parsable {
      */
     private String feeMemo;
     /**
-     * The enumeration value returned here indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value returned here indicates the type of fee that was deducted from the seller payout.
      */
-    private String feeType;
+    private FeeTypeEnum feeType;
     /**
      * Instantiates a new {@link Fee} and sets the default values.
      */
@@ -71,7 +71,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. The monetary amount charged for the fee.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -79,7 +79,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         return this.amount;
     }
     /**
-     * Gets the feeJurisdiction property value. This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * Gets the feeJurisdiction property value. This type defines the jurisdiction associated with a fee. It identifies the geographic or regulatory context under which a specific fee is applied to an order.
      * @return a {@link FeeJurisdiction}
      */
     @jakarta.annotation.Nullable
@@ -95,11 +95,11 @@ public class Fee implements AdditionalDataHolder, Parsable {
         return this.feeMemo;
     }
     /**
-     * Gets the feeType property value. The enumeration value returned here indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the feeType property value. The enumeration value returned here indicates the type of fee that was deducted from the seller payout.
+     * @return a {@link FeeTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFeeType() {
+    public FeeTypeEnum getFeeType() {
         return this.feeType;
     }
     /**
@@ -112,7 +112,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         deserializerMap.put("amount", (n) -> { this.setAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("feeJurisdiction", (n) -> { this.setFeeJurisdiction(n.getObjectValue(FeeJurisdiction::createFromDiscriminatorValue)); });
         deserializerMap.put("feeMemo", (n) -> { this.setFeeMemo(n.getStringValue()); });
-        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getStringValue()); });
+        deserializerMap.put("feeType", (n) -> { this.setFeeType(n.getEnumValue(FeeTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -124,7 +124,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("amount", this.getAmount());
         writer.writeObjectValue("feeJurisdiction", this.getFeeJurisdiction());
         writer.writeStringValue("feeMemo", this.getFeeMemo());
-        writer.writeStringValue("feeType", this.getFeeType());
+        writer.writeEnumValue("feeType", this.getFeeType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -135,14 +135,14 @@ public class Fee implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. The monetary amount charged for the fee.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
         this.amount = value;
     }
     /**
-     * Sets the feeJurisdiction property value. This type defines the jurisdiction information associated with a fee, identifying the geographic or regulatory region under which the fee is applied.
+     * Sets the feeJurisdiction property value. This type defines the jurisdiction associated with a fee. It identifies the geographic or regulatory context under which a specific fee is applied to an order.
      * @param value Value to set for the feeJurisdiction property.
      */
     public void setFeeJurisdiction(@jakarta.annotation.Nullable final FeeJurisdiction value) {
@@ -156,10 +156,10 @@ public class Fee implements AdditionalDataHolder, Parsable {
         this.feeMemo = value;
     }
     /**
-     * Sets the feeType property value. The enumeration value returned here indicates the type of fee that was deducted from the seller payout. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/api:FeeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the feeType property value. The enumeration value returned here indicates the type of fee that was deducted from the seller payout.
      * @param value Value to set for the feeType property.
      */
-    public void setFeeType(@jakarta.annotation.Nullable final String value) {
+    public void setFeeType(@jakarta.annotation.Nullable final FeeTypeEnum value) {
         this.feeType = value;
     }
 }

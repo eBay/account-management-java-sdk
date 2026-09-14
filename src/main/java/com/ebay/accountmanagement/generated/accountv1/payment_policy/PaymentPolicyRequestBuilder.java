@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.payment_policy;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.PaymentPolicyRequest;
 import com.ebay.accountmanagement.generated.accountv1.models.PaymentPolicyResponse;
 import com.ebay.accountmanagement.generated.accountv1.models.SetPaymentPolicyResponse;
@@ -47,7 +48,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the com.ebay.accountmanagement.generated.accountv1.payment_policy.item collection
-     * @param payment_policy_id This path parameter specifies the ID of the payment policy you want to retrieve. &lt;br&gt;&lt;br&gt; This ID can be retrieved for a payment policy by using the &lt;a href=&quot;/api-docs/sell/account/resources/payment_policy/methods/getPaymentPolicies&quot; target=&quot;_blank &quot;&gt;getPaymentPolices&lt;/a&gt; method.
+     * @param payment_policy_id This path parameter specifies the ID of the payment policy you want to retrieve. &lt;br&gt;&lt;br&gt; This ID can be retrieved for a payment policy by using the &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-payment_policy-getpaymentpolicies&quot; target=&quot;_blank &quot;&gt;getPaymentPolices&lt;/a&gt; method.
      * @return a {@link WithPaymentPolicyItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -63,7 +64,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public PaymentPolicyRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/payment_policy?marketplace_id={marketplace_id}", pathParameters);
+        super(requestAdapter, "{+baseurl}/payment_policy", pathParameters);
     }
     /**
      * Instantiates a new {@link PaymentPolicyRequestBuilder} and sets the default values.
@@ -71,11 +72,13 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public PaymentPolicyRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/payment_policy?marketplace_id={marketplace_id}", rawUrl);
+        super(requestAdapter, "{+baseurl}/payment_policy", rawUrl);
     }
     /**
      * This method retrieves all the payment business policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
      * @return a {@link PaymentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PaymentPolicyResponse get() {
@@ -85,16 +88,23 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
      * This method retrieves all the payment business policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link PaymentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PaymentPolicyResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, PaymentPolicyResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, PaymentPolicyResponse::createFromDiscriminatorValue);
     }
     /**
      * This method creates a new payment policy where the policy encapsulates seller&apos;s terms for order payments. &lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getPaymentPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
      * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
      * @return a {@link SetPaymentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SetPaymentPolicyResponse post(@jakarta.annotation.Nonnull final PaymentPolicyRequest body) {
@@ -105,12 +115,17 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
      * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SetPaymentPolicyResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SetPaymentPolicyResponse post(@jakarta.annotation.Nonnull final PaymentPolicyRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, SetPaymentPolicyResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, SetPaymentPolicyResponse::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves all the payment business policies configured for the marketplace you specify using the &lt;code&gt;marketplace_id&lt;/code&gt; query parameter.
@@ -127,7 +142,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, "{+baseurl}/payment_policy?marketplace_id={marketplace_id}", pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
@@ -150,7 +165,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final PaymentPolicyRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, "{+baseurl}/payment_policy", pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
@@ -172,7 +187,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum
+         * This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/develop/api/sell/account_api_v1#sell-account_api_v1-payment_policy-getpaymentpolicies.marketplaceidenum
          */
         @jakarta.annotation.Nullable
         public String marketplaceId;

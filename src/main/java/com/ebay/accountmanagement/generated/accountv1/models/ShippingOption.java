@@ -31,9 +31,9 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This field defines whether the shipping cost model is &lt;code&gt;FLAT_RATE&lt;/code&gt; (the same rate for all buyers, or buyers within a region if shipping rate tables are used) or &lt;code&gt;CALCULATED&lt;/code&gt; (the shipping rate varies by the ship-to location and size and weight of the package). &lt;br&gt;&lt;br&gt;This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCostTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines the shipping cost models. | - **CALCULATED**: This value indicates that calculated shipping is used by the seller. With calculated shipping, the shipping cost varies according to the shipping location and the size and weight of the package. - **FLAT_RATE**: This value indicates that flat-rate shipping is used by the seller. With flat-rate shipping, the shipping cost will be the same for all buyers, or buyers within a specified region if the seller uses shipping rate tables. - **NOT_SPECIFIED**: This value indicates that the shipping cost type has not been specified.
      */
-    private String costType;
+    private ShippingCostTypeEnum costType;
     /**
      * A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
      */
@@ -43,15 +43,15 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
      */
     private Boolean insuranceOffered;
     /**
-     * This field is used to indicate if the corresponding shipping service options (under &lt;b&gt;shippingServices&lt;/b&gt; array) are domestic or international shipping service options. This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingOptionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines whether the corresponding shipping service options are domestic or international shipping service options. a region that is either domestic (within the country from where the item is listed or shipped) or international (a country outside the country from where the item is listed or shipped). | - **DOMESTIC**: This value indicates that the corresponding shipping service options are domestic shipping service options. - **INTERNATIONAL**: This value indicates that the corresponding shipping service options are international shipping service options.
      */
-    private String optionType;
+    private ShippingOptionTypeEnum optionType;
     /**
      * A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
      */
     private Amount packageHandlingCost;
     /**
-     * This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/api-docs/sell/account/resources/rate_table/methods/getRateTables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
+     * This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-rate_table-getratetables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
      */
     private String rateTableId;
     /**
@@ -91,11 +91,11 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the costType property value. This field defines whether the shipping cost model is &lt;code&gt;FLAT_RATE&lt;/code&gt; (the same rate for all buyers, or buyers within a region if shipping rate tables are used) or &lt;code&gt;CALCULATED&lt;/code&gt; (the shipping rate varies by the ship-to location and size and weight of the package). &lt;br&gt;&lt;br&gt;This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCostTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the costType property value. This enumerated type defines the shipping cost models. | - **CALCULATED**: This value indicates that calculated shipping is used by the seller. With calculated shipping, the shipping cost varies according to the shipping location and the size and weight of the package. - **FLAT_RATE**: This value indicates that flat-rate shipping is used by the seller. With flat-rate shipping, the shipping cost will be the same for all buyers, or buyers within a specified region if the seller uses shipping rate tables. - **NOT_SPECIFIED**: This value indicates that the shipping cost type has not been specified.
+     * @return a {@link ShippingCostTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCostType() {
+    public ShippingCostTypeEnum getCostType() {
         return this.costType;
     }
     /**
@@ -105,10 +105,10 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(9);
-        deserializerMap.put("costType", (n) -> { this.setCostType(n.getStringValue()); });
+        deserializerMap.put("costType", (n) -> { this.setCostType(n.getEnumValue(ShippingCostTypeEnum::forValue)); });
         deserializerMap.put("insuranceFee", (n) -> { this.setInsuranceFee(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("insuranceOffered", (n) -> { this.setInsuranceOffered(n.getBooleanValue()); });
-        deserializerMap.put("optionType", (n) -> { this.setOptionType(n.getStringValue()); });
+        deserializerMap.put("optionType", (n) -> { this.setOptionType(n.getEnumValue(ShippingOptionTypeEnum::forValue)); });
         deserializerMap.put("packageHandlingCost", (n) -> { this.setPackageHandlingCost(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("rateTableId", (n) -> { this.setRateTableId(n.getStringValue()); });
         deserializerMap.put("shippingDiscountProfileId", (n) -> { this.setShippingDiscountProfileId(n.getStringValue()); });
@@ -133,11 +133,11 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         return this.insuranceOffered;
     }
     /**
-     * Gets the optionType property value. This field is used to indicate if the corresponding shipping service options (under &lt;b&gt;shippingServices&lt;/b&gt; array) are domestic or international shipping service options. This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingOptionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the optionType property value. This enumerated type defines whether the corresponding shipping service options are domestic or international shipping service options. a region that is either domestic (within the country from where the item is listed or shipped) or international (a country outside the country from where the item is listed or shipped). | - **DOMESTIC**: This value indicates that the corresponding shipping service options are domestic shipping service options. - **INTERNATIONAL**: This value indicates that the corresponding shipping service options are international shipping service options.
+     * @return a {@link ShippingOptionTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getOptionType() {
+    public ShippingOptionTypeEnum getOptionType() {
         return this.optionType;
     }
     /**
@@ -149,7 +149,7 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         return this.packageHandlingCost;
     }
     /**
-     * Gets the rateTableId property value. This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/api-docs/sell/account/resources/rate_table/methods/getRateTables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
+     * Gets the rateTableId property value. This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-rate_table-getratetables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -186,10 +186,10 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("costType", this.getCostType());
+        writer.writeEnumValue("costType", this.getCostType());
         writer.writeObjectValue("insuranceFee", this.getInsuranceFee());
         writer.writeBooleanValue("insuranceOffered", this.getInsuranceOffered());
-        writer.writeStringValue("optionType", this.getOptionType());
+        writer.writeEnumValue("optionType", this.getOptionType());
         writer.writeObjectValue("packageHandlingCost", this.getPackageHandlingCost());
         writer.writeStringValue("rateTableId", this.getRateTableId());
         writer.writeStringValue("shippingDiscountProfileId", this.getShippingDiscountProfileId());
@@ -205,10 +205,10 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the costType property value. This field defines whether the shipping cost model is &lt;code&gt;FLAT_RATE&lt;/code&gt; (the same rate for all buyers, or buyers within a region if shipping rate tables are used) or &lt;code&gt;CALCULATED&lt;/code&gt; (the shipping rate varies by the ship-to location and size and weight of the package). &lt;br&gt;&lt;br&gt;This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCostTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the costType property value. This enumerated type defines the shipping cost models. | - **CALCULATED**: This value indicates that calculated shipping is used by the seller. With calculated shipping, the shipping cost varies according to the shipping location and the size and weight of the package. - **FLAT_RATE**: This value indicates that flat-rate shipping is used by the seller. With flat-rate shipping, the shipping cost will be the same for all buyers, or buyers within a specified region if the seller uses shipping rate tables. - **NOT_SPECIFIED**: This value indicates that the shipping cost type has not been specified.
      * @param value Value to set for the costType property.
      */
-    public void setCostType(@jakarta.annotation.Nullable final String value) {
+    public void setCostType(@jakarta.annotation.Nullable final ShippingCostTypeEnum value) {
         this.costType = value;
     }
     /**
@@ -226,10 +226,10 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         this.insuranceOffered = value;
     }
     /**
-     * Sets the optionType property value. This field is used to indicate if the corresponding shipping service options (under &lt;b&gt;shippingServices&lt;/b&gt; array) are domestic or international shipping service options. This field is conditionally required if any shipping service options are specified (domestic and/or international). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingOptionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the optionType property value. This enumerated type defines whether the corresponding shipping service options are domestic or international shipping service options. a region that is either domestic (within the country from where the item is listed or shipped) or international (a country outside the country from where the item is listed or shipped). | - **DOMESTIC**: This value indicates that the corresponding shipping service options are domestic shipping service options. - **INTERNATIONAL**: This value indicates that the corresponding shipping service options are international shipping service options.
      * @param value Value to set for the optionType property.
      */
-    public void setOptionType(@jakarta.annotation.Nullable final String value) {
+    public void setOptionType(@jakarta.annotation.Nullable final ShippingOptionTypeEnum value) {
         this.optionType = value;
     }
     /**
@@ -240,7 +240,7 @@ public class ShippingOption implements AdditionalDataHolder, Parsable {
         this.packageHandlingCost = value;
     }
     /**
-     * Sets the rateTableId property value. This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/api-docs/sell/account/resources/rate_table/methods/getRateTables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
+     * Sets the rateTableId property value. This field is used if the seller wants to associate a domestic or international shipping rate table to the fulfillment business policy. The &lt;a href=&quot;/develop/api/sell/account_api_v1#sell-account_api_v1-rate_table-getratetables&quot;&gt;getRateTables&lt;/a&gt; method can be used to retrieve shipping rate table IDs.&lt;br&gt;&lt;br&gt;With domestic and international shipping rate tables, the seller can set different shipping costs based on shipping regions and shipping speed/level of service (one-day, expedited, standard, economy). There are also options to add additional per-weight and handling charges.&lt;br&gt;&lt;br&gt;Sellers need to be careful that shipping rate tables match the corresponding shipping service options. In other words, a domestic shipping rate table must not be specified in the same container where international shipping service options are being specified, and vice versa, and the shipping speed/level of service of the provided shipping service options should match the shipping speed/level of service options that are defined in the shipping rate tables. &lt;br&gt;&lt;br&gt;For example, if the corresponding shipping rate table defines costs for one-day shipping services, there should be at least one one-day shipping service option specified under the &lt;b&gt;shippingServices&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;This field is returned if set.
      * @param value Value to set for the rateTableId property.
      */
     public void setRateTableId(@jakarta.annotation.Nullable final String value) {

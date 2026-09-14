@@ -31,7 +31,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This is the total amount of the seller payout. The container shows the dollar amount of the payout and the currency used. The value of the payout is always shown, even if the payout has failed.
      */
     private Amount amount;
     /**
@@ -51,7 +51,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
      */
     private String payoutId;
     /**
-     * This type is used to provide details about one or two of the seller&apos;s accounts that are enabled to receive payouts.
+     * This container provides details about the seller&apos;s account that received (or is scheduled to receive) the payout. This container is still returned even if the payout failed.
      */
     private PayoutInstrument payoutInstrument;
     /**
@@ -59,23 +59,23 @@ public class Payout implements AdditionalDataHolder, Parsable {
      */
     private String payoutMemo;
     /**
-     * This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      */
     private String payoutReference;
     /**
-     * This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:PayoutStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value.
      */
-    private String payoutStatus;
+    private PayoutStatusEnum payoutStatus;
     /**
      * This field provides more details about the current status of payout. The description returned here will correspond with enumeration value returned in the &lt;strong&gt;payoutStatus&lt;/strong&gt; field. The following shows what description text might appear based on the different &lt;strong&gt;payoutStatus&lt;/strong&gt; values:&lt;ul&gt;&lt;li&gt;&lt;code&gt;INITIATED&lt;/code&gt;: &lt;em&gt;Preparing to send&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;SUCCEEDED&lt;/code&gt;: &lt;em&gt;Funds sent&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;REVERSED&lt;/code&gt;: &lt;em&gt;Waiting to retry : Money rejected by seller&apos;s bank&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;RETRYABLE_FAILED&lt;/code&gt;: &lt;em&gt;Waiting to retry&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;TERMINAL_FAILED&lt;/code&gt;: &lt;em&gt;Payout failed&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
      */
     private String payoutStatusDescription;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container indicates the sum of a seller&apos;s net payout amount plus the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay. The is expressed as a numeric value and the currency used.
      */
     private Amount totalAmount;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container indicates the amount of the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay when a seller requests payout to a debit card. The fee is expressed as a numeric value and the currency used.
      */
     private Amount totalFee;
     /**
@@ -85,7 +85,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
     /**
      * This integer value indicates the number of monetary transactions (all orders, refunds, and credits, etc.) that have occurred with the corresponding payout. Its value should always be at least &lt;code&gt;1&lt;/code&gt;, since there is at least one order per seller payout.&lt;br/&gt;&lt;br/&gt;For split payouts, each of the two sibling payouts would be considered its own transaction. Because of this, if a seller had a payout for one order, but split the order between two accounts, the value would be &lt;code&gt;2&lt;/code&gt; instead of &lt;code&gt;1&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality is &lt;b&gt;only&lt;/b&gt; applicable to mainland China sellers. &lt;/span&gt;
      */
-    private Integer transactionCount;
+    private Long transactionCount;
     /**
      * Instantiates a new {@link Payout} and sets the default values.
      */
@@ -111,7 +111,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. This is the total amount of the seller payout. The container shows the dollar amount of the payout and the currency used. The value of the payout is always shown, even if the payout has failed.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -141,12 +141,12 @@ public class Payout implements AdditionalDataHolder, Parsable {
         deserializerMap.put("payoutInstrument", (n) -> { this.setPayoutInstrument(n.getObjectValue(PayoutInstrument::createFromDiscriminatorValue)); });
         deserializerMap.put("payoutMemo", (n) -> { this.setPayoutMemo(n.getStringValue()); });
         deserializerMap.put("payoutReference", (n) -> { this.setPayoutReference(n.getStringValue()); });
-        deserializerMap.put("payoutStatus", (n) -> { this.setPayoutStatus(n.getStringValue()); });
+        deserializerMap.put("payoutStatus", (n) -> { this.setPayoutStatus(n.getEnumValue(PayoutStatusEnum::forValue)); });
         deserializerMap.put("payoutStatusDescription", (n) -> { this.setPayoutStatusDescription(n.getStringValue()); });
         deserializerMap.put("totalAmount", (n) -> { this.setTotalAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("totalFee", (n) -> { this.setTotalFee(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("totalFeeDetails", (n) -> { this.setTotalFeeDetails(n.getCollectionOfObjectValues(Fee::createFromDiscriminatorValue)); });
-        deserializerMap.put("transactionCount", (n) -> { this.setTransactionCount(n.getIntegerValue()); });
+        deserializerMap.put("transactionCount", (n) -> { this.setTransactionCount(n.getLongValue()); });
         return deserializerMap;
     }
     /**
@@ -174,7 +174,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.payoutId;
     }
     /**
-     * Gets the payoutInstrument property value. This type is used to provide details about one or two of the seller&apos;s accounts that are enabled to receive payouts.
+     * Gets the payoutInstrument property value. This container provides details about the seller&apos;s account that received (or is scheduled to receive) the payout. This container is still returned even if the payout failed.
      * @return a {@link PayoutInstrument}
      */
     @jakarta.annotation.Nullable
@@ -190,7 +190,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.payoutMemo;
     }
     /**
-     * Gets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * Gets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -198,11 +198,11 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.payoutReference;
     }
     /**
-     * Gets the payoutStatus property value. This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:PayoutStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the payoutStatus property value. This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value.
+     * @return a {@link PayoutStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPayoutStatus() {
+    public PayoutStatusEnum getPayoutStatus() {
         return this.payoutStatus;
     }
     /**
@@ -214,7 +214,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.payoutStatusDescription;
     }
     /**
-     * Gets the totalAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the totalAmount property value. This container indicates the sum of a seller&apos;s net payout amount plus the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay. The is expressed as a numeric value and the currency used.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -222,7 +222,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         return this.totalAmount;
     }
     /**
-     * Gets the totalFee property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the totalFee property value. This container indicates the amount of the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay when a seller requests payout to a debit card. The fee is expressed as a numeric value and the currency used.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -239,10 +239,10 @@ public class Payout implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the transactionCount property value. This integer value indicates the number of monetary transactions (all orders, refunds, and credits, etc.) that have occurred with the corresponding payout. Its value should always be at least &lt;code&gt;1&lt;/code&gt;, since there is at least one order per seller payout.&lt;br/&gt;&lt;br/&gt;For split payouts, each of the two sibling payouts would be considered its own transaction. Because of this, if a seller had a payout for one order, but split the order between two accounts, the value would be &lt;code&gt;2&lt;/code&gt; instead of &lt;code&gt;1&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality is &lt;b&gt;only&lt;/b&gt; applicable to mainland China sellers. &lt;/span&gt;
-     * @return a {@link Integer}
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
-    public Integer getTransactionCount() {
+    public Long getTransactionCount() {
         return this.transactionCount;
     }
     /**
@@ -259,12 +259,12 @@ public class Payout implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("payoutInstrument", this.getPayoutInstrument());
         writer.writeStringValue("payoutMemo", this.getPayoutMemo());
         writer.writeStringValue("payoutReference", this.getPayoutReference());
-        writer.writeStringValue("payoutStatus", this.getPayoutStatus());
+        writer.writeEnumValue("payoutStatus", this.getPayoutStatus());
         writer.writeStringValue("payoutStatusDescription", this.getPayoutStatusDescription());
         writer.writeObjectValue("totalAmount", this.getTotalAmount());
         writer.writeObjectValue("totalFee", this.getTotalFee());
         writer.writeCollectionOfObjectValues("totalFeeDetails", this.getTotalFeeDetails());
-        writer.writeIntegerValue("transactionCount", this.getTransactionCount());
+        writer.writeLongValue("transactionCount", this.getTransactionCount());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -275,7 +275,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. This is the total amount of the seller payout. The container shows the dollar amount of the payout and the currency used. The value of the payout is always shown, even if the payout has failed.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
@@ -310,7 +310,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
         this.payoutId = value;
     }
     /**
-     * Sets the payoutInstrument property value. This type is used to provide details about one or two of the seller&apos;s accounts that are enabled to receive payouts.
+     * Sets the payoutInstrument property value. This container provides details about the seller&apos;s account that received (or is scheduled to receive) the payout. This container is still returned even if the payout failed.
      * @param value Value to set for the payoutInstrument property.
      */
     public void setPayoutInstrument(@jakarta.annotation.Nullable final PayoutInstrument value) {
@@ -324,17 +324,17 @@ public class Payout implements AdditionalDataHolder, Parsable {
         this.payoutMemo = value;
     }
     /**
-     * Sets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout id(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
+     * Sets the payoutReference property value. This field contains the unique identifier for the Payout Reference. In split-payout cases, this is the unique identifier reference (not true payout). This field is only returned and will show the associated true(actual) payout ID(s) when sellers in Mainland China enable split payouts between a Payoneer account and/or a bank account. &lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality will &lt;b&gt;only&lt;/b&gt; be available to mainland China sellers.&lt;/span&gt;
      * @param value Value to set for the payoutReference property.
      */
     public void setPayoutReference(@jakarta.annotation.Nullable final String value) {
         this.payoutReference = value;
     }
     /**
-     * Sets the payoutStatus property value. This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:PayoutStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the payoutStatus property value. This enumeration value indicates the current status of the seller payout. For a successful payout, the value returned will be &lt;code&gt;SUCCEEDED&lt;/code&gt;. See the &lt;strong&gt;PayoutStatusEnum&lt;/strong&gt; type for more details on each payout status value.
      * @param value Value to set for the payoutStatus property.
      */
-    public void setPayoutStatus(@jakarta.annotation.Nullable final String value) {
+    public void setPayoutStatus(@jakarta.annotation.Nullable final PayoutStatusEnum value) {
         this.payoutStatus = value;
     }
     /**
@@ -345,14 +345,14 @@ public class Payout implements AdditionalDataHolder, Parsable {
         this.payoutStatusDescription = value;
     }
     /**
-     * Sets the totalAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the totalAmount property value. This container indicates the sum of a seller&apos;s net payout amount plus the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay. The is expressed as a numeric value and the currency used.
      * @param value Value to set for the totalAmount property.
      */
     public void setTotalAmount(@jakarta.annotation.Nullable final Amount value) {
         this.totalAmount = value;
     }
     /**
-     * Sets the totalFee property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the totalFee property value. This container indicates the amount of the &lt;code&gt;EXPRESS_PAYOUT_FEE&lt;/code&gt; charged by eBay when a seller requests payout to a debit card. The fee is expressed as a numeric value and the currency used.
      * @param value Value to set for the totalFee property.
      */
     public void setTotalFee(@jakarta.annotation.Nullable final Amount value) {
@@ -369,7 +369,7 @@ public class Payout implements AdditionalDataHolder, Parsable {
      * Sets the transactionCount property value. This integer value indicates the number of monetary transactions (all orders, refunds, and credits, etc.) that have occurred with the corresponding payout. Its value should always be at least &lt;code&gt;1&lt;/code&gt;, since there is at least one order per seller payout.&lt;br/&gt;&lt;br/&gt;For split payouts, each of the two sibling payouts would be considered its own transaction. Because of this, if a seller had a payout for one order, but split the order between two accounts, the value would be &lt;code&gt;2&lt;/code&gt; instead of &lt;code&gt;1&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt;Split-payout functionality is &lt;b&gt;only&lt;/b&gt; applicable to mainland China sellers. &lt;/span&gt;
      * @param value Value to set for the transactionCount property.
      */
-    public void setTransactionCount(@jakarta.annotation.Nullable final Integer value) {
+    public void setTransactionCount(@jakarta.annotation.Nullable final Long value) {
         this.transactionCount = value;
     }
 }

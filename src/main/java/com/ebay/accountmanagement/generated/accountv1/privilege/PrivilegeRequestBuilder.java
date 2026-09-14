@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv1.privilege;
 
+import com.ebay.accountmanagement.generated.accountv1.models.Error;
 import com.ebay.accountmanagement.generated.accountv1.models.SellingPrivileges;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,6 +52,8 @@ public class PrivilegeRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the seller&apos;s current set of privileges, including whether or not the seller&apos;s eBay registration has been completed, as well as the details of their site-wide &lt;b&gt;sellingLimit&lt;/b&gt; (the amount and quantity they can sell on a given day).
      * @return a {@link SellingPrivileges}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SellingPrivileges get() {
@@ -60,11 +63,16 @@ public class PrivilegeRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the seller&apos;s current set of privileges, including whether or not the seller&apos;s eBay registration has been completed, as well as the details of their site-wide &lt;b&gt;sellingLimit&lt;/b&gt; (the amount and quantity they can sell on a given day).
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SellingPrivileges}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public SellingPrivileges get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, SellingPrivileges::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, SellingPrivileges::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the seller&apos;s current set of privileges, including whether or not the seller&apos;s eBay registration has been completed, as well as the details of their site-wide &lt;b&gt;sellingLimit&lt;/b&gt; (the amount and quantity they can sell on a given day).

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This container shows the amount of the promotional offer.
+ * This type shows the amount of the promotional offer.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class DiscountDetail implements AdditionalDataHolder, Parsable {
@@ -31,7 +31,7 @@ public class DiscountDetail implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the amount of the promotion. The value and currency are always returned. If the buyer is in one country and purchases from an eBay marketplace that uses a different currency, the response also includes the converted-from and converted-to fields, and the exchange rate.
      */
     private Amount amount;
     /**
@@ -63,7 +63,7 @@ public class DiscountDetail implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the amount property value. This container shows the amount of the promotion. The value and currency are always returned. If the buyer is in one country and purchases from an eBay marketplace that uses a different currency, the response also includes the converted-from and converted-to fields, and the exchange rate.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class DiscountDetail implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the amount property value. This container shows the amount of the promotion. The value and currency are always returned. If the buyer is in one country and purchases from an eBay marketplace that uses a different currency, the response also includes the converted-from and converted-to fields, and the exchange rate.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {

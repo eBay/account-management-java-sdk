@@ -27,7 +27,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Rate implements AdditionalDataHolder, Parsable {
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      */
     private Amount additionalCost;
     /**
@@ -39,11 +39,11 @@ public class Rate implements AdditionalDataHolder, Parsable {
      */
     private String rateId;
     /**
-     * Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCategoryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;
      */
-    private String shippingCategory;
+    private ShippingCategoryEnum shippingCategory;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Specifies the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      */
     private Amount shippingCost;
     /**
@@ -71,7 +71,7 @@ public class Rate implements AdditionalDataHolder, Parsable {
         return new Rate();
     }
     /**
-     * Gets the additionalCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the additionalCost property value. An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class Rate implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(6);
         deserializerMap.put("additionalCost", (n) -> { this.setAdditionalCost(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("rateId", (n) -> { this.setRateId(n.getStringValue()); });
-        deserializerMap.put("shippingCategory", (n) -> { this.setShippingCategory(n.getStringValue()); });
+        deserializerMap.put("shippingCategory", (n) -> { this.setShippingCategory(n.getEnumValue(ShippingCategoryEnum::forValue)); });
         deserializerMap.put("shippingCost", (n) -> { this.setShippingCost(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("shippingRegionNames", (n) -> { this.setShippingRegionNames(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("shippingServiceCode", (n) -> { this.setShippingServiceCode(n.getStringValue()); });
@@ -110,15 +110,15 @@ public class Rate implements AdditionalDataHolder, Parsable {
         return this.rateId;
     }
     /**
-     * Gets the shippingCategory property value. Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCategoryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the shippingCategory property value. Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @return a {@link ShippingCategoryEnum}
      */
     @jakarta.annotation.Nullable
-    public String getShippingCategory() {
+    public ShippingCategoryEnum getShippingCategory() {
         return this.shippingCategory;
     }
     /**
-     * Gets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the shippingCost property value. Specifies the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -149,14 +149,14 @@ public class Rate implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("additionalCost", this.getAdditionalCost());
         writer.writeStringValue("rateId", this.getRateId());
-        writer.writeStringValue("shippingCategory", this.getShippingCategory());
+        writer.writeEnumValue("shippingCategory", this.getShippingCategory());
         writer.writeObjectValue("shippingCost", this.getShippingCost());
         writer.writeCollectionOfPrimitiveValues("shippingRegionNames", this.getShippingRegionNames());
         writer.writeStringValue("shippingServiceCode", this.getShippingServiceCode());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
-     * Sets the additionalCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the additionalCost property value. An additional shipping cost added to the base shipping rate (i.e., &lt;b&gt;shippingCost&lt;/b&gt;).&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;SURCHARGE&lt;/b&gt;: This is a flat amount that is added to the base shipping rate.&lt;/li&gt;&lt;/ul&gt;This field is returned only when it is applicable to the specified rate ID.
      * @param value Value to set for the additionalCost property.
      */
     public void setAdditionalCost(@jakarta.annotation.Nullable final Amount value) {
@@ -177,14 +177,14 @@ public class Rate implements AdditionalDataHolder, Parsable {
         this.rateId = value;
     }
     /**
-     * Sets the shippingCategory property value. Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ShippingCategoryEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the shippingCategory property value. Indicates the level of shipping service to which the shipping rate information applies.&lt;br/&gt;&lt;br/&gt;Available shipping categories are:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ONE_DAY&lt;/b&gt;: &lt;i&gt;This option is not supported when &lt;b&gt;shippingOptionType&lt;/b&gt; is INTERNATIONAL.&lt;/i&gt; &lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPEDITED&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;STANDARD&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ECONOMY&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;EXPRESS&lt;/b&gt;: &lt;i&gt;This option is supported only when &lt;b&gt;MarketplaceId&lt;/b&gt; is &lt;code&gt;EBAY_DE&lt;/code&gt; (Germany)&lt;/i&gt;&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the shippingCategory property.
      */
-    public void setShippingCategory(@jakarta.annotation.Nullable final String value) {
+    public void setShippingCategory(@jakarta.annotation.Nullable final ShippingCategoryEnum value) {
         this.shippingCategory = value;
     }
     /**
-     * Sets the shippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the shippingCost property value. Specifies the base shipping rate for an item.&lt;br/&gt;&lt;br/&gt;This amount applies only to the following &lt;b&gt;rateTableBasis&lt;/b&gt; options:&lt;ul&gt;&lt;li&gt;&lt;b&gt;ITEM&lt;/b&gt;: This is a flat rate shipping cost per item being shipped.&lt;/li&gt;&lt;li&gt;&lt;b&gt;WEIGHT&lt;/b&gt;: This is a cost per unit weight and is calculated using the weight of the item(s) being shipped.&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the shippingCost property.
      */
     public void setShippingCost(@jakarta.annotation.Nullable final Amount value) {

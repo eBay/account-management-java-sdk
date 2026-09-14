@@ -31,15 +31,15 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
      */
     private Map<String, Object> additionalData;
     /**
-     * This enumeration type specifies the type of combined-shipping rule applied to handling fees &lt;br&gt;&lt;br&gt;(for example, weight-based, flat-rate, or percentage-based calculation method). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value specifies the type of combined-shipping rule applied to handling fees (for example, weight-based, flat-rate, or percentage-based calculation method). 
      */
-    private String combinedShippingRuleType;
+    private CombinedShippingRuleTypeHandlingEnum combinedShippingRuleType;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container specifies the additional monetary charge applied for each extra item included in a combined shipment.
      */
     private Amount eachAdditionalAmount;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container represents the fixed monetary discount deducted from the total shipping cost for each additional item in a combined shipment.
      */
     private Amount eachAdditionalAmountOffShippingCost;
     /**
@@ -47,7 +47,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
      */
     private Double eachAdditionalPercentOffShippingCost;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency.
+     * This container represents the handling fee charged for processing a combined order, if applicable.
      */
     private Amount orderHandlingAmount;
     /**
@@ -75,15 +75,15 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
         return this.additionalData;
     }
     /**
-     * Gets the combinedShippingRuleType property value. This enumeration type specifies the type of combined-shipping rule applied to handling fees &lt;br&gt;&lt;br&gt;(for example, weight-based, flat-rate, or percentage-based calculation method). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedShippingRuleType property value. This enumeration value specifies the type of combined-shipping rule applied to handling fees (for example, weight-based, flat-rate, or percentage-based calculation method). 
+     * @return a {@link CombinedShippingRuleTypeHandlingEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedShippingRuleType() {
+    public CombinedShippingRuleTypeHandlingEnum getCombinedShippingRuleType() {
         return this.combinedShippingRuleType;
     }
     /**
-     * Gets the eachAdditionalAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the eachAdditionalAmount property value. This container specifies the additional monetary charge applied for each extra item included in a combined shipment.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -91,7 +91,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
         return this.eachAdditionalAmount;
     }
     /**
-     * Gets the eachAdditionalAmountOffShippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the eachAdditionalAmountOffShippingCost property value. This container represents the fixed monetary discount deducted from the total shipping cost for each additional item in a combined shipment.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -113,7 +113,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getStringValue()); });
+        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getEnumValue(CombinedShippingRuleTypeHandlingEnum::forValue)); });
         deserializerMap.put("eachAdditionalAmount", (n) -> { this.setEachAdditionalAmount(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("eachAdditionalAmountOffShippingCost", (n) -> { this.setEachAdditionalAmountOffShippingCost(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("eachAdditionalPercentOffShippingCost", (n) -> { this.setEachAdditionalPercentOffShippingCost(n.getDoubleValue()); });
@@ -121,7 +121,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
         return deserializerMap;
     }
     /**
-     * Gets the orderHandlingAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Gets the orderHandlingAmount property value. This container represents the handling fee charged for processing a combined order, if applicable.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -134,7 +134,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
+        writer.writeEnumValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
         writer.writeObjectValue("eachAdditionalAmount", this.getEachAdditionalAmount());
         writer.writeObjectValue("eachAdditionalAmountOffShippingCost", this.getEachAdditionalAmountOffShippingCost());
         writer.writeDoubleValue("eachAdditionalPercentOffShippingCost", this.getEachAdditionalPercentOffShippingCost());
@@ -149,21 +149,21 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
         this.additionalData = value;
     }
     /**
-     * Sets the combinedShippingRuleType property value. This enumeration type specifies the type of combined-shipping rule applied to handling fees &lt;br&gt;&lt;br&gt;(for example, weight-based, flat-rate, or percentage-based calculation method). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedShippingRuleType property value. This enumeration value specifies the type of combined-shipping rule applied to handling fees (for example, weight-based, flat-rate, or percentage-based calculation method). 
      * @param value Value to set for the combinedShippingRuleType property.
      */
-    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final CombinedShippingRuleTypeHandlingEnum value) {
         this.combinedShippingRuleType = value;
     }
     /**
-     * Sets the eachAdditionalAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the eachAdditionalAmount property value. This container specifies the additional monetary charge applied for each extra item included in a combined shipment.
      * @param value Value to set for the eachAdditionalAmount property.
      */
     public void setEachAdditionalAmount(@jakarta.annotation.Nullable final Amount value) {
         this.eachAdditionalAmount = value;
     }
     /**
-     * Sets the eachAdditionalAmountOffShippingCost property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the eachAdditionalAmountOffShippingCost property value. This container represents the fixed monetary discount deducted from the total shipping cost for each additional item in a combined shipment.
      * @param value Value to set for the eachAdditionalAmountOffShippingCost property.
      */
     public void setEachAdditionalAmountOffShippingCost(@jakarta.annotation.Nullable final Amount value) {
@@ -177,7 +177,7 @@ public class CalculatedHandlingRuleType implements AdditionalDataHolder, Parsabl
         this.eachAdditionalPercentOffShippingCost = value;
     }
     /**
-     * Sets the orderHandlingAmount property value. A complex type that describes the value of a monetary amount as represented by a global currency.
+     * Sets the orderHandlingAmount property value. This container represents the handling fee charged for processing a combined order, if applicable.
      * @param value Value to set for the orderHandlingAmount property.
      */
     public void setOrderHandlingAmount(@jakarta.annotation.Nullable final Amount value) {

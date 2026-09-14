@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv2.rate_table.item.update_shipping_cost;
 
+import com.ebay.accountmanagement.generated.accountv2.models.Error;
 import com.ebay.accountmanagement.generated.accountv2.models.RateTableUpdate;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -50,24 +51,37 @@ public class UpdateShippingCostRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method allows sellers to update &lt;b&gt;shippingCost&lt;/b&gt; and/or &lt;b&gt;additionalCost&lt;/b&gt; information for an existing shipping rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;A successful call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used by the request payload of the &lt;b&gt;updateShippingCost&lt;/b&gt; method to pass updated shipping cost information for a rate table identified by &lt;b&gt;rateTableId&lt;/b&gt;.
+     * @param body Request to update the shipping costs for the identified shipping rate table.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final RateTableUpdate body) {
         post(body, null);
     }
     /**
      * This method allows sellers to update &lt;b&gt;shippingCost&lt;/b&gt; and/or &lt;b&gt;additionalCost&lt;/b&gt; information for an existing shipping rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;A successful call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used by the request payload of the &lt;b&gt;updateShippingCost&lt;/b&gt; method to pass updated shipping cost information for a rate table identified by &lt;b&gt;rateTableId&lt;/b&gt;.
+     * @param body Request to update the shipping costs for the identified shipping rate table.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final RateTableUpdate body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("409", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method allows sellers to update &lt;b&gt;shippingCost&lt;/b&gt; and/or &lt;b&gt;additionalCost&lt;/b&gt; information for an existing shipping rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;A successful call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used by the request payload of the &lt;b&gt;updateShippingCost&lt;/b&gt; method to pass updated shipping cost information for a rate table identified by &lt;b&gt;rateTableId&lt;/b&gt;.
+     * @param body Request to update the shipping costs for the identified shipping rate table.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -76,7 +90,7 @@ public class UpdateShippingCostRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method allows sellers to update &lt;b&gt;shippingCost&lt;/b&gt; and/or &lt;b&gt;additionalCost&lt;/b&gt; information for an existing shipping rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;A successful call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used by the request payload of the &lt;b&gt;updateShippingCost&lt;/b&gt; method to pass updated shipping cost information for a rate table identified by &lt;b&gt;rateTableId&lt;/b&gt;.
+     * @param body Request to update the shipping costs for the identified shipping rate table.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -85,6 +99,7 @@ public class UpdateShippingCostRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

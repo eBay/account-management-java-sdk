@@ -31,7 +31,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order  cancellation.
+     * The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order cancellation.
      */
     private String cancellationId;
     /**
@@ -39,7 +39,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
      */
     private String caseId;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This container shows the net amount of the charge, which is the total amount of the charge minus the total amount of fees credited towards this refund as per eBay policy. It is possible for there to be multiple charges from multiple orders with one transfer. The net aggregate amount for all charges found in the &lt;b&gt;charges&lt;/b&gt; array can be found in the &lt;b&gt;transferDetail.totalChargeNetAmount&lt;/b&gt; container.
      */
     private Amount chargeNetAmount;
     /**
@@ -87,7 +87,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the cancellationId property value. The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order  cancellation.
+     * Gets the cancellationId property value. The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order cancellation.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -103,7 +103,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
         return this.caseId;
     }
     /**
-     * Gets the chargeNetAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the chargeNetAmount property value. This container shows the net amount of the charge, which is the total amount of the charge minus the total amount of fees credited towards this refund as per eBay policy. It is possible for there to be multiple charges from multiple orders with one transfer. The net aggregate amount for all charges found in the &lt;b&gt;charges&lt;/b&gt; array can be found in the &lt;b&gt;transferDetail.totalChargeNetAmount&lt;/b&gt; container.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -191,7 +191,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the cancellationId property value. The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order  cancellation.
+     * Sets the cancellationId property value. The unique identifier of an order cancellation. This field is only applicable and returned if the charge is related to an order cancellation.
      * @param value Value to set for the cancellationId property.
      */
     public void setCancellationId(@jakarta.annotation.Nullable final String value) {
@@ -205,7 +205,7 @@ public class Charge implements AdditionalDataHolder, Parsable {
         this.caseId = value;
     }
     /**
-     * Sets the chargeNetAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the chargeNetAmount property value. This container shows the net amount of the charge, which is the total amount of the charge minus the total amount of fees credited towards this refund as per eBay policy. It is possible for there to be multiple charges from multiple orders with one transfer. The net aggregate amount for all charges found in the &lt;b&gt;charges&lt;/b&gt; array can be found in the &lt;b&gt;transferDetail.totalChargeNetAmount&lt;/b&gt; container.
      * @param value Value to set for the chargeNetAmount property.
      */
     public void setChargeNetAmount(@jakarta.annotation.Nullable final Amount value) {

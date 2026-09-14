@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv2.payout_settings;
 
+import com.ebay.accountmanagement.generated.accountv2.models.Error;
 import com.ebay.accountmanagement.generated.accountv2.models.PayoutSettingsResponse;
 import com.ebay.accountmanagement.generated.accountv2.payout_settings.update_percentage.UpdatePercentageRequestBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
@@ -60,6 +61,7 @@ public class PayoutSettingsRequestBuilder extends BaseRequestBuilder {
     /**
      * &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; Split-payout functionality is &lt;b&gt;only&lt;/b&gt; available to mainland China sellers, who can split payouts between their Payoneer account and bank account. Card payouts are not currently available for sellers in mainland China.&lt;/p&gt;&lt;/div&gt;&lt;br/&gt;This method returns details on two payment instruments defined on a seller&apos;s account, including the ID, type, status, nickname, last four digits of the account number, and payout percentage for the instruments.&lt;br/&gt;&lt;br/&gt;Using the &lt;b&gt;instrumentId&lt;/b&gt; returned with this method, sellers can makes changes to the payout split of the instruments with the &lt;b&gt;updatePayoutPercentage&lt;/b&gt; method. Note that the &lt;b&gt;instrumentStatus&lt;/b&gt; of a payment instrument, also returned using this method, must be &lt;code&gt;ACTIVE&lt;/code&gt; in order to do split payouts on that payment instrument.
      * @return a {@link PayoutSettingsResponse}
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PayoutSettingsResponse get() {
@@ -69,11 +71,14 @@ public class PayoutSettingsRequestBuilder extends BaseRequestBuilder {
      * &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; Split-payout functionality is &lt;b&gt;only&lt;/b&gt; available to mainland China sellers, who can split payouts between their Payoneer account and bank account. Card payouts are not currently available for sellers in mainland China.&lt;/p&gt;&lt;/div&gt;&lt;br/&gt;This method returns details on two payment instruments defined on a seller&apos;s account, including the ID, type, status, nickname, last four digits of the account number, and payout percentage for the instruments.&lt;br/&gt;&lt;br/&gt;Using the &lt;b&gt;instrumentId&lt;/b&gt; returned with this method, sellers can makes changes to the payout split of the instruments with the &lt;b&gt;updatePayoutPercentage&lt;/b&gt; method. Note that the &lt;b&gt;instrumentStatus&lt;/b&gt; of a payment instrument, also returned using this method, must be &lt;code&gt;ACTIVE&lt;/code&gt; in order to do split payouts on that payment instrument.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link PayoutSettingsResponse}
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public PayoutSettingsResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, PayoutSettingsResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, PayoutSettingsResponse::createFromDiscriminatorValue);
     }
     /**
      * &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; Split-payout functionality is &lt;b&gt;only&lt;/b&gt; available to mainland China sellers, who can split payouts between their Payoneer account and bank account. Card payouts are not currently available for sellers in mainland China.&lt;/p&gt;&lt;/div&gt;&lt;br/&gt;This method returns details on two payment instruments defined on a seller&apos;s account, including the ID, type, status, nickname, last four digits of the account number, and payout percentage for the instruments.&lt;br/&gt;&lt;br/&gt;Using the &lt;b&gt;instrumentId&lt;/b&gt; returned with this method, sellers can makes changes to the payout split of the instruments with the &lt;b&gt;updatePayoutPercentage&lt;/b&gt; method. Note that the &lt;b&gt;instrumentStatus&lt;/b&gt; of a payment instrument, also returned using this method, must be &lt;code&gt;ACTIVE&lt;/code&gt; in order to do split payouts on that payment instrument.

@@ -35,7 +35,7 @@ public class OrderLineItem implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<Fee> donations;
     /**
-     * This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * This amount is the order&apos;s total amount and equals what the buyer has paid. This value includes &lt;b&gt;transactions.amount&lt;/b&gt;, &lt;b&gt;totalFeeAmount&lt;/b&gt;, &lt;b&gt;eBayCollectedTaxAmount&lt;/b&gt;, and shipping charges (if any).
      */
     private Amount feeBasisAmount;
     /**
@@ -79,7 +79,7 @@ public class OrderLineItem implements AdditionalDataHolder, Parsable {
         return this.donations;
     }
     /**
-     * Gets the feeBasisAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Gets the feeBasisAmount property value. This amount is the order&apos;s total amount and equals what the buyer has paid. This value includes &lt;b&gt;transactions.amount&lt;/b&gt;, &lt;b&gt;totalFeeAmount&lt;/b&gt;, &lt;b&gt;eBayCollectedTaxAmount&lt;/b&gt;, and shipping charges (if any).
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -142,7 +142,7 @@ public class OrderLineItem implements AdditionalDataHolder, Parsable {
         this.donations = value;
     }
     /**
-     * Sets the feeBasisAmount property value. This type is used to express the dollar value and currency used for any transaction retrieved with the &lt;strong&gt;Finances API&lt;/strong&gt;, including an order total, a seller payout, a buyer refund, or a seller credit.
+     * Sets the feeBasisAmount property value. This amount is the order&apos;s total amount and equals what the buyer has paid. This value includes &lt;b&gt;transactions.amount&lt;/b&gt;, &lt;b&gt;totalFeeAmount&lt;/b&gt;, &lt;b&gt;eBayCollectedTaxAmount&lt;/b&gt;, and shipping charges (if any).
      * @param value Value to set for the feeBasisAmount property.
      */
     public void setFeeBasisAmount(@jakarta.annotation.Nullable final Amount value) {

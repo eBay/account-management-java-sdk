@@ -31,7 +31,7 @@ public class UpdatePayoutPercentage implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/api-docs/sell/account/v2/resources/payout_settings/methods/getPayoutSettings&quot; target=&quot;_blank &quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
+     * The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-payout_settings-getpayoutsettings&quot; target=&quot;_blank&quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
      */
     private String instrumentId;
     /**
@@ -74,7 +74,7 @@ public class UpdatePayoutPercentage implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the instrumentId property value. The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/api-docs/sell/account/v2/resources/payout_settings/methods/getPayoutSettings&quot; target=&quot;_blank &quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
+     * Gets the instrumentId property value. The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-payout_settings-getpayoutsettings&quot; target=&quot;_blank&quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class UpdatePayoutPercentage implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the instrumentId property value. The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/api-docs/sell/account/v2/resources/payout_settings/methods/getPayoutSettings&quot; target=&quot;_blank &quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
+     * Sets the instrumentId property value. The unique reference identifier for a payout instrument. This value is returned in the &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-payout_settings-getpayoutsettings&quot; target=&quot;_blank&quot;&gt;getPayoutSettings&lt;/a&gt; response and is needed to change split-payout percentages through an &lt;b&gt;updatePayoutPercentage&lt;/b&gt; request.
      * @param value Value to set for the instrumentId property.
      */
     public void setInstrumentId(@jakarta.annotation.Nullable final String value) {

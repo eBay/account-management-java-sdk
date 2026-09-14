@@ -35,9 +35,9 @@ public class KycCheck implements AdditionalDataHolder, Parsable {
      */
     private String alert;
     /**
-     * The enumeration value returned in this field categorizes the type of details needed for the KYC check. More information about the check is shown in the &lt;b&gt;detailMessage&lt;/b&gt; and other applicable, corresponding fields. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/kyc:DetailsType&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type lists the types of details that may be needed for a KYC check. | - **COMPANY_DETAILS**: This enumeration value indicates that the seller is required to provide information about their company. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **INDIVIDUAL_DETAILS**: This enumeration value indicates that the seller is required to provide personal information. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **BANK_DETAILS**: This enumeration value indicates that the seller is required to provide information about their bank. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields.
      */
-    private String dataRequired;
+    private DetailsType dataRequired;
     /**
      * This field gives a detailed message about what is required from the seller. An example might be, &apos;&lt;code&gt;Please upload a bank document by 2020-08-01 to get your account back in good standing.&lt;/code&gt;&apos;.
      */
@@ -83,11 +83,11 @@ public class KycCheck implements AdditionalDataHolder, Parsable {
         return this.alert;
     }
     /**
-     * Gets the dataRequired property value. The enumeration value returned in this field categorizes the type of details needed for the KYC check. More information about the check is shown in the &lt;b&gt;detailMessage&lt;/b&gt; and other applicable, corresponding fields. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/kyc:DetailsType&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the dataRequired property value. This enumerated type lists the types of details that may be needed for a KYC check. | - **COMPANY_DETAILS**: This enumeration value indicates that the seller is required to provide information about their company. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **INDIVIDUAL_DETAILS**: This enumeration value indicates that the seller is required to provide personal information. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **BANK_DETAILS**: This enumeration value indicates that the seller is required to provide information about their bank. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields.
+     * @return a {@link DetailsType}
      */
     @jakarta.annotation.Nullable
-    public String getDataRequired() {
+    public DetailsType getDataRequired() {
         return this.dataRequired;
     }
     /**
@@ -114,7 +114,7 @@ public class KycCheck implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
         deserializerMap.put("alert", (n) -> { this.setAlert(n.getStringValue()); });
-        deserializerMap.put("dataRequired", (n) -> { this.setDataRequired(n.getStringValue()); });
+        deserializerMap.put("dataRequired", (n) -> { this.setDataRequired(n.getEnumValue(DetailsType::forValue)); });
         deserializerMap.put("detailMessage", (n) -> { this.setDetailMessage(n.getStringValue()); });
         deserializerMap.put("dueDate", (n) -> { this.setDueDate(n.getStringValue()); });
         deserializerMap.put("remedyUrl", (n) -> { this.setRemedyUrl(n.getStringValue()); });
@@ -135,7 +135,7 @@ public class KycCheck implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("alert", this.getAlert());
-        writer.writeStringValue("dataRequired", this.getDataRequired());
+        writer.writeEnumValue("dataRequired", this.getDataRequired());
         writer.writeStringValue("detailMessage", this.getDetailMessage());
         writer.writeStringValue("dueDate", this.getDueDate());
         writer.writeStringValue("remedyUrl", this.getRemedyUrl());
@@ -156,10 +156,10 @@ public class KycCheck implements AdditionalDataHolder, Parsable {
         this.alert = value;
     }
     /**
-     * Sets the dataRequired property value. The enumeration value returned in this field categorizes the type of details needed for the KYC check. More information about the check is shown in the &lt;b&gt;detailMessage&lt;/b&gt; and other applicable, corresponding fields. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/kyc:DetailsType&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the dataRequired property value. This enumerated type lists the types of details that may be needed for a KYC check. | - **COMPANY_DETAILS**: This enumeration value indicates that the seller is required to provide information about their company. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **INDIVIDUAL_DETAILS**: This enumeration value indicates that the seller is required to provide personal information. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields. - **BANK_DETAILS**: This enumeration value indicates that the seller is required to provide information about their bank. More information about the check is shown in the &lt;strong&gt;detailMessage&lt;/strong&gt; and other applicable, corresponding fields.
      * @param value Value to set for the dataRequired property.
      */
-    public void setDataRequired(@jakarta.annotation.Nullable final String value) {
+    public void setDataRequired(@jakarta.annotation.Nullable final DetailsType value) {
         this.dataRequired = value;
     }
     /**

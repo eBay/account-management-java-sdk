@@ -31,9 +31,9 @@ public class PaymentsProgramOnboardingResponse implements AdditionalDataHolder, 
      */
     private Map<String, Object> additionalData;
     /**
-     * This enumeration value indicates the eligibility of payment onboarding for the registered site. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the eligibility of payment onboarding for the registered site. | - **ELIGIBLE_TO_ONBOARD**: This enumeration value indicates that the seller can start or continue the onboarding process. When starting the onboarding process, the first step in the registration process is returned in the steps array with a &lt;strong&gt;status&lt;/strong&gt; of &lt;code&gt;NOT_STARTED&lt;code&gt;. A link in the webUrl field opens a page for the seller to complete the first step. When the seller has completed all steps, the payments capability becomes available to the seller. - **NOT_ELIGIBLE**: This enumeration value indicates that the seller&apos;s marketplace supports eBay managed payments, but the seller is not yet eligible. Eligibility is determined by eBay daily. Check onboardingStatus regularly. - **PREBOARDED**: This enumeration value indicates that the seller has completed all the necessary onboarding steps for eBay managed payments. The seller must wait for eBay to activate eBay managed payments for their account. - **ONBOARDED**: This enumeration value indicates that the seller is fully onboarded and that eBay managed payments has been activated on the seller&apos;s account.
      */
-    private String onboardingStatus;
+    private PaymentsProgramOnboardingStatus onboardingStatus;
     /**
      * An array of the active process steps for payment onboarding and the status of each step. This array includes the step &lt;strong&gt;name&lt;/strong&gt;, step &lt;strong&gt;status&lt;/strong&gt;, and a &lt;strong&gt;webUrl&lt;/strong&gt; to the &lt;code&gt;IN_PROGRESS&lt;/code&gt; step. The step names are returned in sequential order. 
      */
@@ -69,16 +69,16 @@ public class PaymentsProgramOnboardingResponse implements AdditionalDataHolder, 
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("onboardingStatus", (n) -> { this.setOnboardingStatus(n.getStringValue()); });
+        deserializerMap.put("onboardingStatus", (n) -> { this.setOnboardingStatus(n.getEnumValue(PaymentsProgramOnboardingStatus::forValue)); });
         deserializerMap.put("steps", (n) -> { this.setSteps(n.getCollectionOfObjectValues(PaymentsProgramOnboardingSteps::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the onboardingStatus property value. This enumeration value indicates the eligibility of payment onboarding for the registered site. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStatus&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the onboardingStatus property value. This enumeration value indicates the eligibility of payment onboarding for the registered site. | - **ELIGIBLE_TO_ONBOARD**: This enumeration value indicates that the seller can start or continue the onboarding process. When starting the onboarding process, the first step in the registration process is returned in the steps array with a &lt;strong&gt;status&lt;/strong&gt; of &lt;code&gt;NOT_STARTED&lt;code&gt;. A link in the webUrl field opens a page for the seller to complete the first step. When the seller has completed all steps, the payments capability becomes available to the seller. - **NOT_ELIGIBLE**: This enumeration value indicates that the seller&apos;s marketplace supports eBay managed payments, but the seller is not yet eligible. Eligibility is determined by eBay daily. Check onboardingStatus regularly. - **PREBOARDED**: This enumeration value indicates that the seller has completed all the necessary onboarding steps for eBay managed payments. The seller must wait for eBay to activate eBay managed payments for their account. - **ONBOARDED**: This enumeration value indicates that the seller is fully onboarded and that eBay managed payments has been activated on the seller&apos;s account.
+     * @return a {@link PaymentsProgramOnboardingStatus}
      */
     @jakarta.annotation.Nullable
-    public String getOnboardingStatus() {
+    public PaymentsProgramOnboardingStatus getOnboardingStatus() {
         return this.onboardingStatus;
     }
     /**
@@ -95,7 +95,7 @@ public class PaymentsProgramOnboardingResponse implements AdditionalDataHolder, 
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("onboardingStatus", this.getOnboardingStatus());
+        writer.writeEnumValue("onboardingStatus", this.getOnboardingStatus());
         writer.writeCollectionOfObjectValues("steps", this.getSteps());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,10 +107,10 @@ public class PaymentsProgramOnboardingResponse implements AdditionalDataHolder, 
         this.additionalData = value;
     }
     /**
-     * Sets the onboardingStatus property value. This enumeration value indicates the eligibility of payment onboarding for the registered site. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:PaymentsProgramOnboardingStatus&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the onboardingStatus property value. This enumeration value indicates the eligibility of payment onboarding for the registered site. | - **ELIGIBLE_TO_ONBOARD**: This enumeration value indicates that the seller can start or continue the onboarding process. When starting the onboarding process, the first step in the registration process is returned in the steps array with a &lt;strong&gt;status&lt;/strong&gt; of &lt;code&gt;NOT_STARTED&lt;code&gt;. A link in the webUrl field opens a page for the seller to complete the first step. When the seller has completed all steps, the payments capability becomes available to the seller. - **NOT_ELIGIBLE**: This enumeration value indicates that the seller&apos;s marketplace supports eBay managed payments, but the seller is not yet eligible. Eligibility is determined by eBay daily. Check onboardingStatus regularly. - **PREBOARDED**: This enumeration value indicates that the seller has completed all the necessary onboarding steps for eBay managed payments. The seller must wait for eBay to activate eBay managed payments for their account. - **ONBOARDED**: This enumeration value indicates that the seller is fully onboarded and that eBay managed payments has been activated on the seller&apos;s account.
      * @param value Value to set for the onboardingStatus property.
      */
-    public void setOnboardingStatus(@jakarta.annotation.Nullable final String value) {
+    public void setOnboardingStatus(@jakarta.annotation.Nullable final PaymentsProgramOnboardingStatus value) {
         this.onboardingStatus = value;
     }
     /**

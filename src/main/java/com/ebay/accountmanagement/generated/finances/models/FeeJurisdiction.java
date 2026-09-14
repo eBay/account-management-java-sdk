@@ -35,9 +35,9 @@ public class FeeJurisdiction implements AdditionalDataHolder, Parsable {
      */
     private String regionName;
     /**
-     * This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state.
      */
-    private String regionType;
+    private RegionTypeEnum regionType;
     /**
      * Instantiates a new {@link FeeJurisdiction} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class FeeJurisdiction implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("regionName", (n) -> { this.setRegionName(n.getStringValue()); });
-        deserializerMap.put("regionType", (n) -> { this.setRegionType(n.getStringValue()); });
+        deserializerMap.put("regionType", (n) -> { this.setRegionType(n.getEnumValue(RegionTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,11 +82,11 @@ public class FeeJurisdiction implements AdditionalDataHolder, Parsable {
         return this.regionName;
     }
     /**
-     * Gets the regionType property value. This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the regionType property value. This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state.
+     * @return a {@link RegionTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getRegionType() {
+    public RegionTypeEnum getRegionType() {
         return this.regionType;
     }
     /**
@@ -96,7 +96,7 @@ public class FeeJurisdiction implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("regionName", this.getRegionName());
-        writer.writeStringValue("regionType", this.getRegionType());
+        writer.writeEnumValue("regionType", this.getRegionType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class FeeJurisdiction implements AdditionalDataHolder, Parsable {
         this.regionName = value;
     }
     /**
-     * Sets the regionType property value. This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/finances/types/pay:RegionTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the regionType property value. This enumeration value indicates the type of region that the fee jurisdiction represents, such as a country or a state.
      * @param value Value to set for the regionType property.
      */
-    public void setRegionType(@jakarta.annotation.Nullable final String value) {
+    public void setRegionType(@jakarta.annotation.Nullable final RegionTypeEnum value) {
         this.regionType = value;
     }
 }

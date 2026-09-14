@@ -47,9 +47,9 @@ public class CustomPolicy implements AdditionalDataHolder, Parsable {
      */
     private String name;
     /**
-     * Specifies the type of Custom Policy being returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CustomPolicyTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
      */
-    private String policyType;
+    private CustomPolicyTypeEnum policyType;
     /**
      * Instantiates a new {@link CustomPolicy} and sets the default values.
      */
@@ -101,7 +101,7 @@ public class CustomPolicy implements AdditionalDataHolder, Parsable {
         deserializerMap.put("description", (n) -> { this.setDescription(n.getStringValue()); });
         deserializerMap.put("label", (n) -> { this.setLabel(n.getStringValue()); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
-        deserializerMap.put("policyType", (n) -> { this.setPolicyType(n.getStringValue()); });
+        deserializerMap.put("policyType", (n) -> { this.setPolicyType(n.getEnumValue(CustomPolicyTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -121,11 +121,11 @@ public class CustomPolicy implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the policyType property value. Specifies the type of Custom Policy being returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CustomPolicyTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the policyType property value. An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
+     * @return a {@link CustomPolicyTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPolicyType() {
+    public CustomPolicyTypeEnum getPolicyType() {
         return this.policyType;
     }
     /**
@@ -138,7 +138,7 @@ public class CustomPolicy implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("description", this.getDescription());
         writer.writeStringValue("label", this.getLabel());
         writer.writeStringValue("name", this.getName());
-        writer.writeStringValue("policyType", this.getPolicyType());
+        writer.writeEnumValue("policyType", this.getPolicyType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -177,10 +177,10 @@ public class CustomPolicy implements AdditionalDataHolder, Parsable {
         this.name = value;
     }
     /**
-     * Sets the policyType property value. Specifies the type of Custom Policy being returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CustomPolicyTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the policyType property value. An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
      * @param value Value to set for the policyType property.
      */
-    public void setPolicyType(@jakarta.annotation.Nullable final String value) {
+    public void setPolicyType(@jakarta.annotation.Nullable final CustomPolicyTypeEnum value) {
         this.policyType = value;
     }
 }

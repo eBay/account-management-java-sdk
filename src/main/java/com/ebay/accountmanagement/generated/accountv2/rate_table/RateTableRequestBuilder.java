@@ -26,7 +26,7 @@ import java.util.Objects;
 public class RateTableRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.accountmanagement.generated.accountv2.rate_table.item collection
-     * @param rate_table_id This path parameter is the unique identifier for the shipping rate table to retrieve.&lt;br/&gt;&lt;br/&gt; Use the &lt;a href=&quot;/api-docs/sell/account/resources/rate_table/methods/getRateTables&quot; target=&quot;_blank&quot;&gt;getRateTables&lt;/a&gt; method of the &lt;a href=&quot;/api-docs/sell/account/static/overview.html &quot; target=&quot;_blank&quot;&gt;Account API v1&lt;/a&gt; to retrieve rate table IDs.
+     * @param rate_table_id This path parameter is the unique identifier for the shipping rate table to retrieve.&lt;br/&gt;&lt;br/&gt; Use the &lt;a href=&quot;/develop/api/sell/account_api#sell-account_api-rate_table-getratetables&quot; target=&quot;_blank&quot;&gt;getRateTables&lt;/a&gt; method of the &lt;a href=&quot;/develop/api/sell/account_api&quot; target=&quot;_blank&quot;&gt;Account API v1&lt;/a&gt; to retrieve rate table IDs.
      * @return a {@link WithRateTableItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull

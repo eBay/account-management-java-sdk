@@ -35,9 +35,9 @@ public class FlatShippingRuleType implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<CombinedShippingRule> combinedShippingRules;
     /**
-     * This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate).
      */
-    private String combinedShippingRuleType;
+    private CombinedShippingRuleTypeEnum combinedShippingRuleType;
     /**
      * Instantiates a new {@link FlatShippingRuleType} and sets the default values.
      */
@@ -71,11 +71,11 @@ public class FlatShippingRuleType implements AdditionalDataHolder, Parsable {
         return this.combinedShippingRules;
     }
     /**
-     * Gets the combinedShippingRuleType property value. This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedShippingRuleType property value. This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate).
+     * @return a {@link CombinedShippingRuleTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedShippingRuleType() {
+    public CombinedShippingRuleTypeEnum getCombinedShippingRuleType() {
         return this.combinedShippingRuleType;
     }
     /**
@@ -86,7 +86,7 @@ public class FlatShippingRuleType implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("combinedShippingRules", (n) -> { this.setCombinedShippingRules(n.getCollectionOfObjectValues(CombinedShippingRule::createFromDiscriminatorValue)); });
-        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getStringValue()); });
+        deserializerMap.put("combinedShippingRuleType", (n) -> { this.setCombinedShippingRuleType(n.getEnumValue(CombinedShippingRuleTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -96,7 +96,7 @@ public class FlatShippingRuleType implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfObjectValues("combinedShippingRules", this.getCombinedShippingRules());
-        writer.writeStringValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
+        writer.writeEnumValue("combinedShippingRuleType", this.getCombinedShippingRuleType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class FlatShippingRuleType implements AdditionalDataHolder, Parsable {
         this.combinedShippingRules = value;
     }
     /**
-     * Sets the combinedShippingRuleType property value. This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedShippingRuleTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedShippingRuleType property value. This container defines the type of discount rule applied (e.g., percentage-based, fixed-rate).
      * @param value Value to set for the combinedShippingRuleType property.
      */
-    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedShippingRuleType(@jakarta.annotation.Nullable final CombinedShippingRuleTypeEnum value) {
         this.combinedShippingRuleType = value;
     }
 }

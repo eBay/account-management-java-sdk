@@ -31,9 +31,9 @@ public class Program implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ProgramTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
      */
-    private String programType;
+    private ProgramTypeEnum programType;
     /**
      * Instantiates a new {@link Program} and sets the default values.
      */
@@ -65,15 +65,15 @@ public class Program implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("programType", (n) -> { this.setProgramType(n.getStringValue()); });
+        deserializerMap.put("programType", (n) -> { this.setProgramType(n.getEnumValue(ProgramTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the programType property value. The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ProgramTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the programType property value. This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
+     * @return a {@link ProgramTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getProgramType() {
+    public ProgramTypeEnum getProgramType() {
         return this.programType;
     }
     /**
@@ -82,7 +82,7 @@ public class Program implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("programType", this.getProgramType());
+        writer.writeEnumValue("programType", this.getProgramType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -93,10 +93,10 @@ public class Program implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the programType property value. The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:ProgramTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the programType property value. This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
      * @param value Value to set for the programType property.
      */
-    public void setProgramType(@jakarta.annotation.Nullable final String value) {
+    public void setProgramType(@jakarta.annotation.Nullable final ProgramTypeEnum value) {
         this.programType = value;
     }
 }

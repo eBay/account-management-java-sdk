@@ -31,11 +31,11 @@ public class CreatePromotionalShippingRuleRequest implements AdditionalDataHolde
      */
     private Map<String, Object> additionalData;
     /**
-     * This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      */
-    private String combinedDuration;
+    private CombinedPaymentPeriodEnum combinedDuration;
     /**
-     * This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * This container defines the promotional combined-shipping rule that offers discounts or free shipping based on order value, item count, or other qualifying conditions.
      */
     private PromotionalShippingRuleType promotionalShippingRule;
     /**
@@ -63,11 +63,11 @@ public class CreatePromotionalShippingRuleRequest implements AdditionalDataHolde
         return this.additionalData;
     }
     /**
-     * Gets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
+     * @return a {@link CombinedPaymentPeriodEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCombinedDuration() {
+    public CombinedPaymentPeriodEnum getCombinedDuration() {
         return this.combinedDuration;
     }
     /**
@@ -77,12 +77,12 @@ public class CreatePromotionalShippingRuleRequest implements AdditionalDataHolde
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getStringValue()); });
+        deserializerMap.put("combinedDuration", (n) -> { this.setCombinedDuration(n.getEnumValue(CombinedPaymentPeriodEnum::forValue)); });
         deserializerMap.put("promotionalShippingRule", (n) -> { this.setPromotionalShippingRule(n.getObjectValue(PromotionalShippingRuleType::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the promotionalShippingRule property value. This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * Gets the promotionalShippingRule property value. This container defines the promotional combined-shipping rule that offers discounts or free shipping based on order value, item count, or other qualifying conditions.
      * @return a {@link PromotionalShippingRuleType}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class CreatePromotionalShippingRuleRequest implements AdditionalDataHolde
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("combinedDuration", this.getCombinedDuration());
+        writer.writeEnumValue("combinedDuration", this.getCombinedDuration());
         writer.writeObjectValue("promotionalShippingRule", this.getPromotionalShippingRule());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,14 +107,14 @@ public class CreatePromotionalShippingRuleRequest implements AdditionalDataHolde
         this.additionalData = value;
     }
     /**
-     * Sets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in CombinedPaymentPeriodEnum type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/account/types/api:CombinedPaymentPeriodEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the combinedDuration property value. This container specifies the time window during which multiple unpaid orders can be combined into a single payment or invoice, represented by using one of the values in &lt;a href=&quot;/develop/api/sell/account_api_v2#sell-account_api_v2-combined_shipping_rules-getcombinedshippingrules.getcombinedshippingrulesresponse.combinedduration&quot; target=&quot;_blank&quot;&gt;CombinedPaymentPeriodEnum&lt;/a&gt;.
      * @param value Value to set for the combinedDuration property.
      */
-    public void setCombinedDuration(@jakarta.annotation.Nullable final String value) {
+    public void setCombinedDuration(@jakarta.annotation.Nullable final CombinedPaymentPeriodEnum value) {
         this.combinedDuration = value;
     }
     /**
-     * Sets the promotionalShippingRule property value. This type is used to represent a promotional shipping rule set up by the seller on an eBay marketplace.
+     * Sets the promotionalShippingRule property value. This container defines the promotional combined-shipping rule that offers discounts or free shipping based on order value, item count, or other qualifying conditions.
      * @param value Value to set for the promotionalShippingRule property.
      */
     public void setPromotionalShippingRule(@jakarta.annotation.Nullable final PromotionalShippingRuleType value) {

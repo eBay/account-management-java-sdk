@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.ebay.accountmanagement.generated.finances.models;
+package com.ebay.accountmanagement.generated.accountv1.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -22,29 +22,37 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The total number of orders included in the summary.
+ * A complex type that indicates a parameter that caused an error and the value of the parameter which caused the error.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class OrderEarningsSummaryOrderCount implements AdditionalDataHolder, Parsable {
+public class ErrorParameterV3 implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Instantiates a new {@link OrderEarningsSummaryOrderCount} and sets the default values.
+     * Name of the parameter that caused the error.
      */
-    public OrderEarningsSummaryOrderCount() {
+    private String name;
+    /**
+     * The value of the parameter that caused the error.
+     */
+    private String value;
+    /**
+     * Instantiates a new {@link ErrorParameterV3} and sets the default values.
+     */
+    public ErrorParameterV3() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link OrderEarningsSummaryOrderCount}
+     * @return a {@link ErrorParameterV3}
      */
     @jakarta.annotation.Nonnull
-    public static OrderEarningsSummaryOrderCount createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ErrorParameterV3 createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new OrderEarningsSummaryOrderCount();
+        return new ErrorParameterV3();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -60,8 +68,26 @@ public class OrderEarningsSummaryOrderCount implements AdditionalDataHolder, Par
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
+        deserializerMap.put("value", (n) -> { this.setValue(n.getStringValue()); });
         return deserializerMap;
+    }
+    /**
+     * Gets the name property value. Name of the parameter that caused the error.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getName() {
+        return this.name;
+    }
+    /**
+     * Gets the value property value. The value of the parameter that caused the error.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getValue() {
+        return this.value;
     }
     /**
      * Serializes information the current object
@@ -69,6 +95,8 @@ public class OrderEarningsSummaryOrderCount implements AdditionalDataHolder, Par
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
+        writer.writeStringValue("name", this.getName());
+        writer.writeStringValue("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -77,5 +105,19 @@ public class OrderEarningsSummaryOrderCount implements AdditionalDataHolder, Par
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
+    }
+    /**
+     * Sets the name property value. Name of the parameter that caused the error.
+     * @param value Value to set for the name property.
+     */
+    public void setName(@jakarta.annotation.Nullable final String value) {
+        this.name = value;
+    }
+    /**
+     * Sets the value property value. The value of the parameter that caused the error.
+     * @param value Value to set for the value property.
+     */
+    public void setValue(@jakarta.annotation.Nullable final String value) {
+        this.value = value;
     }
 }

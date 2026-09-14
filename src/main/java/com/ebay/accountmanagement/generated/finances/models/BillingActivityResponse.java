@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * BillingActivityResponse
+ * This type is the base response type used by the &lt;b&gt;getBillingActivities&lt;/b&gt; method. 
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class BillingActivityResponse implements AdditionalDataHolder, Parsable {

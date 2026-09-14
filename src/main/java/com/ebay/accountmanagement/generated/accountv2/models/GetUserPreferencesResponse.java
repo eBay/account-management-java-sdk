@@ -31,11 +31,11 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
      */
     private Map<String, Object> additionalData;
     /**
-     * This container is used to change the combined payment option. Sellers have the option to combine multiple line items from the same buyer into a combined invoice that can be paid for with one payment. See CombinedPaymentOptionEnum for a description of each value.
+     * This container returns the combined payment preferences when the &lt;code&gt;COMBINED_PAYMENT&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. It indicates if the seller allows multiple line items from the same buyer to be combined.
      */
     private CombinedPaymentPreferencesType combinedPaymentPreferences;
     /**
-     * This container is used to change the order cut-off time for same-day shipping.
+     * This container is returned when the &lt;code&gt;DISPATCH_CUTOFF_TIME&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      */
     private DispatchCutoffTimePreferencesType dispatchCutoffTimePreference;
     /**
@@ -43,7 +43,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
      */
     private Boolean emailShipmentTrackingNumberPreference;
     /**
-     * This container shows the seller&apos;s preferences for the end-of-auction email sent to the winning bidder.
+     * This container allows sellers to customize the email sent to buyers immediately after an auction listing is won.
      */
     private EndOfAuctionEmailPreferencesType endOfAuctionEmailPreferences;
     /**
@@ -51,7 +51,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
      */
     private Boolean globalShippingProgramListingPreference;
     /**
-     * This container represents the seller&apos;s preferences for the list of items that are awaiting payment.
+     * This container shows the sellers preferences for automatically handling unpaid line items.
      */
     private GetItemsAwaitingPaymentPreferencesType itemsAwaitingPaymentPreferences;
     /**
@@ -79,15 +79,15 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
      */
     private Boolean requiredShipPhoneNumberPreference;
     /**
-     * This container represents the list of locations that the seller wants to exclude from shipping.
+     * This container shows the list of locations that the seller does not ship to. This list of shipping locations can only be updated in My eBay through Shipping Preferences and not with the &lt;code&gt;setUserPreferences&lt;/code&gt; method.
      */
     private SellerExcludeShipToLocationPreferencesType sellerExcludeShipToLocationPreferences;
     /**
-     * This container indicates whether or not the seller is opted into Business Policies. If a seller is opted into Business Policies, they must use Payment,Return, and Shipping business policies instead of individual payment, return, and shipping fields.
+     * This container is returned when the &lt;code&gt;SELLER_PROFILE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      */
     private SellerProfilePreferencesType sellerProfilePreferences;
     /**
-     * This field is included if the seller wishes to add or modify the shipping carrier rate type that is available to the seller. This field is only returned if set. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
+     * This container indicates the FedEx, UPS, and US Post Office shipping rate types that are available to the seller. This container is returned when the &lt;code&gt;SHIPPING_CARRIER_RATE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
      */
     private ShippingCarrierRatePreferencesType shippingCarrierRatePreferences;
     /**
@@ -115,7 +115,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.additionalData;
     }
     /**
-     * Gets the combinedPaymentPreferences property value. This container is used to change the combined payment option. Sellers have the option to combine multiple line items from the same buyer into a combined invoice that can be paid for with one payment. See CombinedPaymentOptionEnum for a description of each value.
+     * Gets the combinedPaymentPreferences property value. This container returns the combined payment preferences when the &lt;code&gt;COMBINED_PAYMENT&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. It indicates if the seller allows multiple line items from the same buyer to be combined.
      * @return a {@link CombinedPaymentPreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -123,7 +123,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.combinedPaymentPreferences;
     }
     /**
-     * Gets the dispatchCutoffTimePreference property value. This container is used to change the order cut-off time for same-day shipping.
+     * Gets the dispatchCutoffTimePreference property value. This container is returned when the &lt;code&gt;DISPATCH_CUTOFF_TIME&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      * @return a {@link DispatchCutoffTimePreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -139,7 +139,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.emailShipmentTrackingNumberPreference;
     }
     /**
-     * Gets the endOfAuctionEmailPreferences property value. This container shows the seller&apos;s preferences for the end-of-auction email sent to the winning bidder.
+     * Gets the endOfAuctionEmailPreferences property value. This container allows sellers to customize the email sent to buyers immediately after an auction listing is won.
      * @return a {@link EndOfAuctionEmailPreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -179,7 +179,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.globalShippingProgramListingPreference;
     }
     /**
-     * Gets the itemsAwaitingPaymentPreferences property value. This container represents the seller&apos;s preferences for the list of items that are awaiting payment.
+     * Gets the itemsAwaitingPaymentPreferences property value. This container shows the sellers preferences for automatically handling unpaid line items.
      * @return a {@link GetItemsAwaitingPaymentPreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -235,7 +235,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.requiredShipPhoneNumberPreference;
     }
     /**
-     * Gets the sellerExcludeShipToLocationPreferences property value. This container represents the list of locations that the seller wants to exclude from shipping.
+     * Gets the sellerExcludeShipToLocationPreferences property value. This container shows the list of locations that the seller does not ship to. This list of shipping locations can only be updated in My eBay through Shipping Preferences and not with the &lt;code&gt;setUserPreferences&lt;/code&gt; method.
      * @return a {@link SellerExcludeShipToLocationPreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -243,7 +243,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.sellerExcludeShipToLocationPreferences;
     }
     /**
-     * Gets the sellerProfilePreferences property value. This container indicates whether or not the seller is opted into Business Policies. If a seller is opted into Business Policies, they must use Payment,Return, and Shipping business policies instead of individual payment, return, and shipping fields.
+     * Gets the sellerProfilePreferences property value. This container is returned when the &lt;code&gt;SELLER_PROFILE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      * @return a {@link SellerProfilePreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -251,7 +251,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         return this.sellerProfilePreferences;
     }
     /**
-     * Gets the shippingCarrierRatePreferences property value. This field is included if the seller wishes to add or modify the shipping carrier rate type that is available to the seller. This field is only returned if set. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
+     * Gets the shippingCarrierRatePreferences property value. This container indicates the FedEx, UPS, and US Post Office shipping rate types that are available to the seller. This container is returned when the &lt;code&gt;SHIPPING_CARRIER_RATE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
      * @return a {@link ShippingCarrierRatePreferencesType}
      */
     @jakarta.annotation.Nullable
@@ -289,14 +289,14 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         this.additionalData = value;
     }
     /**
-     * Sets the combinedPaymentPreferences property value. This container is used to change the combined payment option. Sellers have the option to combine multiple line items from the same buyer into a combined invoice that can be paid for with one payment. See CombinedPaymentOptionEnum for a description of each value.
+     * Sets the combinedPaymentPreferences property value. This container returns the combined payment preferences when the &lt;code&gt;COMBINED_PAYMENT&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. It indicates if the seller allows multiple line items from the same buyer to be combined.
      * @param value Value to set for the combinedPaymentPreferences property.
      */
     public void setCombinedPaymentPreferences(@jakarta.annotation.Nullable final CombinedPaymentPreferencesType value) {
         this.combinedPaymentPreferences = value;
     }
     /**
-     * Sets the dispatchCutoffTimePreference property value. This container is used to change the order cut-off time for same-day shipping.
+     * Sets the dispatchCutoffTimePreference property value. This container is returned when the &lt;code&gt;DISPATCH_CUTOFF_TIME&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      * @param value Value to set for the dispatchCutoffTimePreference property.
      */
     public void setDispatchCutoffTimePreference(@jakarta.annotation.Nullable final DispatchCutoffTimePreferencesType value) {
@@ -310,7 +310,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         this.emailShipmentTrackingNumberPreference = value;
     }
     /**
-     * Sets the endOfAuctionEmailPreferences property value. This container shows the seller&apos;s preferences for the end-of-auction email sent to the winning bidder.
+     * Sets the endOfAuctionEmailPreferences property value. This container allows sellers to customize the email sent to buyers immediately after an auction listing is won.
      * @param value Value to set for the endOfAuctionEmailPreferences property.
      */
     public void setEndOfAuctionEmailPreferences(@jakarta.annotation.Nullable final EndOfAuctionEmailPreferencesType value) {
@@ -324,7 +324,7 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         this.globalShippingProgramListingPreference = value;
     }
     /**
-     * Sets the itemsAwaitingPaymentPreferences property value. This container represents the seller&apos;s preferences for the list of items that are awaiting payment.
+     * Sets the itemsAwaitingPaymentPreferences property value. This container shows the sellers preferences for automatically handling unpaid line items.
      * @param value Value to set for the itemsAwaitingPaymentPreferences property.
      */
     public void setItemsAwaitingPaymentPreferences(@jakarta.annotation.Nullable final GetItemsAwaitingPaymentPreferencesType value) {
@@ -373,21 +373,21 @@ public class GetUserPreferencesResponse implements AdditionalDataHolder, Parsabl
         this.requiredShipPhoneNumberPreference = value;
     }
     /**
-     * Sets the sellerExcludeShipToLocationPreferences property value. This container represents the list of locations that the seller wants to exclude from shipping.
+     * Sets the sellerExcludeShipToLocationPreferences property value. This container shows the list of locations that the seller does not ship to. This list of shipping locations can only be updated in My eBay through Shipping Preferences and not with the &lt;code&gt;setUserPreferences&lt;/code&gt; method.
      * @param value Value to set for the sellerExcludeShipToLocationPreferences property.
      */
     public void setSellerExcludeShipToLocationPreferences(@jakarta.annotation.Nullable final SellerExcludeShipToLocationPreferencesType value) {
         this.sellerExcludeShipToLocationPreferences = value;
     }
     /**
-     * Sets the sellerProfilePreferences property value. This container indicates whether or not the seller is opted into Business Policies. If a seller is opted into Business Policies, they must use Payment,Return, and Shipping business policies instead of individual payment, return, and shipping fields.
+     * Sets the sellerProfilePreferences property value. This container is returned when the &lt;code&gt;SELLER_PROFILE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;.
      * @param value Value to set for the sellerProfilePreferences property.
      */
     public void setSellerProfilePreferences(@jakarta.annotation.Nullable final SellerProfilePreferencesType value) {
         this.sellerProfilePreferences = value;
     }
     /**
-     * Sets the shippingCarrierRatePreferences property value. This field is included if the seller wishes to add or modify the shipping carrier rate type that is available to the seller. This field is only returned if set. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
+     * Sets the shippingCarrierRatePreferences property value. This container indicates the FedEx, UPS, and US Post Office shipping rate types that are available to the seller. This container is returned when the &lt;code&gt;SHIPPING_CARRIER_RATE&lt;/code&gt; value is included through the &lt;b&gt;fieldgroups&lt;/b&gt; query parameter or when &lt;b&gt;fieldgroups&lt;/b&gt;=&lt;code&gt;ALL&lt;/code&gt;. &lt;/br&gt;&lt;b&gt;Note&lt;/b&gt;: This container is only applicable to the eBay US marketplace.
      * @param value Value to set for the shippingCarrierRatePreferences property.
      */
     public void setShippingCarrierRatePreferences(@jakarta.annotation.Nullable final ShippingCarrierRatePreferencesType value) {

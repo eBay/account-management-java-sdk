@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.generated.accountv2.rate_table.item;
 
+import com.ebay.accountmanagement.generated.accountv2.models.Error;
 import com.ebay.accountmanagement.generated.accountv2.models.RateTableDetails;
 import com.ebay.accountmanagement.generated.accountv2.rate_table.item.update_shipping_cost.UpdateShippingCostRequestBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
@@ -60,6 +61,9 @@ public class WithRateTableItemRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves an existing rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;Shipping rate tables are currently supported by the following marketplaces: United States, Canada, United Kingdom, Germany, Australia, France, Italy, and Spain. A successful call returns detailed information for the specified shipping rate table.
      * @return a {@link RateTableDetails}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public RateTableDetails get() {
@@ -69,11 +73,18 @@ public class WithRateTableItemRequestBuilder extends BaseRequestBuilder {
      * This method retrieves an existing rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;Shipping rate tables are currently supported by the following marketplaces: United States, Canada, United Kingdom, Germany, Australia, France, Italy, and Spain. A successful call returns detailed information for the specified shipping rate table.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RateTableDetails}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public RateTableDetails get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, RateTableDetails::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, RateTableDetails::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves an existing rate table identified by the &lt;b&gt;rate_table_id&lt;/b&gt; path parameter.&lt;br&gt;&lt;br&gt;Shipping rate tables are currently supported by the following marketplaces: United States, Canada, United Kingdom, Germany, Australia, France, Italy, and Spain. A successful call returns detailed information for the specified shipping rate table.
