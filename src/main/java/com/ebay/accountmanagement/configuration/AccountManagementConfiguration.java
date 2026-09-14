@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.configuration;
 
+import jakarta.annotation.Nullable;
 import java.net.URI;
 import java.util.Set;
 import java.util.HashSet;
@@ -29,7 +30,7 @@ public final class AccountManagementConfiguration {
     private final String sellFinancesV1BaseUrl;
     private final String graphQLBaseUrl;
 
-    private String accessToken;  // static fallback; per-call token takes precedence
+    private @Nullable String accessToken;  // static fallback; per-call token takes precedence
     private boolean diagnosticLogging = false;
 
     /**
@@ -91,8 +92,8 @@ public final class AccountManagementConfiguration {
      * Prefer per-call token passing via the {@code accessToken} parameter on each client method
      * to limit the token's lifetime in memory.</p>
      */
-    public void setAccessToken(String accessToken) { this.accessToken = accessToken; }
-    public String getAccessToken() { return accessToken; }
+    public void setAccessToken(@Nullable String accessToken) { this.accessToken = accessToken; }
+    public @Nullable String getAccessToken() { return accessToken; }
 
     public boolean isDiagnosticLogging() { return diagnosticLogging; }
     public void setDiagnosticLogging(boolean diagnosticLogging) { this.diagnosticLogging = diagnosticLogging; }

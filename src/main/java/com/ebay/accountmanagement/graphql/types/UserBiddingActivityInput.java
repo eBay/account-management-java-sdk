@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.graphql.types;
 
+import jakarta.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,19 +22,19 @@ import java.util.Map;
  * Input type for userBiddingActivity GraphQL query.
  */
 public final class UserBiddingActivityInput {
-    private BiddingActivityFilterInput filter;
+    private @Nullable BiddingActivityFilterInput filter;
 
     public UserBiddingActivityInput() {}
 
-    public UserBiddingActivityInput(BiddingActivityFilterInput filter) {
+    public UserBiddingActivityInput(@Nullable BiddingActivityFilterInput filter) {
         this.filter = filter;
     }
 
-    public BiddingActivityFilterInput getFilter() {
+    public @Nullable BiddingActivityFilterInput getFilter() {
         return filter;
     }
 
-    public void setFilter(BiddingActivityFilterInput filter) {
+    public void setFilter(@Nullable BiddingActivityFilterInput filter) {
         this.filter = filter;
     }
 

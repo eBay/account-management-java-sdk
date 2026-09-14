@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.graphql.types;
 
+import jakarta.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,33 +22,33 @@ import java.util.Map;
  * Filter criteria for userBiddingActivity GraphQL query.
  */
 public final class BiddingActivityFilterInput {
-    private String activeAfter;
-    private String activeBefore;
-    private PaginationInput paginationInput;
+    private @Nullable String activeAfter;
+    private @Nullable String activeBefore;
+    private @Nullable PaginationInput paginationInput;
 
     public BiddingActivityFilterInput() {}
 
-    public String getActiveAfter() {
+    public @Nullable String getActiveAfter() {
         return activeAfter;
     }
 
-    public void setActiveAfter(String activeAfter) {
+    public void setActiveAfter(@Nullable String activeAfter) {
         this.activeAfter = activeAfter;
     }
 
-    public String getActiveBefore() {
+    public @Nullable String getActiveBefore() {
         return activeBefore;
     }
 
-    public void setActiveBefore(String activeBefore) {
+    public void setActiveBefore(@Nullable String activeBefore) {
         this.activeBefore = activeBefore;
     }
 
-    public PaginationInput getPaginationInput() {
+    public @Nullable PaginationInput getPaginationInput() {
         return paginationInput;
     }
 
-    public void setPaginationInput(PaginationInput paginationInput) {
+    public void setPaginationInput(@Nullable PaginationInput paginationInput) {
         this.paginationInput = paginationInput;
     }
 
