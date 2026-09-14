@@ -14,6 +14,7 @@
 
 package com.ebay.accountmanagement.graphql.types;
 
+import jakarta.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,24 +22,24 @@ import java.util.Map;
  * Pagination input for GraphQL queries.
  */
 public final class PaginationInput {
-    private Integer maxPageSize;
-    private String pageCursor;
+    private @Nullable Integer maxPageSize;
+    private @Nullable String pageCursor;
 
     public PaginationInput() {}
 
-    public Integer getMaxPageSize() {
+    public @Nullable Integer getMaxPageSize() {
         return maxPageSize;
     }
 
-    public void setMaxPageSize(Integer maxPageSize) {
+    public void setMaxPageSize(@Nullable Integer maxPageSize) {
         this.maxPageSize = maxPageSize;
     }
 
-    public String getPageCursor() {
+    public @Nullable String getPageCursor() {
         return pageCursor;
     }
 
-    public void setPageCursor(String pageCursor) {
+    public void setPageCursor(@Nullable String pageCursor) {
         this.pageCursor = pageCursor;
     }
 
