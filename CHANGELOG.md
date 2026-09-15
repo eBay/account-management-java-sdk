@@ -1,44 +1,56 @@
 # ChangeLog
 
-## 2.0.0 (09/14/2026)
+## 0.2.0 (09/14/2026)
 
-**Breaking changes**
-- The following operations changed signature on `AccountV2Client`:
-  - `setUserPreferencesAsync`: `(UntypedNode, String, String, RequestOptions)` → `(SetUserPreferencesRequest, String, String, RequestOptions)`
-- The following operations changed signature on `FinancesClient`:
-  - `getOrderEarningsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
-  - `getOrderEarningsSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
-  - `getPayoutsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
-  - `getPayoutSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
-  - `getTransactionsAsync`: `(String, String, String, String, String, String, RequestOptions)` → `(String[], Integer, Integer, String[], String, String, RequestOptions)`
-  - `getTransactionSummaryAsync`: `(String, String, String, RequestOptions)` → `(String[], String, String, RequestOptions)`
+### Breaking changes
 
-## 1.0.0 (09/14/2026)
+#### Renamed clients and members
 
-**Breaking changes**
-- The following clients were removed:
-  - `SellAccountV1Client`
-  - `SellAccountV2Client`
-  - `SellFinancesV1Client`
-- The following members were removed from `AccountManagementClient`:
-  - `sellAccountV1`
-  - `sellAccountV2`
-  - `sellFinances`
+| Previous | Current |
+| --- | --- |
+| `SellAccountV1Client` | `AccountV1Client` |
+| `SellAccountV2Client` | `AccountV2Client` |
+| `SellFinancesV1Client` | `FinancesClient` |
+| `AccountManagementClient.sellAccountV1` | `AccountManagementClient.accountV1` |
+| `AccountManagementClient.sellAccountV2` | `AccountManagementClient.accountV2` |
+| `AccountManagementClient.sellFinances` | `AccountManagementClient.finances` |
 
-- The following clients were added:
-  - `AccountV1Client`
-  - `AccountV2Client`
-  - `FinancesClient`
-- The following operations were added to `EBayGraphQLClient`:
-  - `addToWatchListAsync`
-  - `createOrReplaceUserNoteAsync`
-  - `deleteUserNoteAsync`
-  - `itemBiddingActivityAsync`
-  - `removeAllFromWatchListAsync`
-  - `removeFromWatchListAsync`
-  - `userCustomListsAsync`
-  - `userWatchListAsync`
-- The following members were added to `AccountManagementClient`:
-  - `accountV1`
-  - `accountV2`
-  - `finances`
+The renamed `AccountV1Client` also renames operations that retain the same generated request path:
+
+| Previous | Current |
+| --- | --- |
+| `getKycAsync` | `getKYCAsync` |
+| `getSalesTaxTableAsync` | `getSalesTaxesAsync` |
+
+#### Changed signatures
+
+`AccountV2Client`:
+
+| Operation | Previous parameters | Current parameters |
+| --- | --- | --- |
+| `setUserPreferencesAsync` | `(UntypedNode body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(SetUserPreferencesRequest body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+
+`FinancesClient`:
+
+| Operation | Previous parameters | Current parameters |
+| --- | --- | --- |
+| `getOrderEarningsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getOrderEarningsSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getPayoutsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getPayoutSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getTransactionsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getTransactionSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+
+### Added
+
+- `AccountV1Client.getPaymentsProgramAsync`.
+#### `EBayGraphQLClient`
+
+- `addToWatchListAsync`
+- `createOrReplaceUserNoteAsync`
+- `deleteUserNoteAsync`
+- `itemBiddingActivityAsync`
+- `removeAllFromWatchListAsync`
+- `removeFromWatchListAsync`
+- `userCustomListsAsync`
+- `userWatchListAsync`
