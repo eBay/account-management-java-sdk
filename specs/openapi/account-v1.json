@@ -4153,6 +4153,7 @@
             },
             "CompactCustomPolicyResponse": {
                 "type": "object",
+				"description": "The response payload for requests that return a list of custom policies.",
 				"required": ["customPolicyId", "label", "name", "policyType"],
                 "properties": {
                     "customPolicyId": {
@@ -4171,8 +4172,7 @@
                         "description": "Specifies the type of Custom Policy being returned.",
                         "$ref": "#/components/schemas/CustomPolicyTypeEnum"
                     }
-                },
-                "description": "The response payload for requests that return a list of custom policies."
+                }
             },
             "CountryCodeEnum": {
                 "type": "object",
@@ -4660,46 +4660,46 @@
 				"description": "This type is used to request a list of custom policies."
             },
             "CustomPolicyResponse": {
-                "type": "object",
-				"required": ["customPolicies"],
-                "properties": {
-                    "customPolicies": {
-                        "type": "array",
-                        "description": "This array contains the custom policies that match the input criteria.",
-                        "items": {
-                            "$ref": "#/components/schemas/CompactCustomPolicyResponse"
-                        }
-                    },
-                    "href": {
-                        "type": "string",
-                        "description": "<i>This field is for future use.</i>"
-                    },
-                    "limit": {
-                        "type": "integer",
-                        "description": "<i>This field is for future use.</i>",
-                        "format": "int32"
-                    },
-                    "next": {
-                        "type": "string",
-                        "description": "<i>This field is for future use.</i>"
-                    },
-                    "offset": {
-                        "type": "integer",
-                        "description": "<i>This field is for future use.</i>",
-                        "format": "int32"
-                    },
-                    "prev": {
-                        "type": "string",
-                        "description": "<i>This field is for future use.</i>"
-                    },
-                    "total": {
-                        "type": "integer",
-                        "description": "<i>This field is for future use.</i>",
-                        "format": "int32"
-                    }
-                },
-                "description": "The response payload for requests that return a list of custom policies."
-            },
+			  "type": "object",
+			  "description": "The response payload for requests that return a list of custom policies.",
+			  "required": ["customPolicies"],
+			  "properties": {
+				"customPolicies": {
+				  "type": "array",
+				  "description": "This array contains the custom policies that match the input criteria.",
+				  "items": {
+					"$ref": "#/components/schemas/CompactCustomPolicyResponse"
+				  }
+				},
+				"href": {
+				  "type": "string",
+				  "description": "<i>This field is for future use.</i>"
+				},
+				"limit": {
+				  "type": "integer",
+				  "description": "<i>This field is for future use.</i>",
+				  "format": "int32"
+				},
+				"next": {
+				  "type": "string",
+				  "description": "<i>This field is for future use.</i>"
+				},
+				"offset": {
+				  "type": "integer",
+				  "description": "<i>This field is for future use.</i>",
+				  "format": "int32"
+				},
+				"prev": {
+				  "type": "string",
+				  "description": "<i>This field is for future use.</i>"
+				},
+				"total": {
+				  "type": "integer",
+				  "description": "<i>This field is for future use.</i>",
+				  "format": "int32"
+				}
+			  }
+			},
             "CustomPolicyTypeEnum": {
                 "type": "object",
                 "description": "An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.",
