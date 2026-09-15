@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * The enumeration value returned in this field indicates the type of fee that was deducted from the seller payout.
+ * The classification of the fee applied to the order.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum FeeTypeEnum implements ValuedEnum {
