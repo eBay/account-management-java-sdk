@@ -28,18 +28,18 @@ The renamed `AccountV1Client` also renames operations that retain the same gener
 
 | Operation | Previous parameters | Current parameters |
 | --- | --- | --- |
-| `setUserPreferencesAsync` | `(UntypedNode, String, String, RequestOptions)` | `(SetUserPreferencesRequest, String, String, RequestOptions)` |
+| `setUserPreferencesAsync` | `(UntypedNode body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(SetUserPreferencesRequest body, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
 
 `FinancesClient`:
 
 | Operation | Previous parameters | Current parameters |
 | --- | --- | --- |
-| `getOrderEarningsAsync` | `(String, String, String, String, String, String, RequestOptions)` | `(String[], Integer, Integer, String[], String, String, RequestOptions)` |
-| `getOrderEarningsSummaryAsync` | `(String, String, String, RequestOptions)` | `(String[], String, String, RequestOptions)` |
-| `getPayoutsAsync` | `(String, String, String, String, String, String, RequestOptions)` | `(String[], Integer, Integer, String[], String, String, RequestOptions)` |
-| `getPayoutSummaryAsync` | `(String, String, String, RequestOptions)` | `(String[], String, String, RequestOptions)` |
-| `getTransactionsAsync` | `(String, String, String, String, String, String, RequestOptions)` | `(String[], Integer, Integer, String[], String, String, RequestOptions)` |
-| `getTransactionSummaryAsync` | `(String, String, String, RequestOptions)` | `(String[], String, String, RequestOptions)` |
+| `getOrderEarningsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getOrderEarningsSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getPayoutsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getPayoutSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getTransactionsAsync` | `(String filter, String limit, String offset, String sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, Integer limit, Integer offset, String[] sort, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
+| `getTransactionSummaryAsync` | `(String filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` | `(String[] filter, String xEBAYCMARKETPLACEID, String accessToken, RequestOptions requestOptions)` |
 
 ### Added
 
