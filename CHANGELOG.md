@@ -1,5 +1,11 @@
 # ChangeLog
 
+## Unreleased
+
+### Dependencies
+
+- Bumped transitive `com.google.guava:guava` from 33.4.0-jre to 33.7.2-jre for Error Prone and NullAway to address the reported vulnerability.
+
 ## 0.2.1 (09/25/2026)
 
 ### Dependencies
