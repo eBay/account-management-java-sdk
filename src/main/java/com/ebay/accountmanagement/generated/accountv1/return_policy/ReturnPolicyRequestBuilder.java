@@ -101,7 +101,7 @@ public class ReturnPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new return policy where the policy encapsulates seller&apos;s terms for returning items.  &lt;br&gt;&lt;br&gt;Each policy targets a specific marketplace, and you can create multiple policies for each marketplace. Return policies are not applicable to motor-vehicle listings.&lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getReturnPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Return policy request
      * @return a {@link SetReturnPolicyResponse}
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 500 status code
@@ -112,7 +112,7 @@ public class ReturnPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new return policy where the policy encapsulates seller&apos;s terms for returning items.  &lt;br&gt;&lt;br&gt;Each policy targets a specific marketplace, and you can create multiple policies for each marketplace. Return policies are not applicable to motor-vehicle listings.&lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getReturnPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Return policy request
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SetReturnPolicyResponse}
      * @throws Error When receiving a 400 status code
@@ -149,7 +149,7 @@ public class ReturnPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new return policy where the policy encapsulates seller&apos;s terms for returning items.  &lt;br&gt;&lt;br&gt;Each policy targets a specific marketplace, and you can create multiple policies for each marketplace. Return policies are not applicable to motor-vehicle listings.&lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getReturnPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Return policy request
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -158,7 +158,7 @@ public class ReturnPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new return policy where the policy encapsulates seller&apos;s terms for returning items.  &lt;br&gt;&lt;br&gt;Each policy targets a specific marketplace, and you can create multiple policies for each marketplace. Return policies are not applicable to motor-vehicle listings.&lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getReturnPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Return policy request
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

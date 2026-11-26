@@ -31,7 +31,7 @@ public class SellingLimit implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * This container shows the monthly cap for total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total sales amount.
      */
     private Amount amount;
     /**
@@ -63,7 +63,7 @@ public class SellingLimit implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * Gets the amount property value. This container shows the monthly cap for total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total sales amount.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class SellingLimit implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * Sets the amount property value. This container shows the monthly cap for total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total sales amount.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {

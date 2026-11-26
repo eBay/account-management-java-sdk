@@ -31,7 +31,7 @@ public class Program implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
+     * The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to.
      */
     private ProgramTypeEnum programType;
     /**
@@ -69,7 +69,7 @@ public class Program implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the programType property value. This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
+     * Gets the programType property value. The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to.
      * @return a {@link ProgramTypeEnum}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class Program implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the programType property value. This enumerated type defines the supported seller programs. | - **OUT_OF_STOCK_CONTROL**: If a seller&apos;s account is opted in to the out-of-stock control program, active fixed-price listings will be kept &apos;alive&apos; (but not surfaced in search results) even when the quantity for the listing has been depleted to 0. This feature allows the seller to update/revise the listing with more quantity, and prevents the seller from having to relist the item. - **PARTNER_MOTORS_DEALER**: The Partner Motors Program that sellers can participate in by opting-in to the program. Sellers must be registered business users to opt-in to this program. - **SELLING_POLICY_MANAGEMENT**: If a seller&apos;s account is opted in to this program, sellers can associate business policies (payment, return policy, fulfillment) to their listings. Being opted in to business policies is a requirement for using the &lt;strong&gt;Inventory API&lt;/strong&gt;.
+     * Sets the programType property value. The seller program to opt in to when part of an &lt;b&gt;optInToProgram&lt;/b&gt; request, or out of when part of an  &lt;b&gt;optOutOfProgram&lt;/b&gt; request. When returned in an &lt;b&gt;getOptedInPrograms&lt;/b&gt; response, a separate &lt;b&gt;programType&lt;/b&gt; field is returned for each seller program that the seller is opted in to.
      * @param value Value to set for the programType property.
      */
     public void setProgramType(@jakarta.annotation.Nullable final ProgramTypeEnum value) {

@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumeration value indicates the eligibility of payment onboarding for the registered site. | - **ELIGIBLE_TO_ONBOARD**: This enumeration value indicates that the seller can start or continue the onboarding process. When starting the onboarding process, the first step in the registration process is returned in the steps array with a &lt;strong&gt;status&lt;/strong&gt; of &lt;code&gt;NOT_STARTED&lt;code&gt;. A link in the webUrl field opens a page for the seller to complete the first step. When the seller has completed all steps, the payments capability becomes available to the seller. - **NOT_ELIGIBLE**: This enumeration value indicates that the seller&apos;s marketplace supports eBay managed payments, but the seller is not yet eligible. Eligibility is determined by eBay daily. Check onboardingStatus regularly. - **PREBOARDED**: This enumeration value indicates that the seller has completed all the necessary onboarding steps for eBay managed payments. The seller must wait for eBay to activate eBay managed payments for their account. - **ONBOARDED**: This enumeration value indicates that the seller is fully onboarded and that eBay managed payments has been activated on the seller&apos;s account.
+ * This enumeration value indicates the eligibility of payment onboarding for the registered site.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum PaymentsProgramOnboardingStatus implements ValuedEnum {

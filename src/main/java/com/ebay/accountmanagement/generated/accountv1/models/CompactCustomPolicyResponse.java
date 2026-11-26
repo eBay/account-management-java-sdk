@@ -43,7 +43,7 @@ public class CompactCustomPolicyResponse implements AdditionalDataHolder, Parsab
      */
     private String name;
     /**
-     * An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
+     * Specifies the type of Custom Policy being returned.
      */
     private CustomPolicyTypeEnum policyType;
     /**
@@ -108,7 +108,7 @@ public class CompactCustomPolicyResponse implements AdditionalDataHolder, Parsab
         return this.name;
     }
     /**
-     * Gets the policyType property value. An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
+     * Gets the policyType property value. Specifies the type of Custom Policy being returned.
      * @return a {@link CustomPolicyTypeEnum}
      */
     @jakarta.annotation.Nullable
@@ -156,7 +156,7 @@ public class CompactCustomPolicyResponse implements AdditionalDataHolder, Parsab
         this.name = value;
     }
     /**
-     * Sets the policyType property value. An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
+     * Sets the policyType property value. Specifies the type of Custom Policy being returned.
      * @param value Value to set for the policyType property.
      */
     public void setPolicyType(@jakarta.annotation.Nullable final CustomPolicyTypeEnum value) {

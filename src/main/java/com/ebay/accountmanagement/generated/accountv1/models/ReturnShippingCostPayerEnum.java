@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
+ * This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for &apos;significantly not as described&apos; (SNAD) issues.  &lt;br&gt;&lt;br&gt;This field is conditionally required if the &lt;b&gt;internationalOverride.returnsAccepted&lt;/b&gt; field is set to &lt;code&gt;true&lt;/code&gt;.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum ReturnShippingCostPayerEnum implements ValuedEnum {

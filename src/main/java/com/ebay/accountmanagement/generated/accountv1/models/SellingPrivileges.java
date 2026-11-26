@@ -35,7 +35,7 @@ public class SellingPrivileges implements AdditionalDataHolder, Parsable {
      */
     private Boolean sellerRegistrationCompleted;
     /**
-     * Type used by the &lt;b&gt;sellingLimit&lt;/b&gt; container, a container that lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account.
+     * This container lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total quantity sold and total sales amount. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;The selling limit value returned in &lt;b&gt;getPrivileges&lt;/b&gt; may vary slightly from the value displayed in Seller Hub. The value in Seller Hub is an abbreviated figure, where rounding is applied.&lt;/span&gt;&lt;/p&gt;
      */
     private SellingLimit sellingLimit;
     /**
@@ -82,7 +82,7 @@ public class SellingPrivileges implements AdditionalDataHolder, Parsable {
         return this.sellerRegistrationCompleted;
     }
     /**
-     * Gets the sellingLimit property value. Type used by the &lt;b&gt;sellingLimit&lt;/b&gt; container, a container that lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account.
+     * Gets the sellingLimit property value. This container lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total quantity sold and total sales amount. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;The selling limit value returned in &lt;b&gt;getPrivileges&lt;/b&gt; may vary slightly from the value displayed in Seller Hub. The value in Seller Hub is an abbreviated figure, where rounding is applied.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link SellingLimit}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class SellingPrivileges implements AdditionalDataHolder, Parsable {
         this.sellerRegistrationCompleted = value;
     }
     /**
-     * Sets the sellingLimit property value. Type used by the &lt;b&gt;sellingLimit&lt;/b&gt; container, a container that lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account.
+     * Sets the sellingLimit property value. This container lists the monthly cap for the quantity of items sold and total sales amount allowed for the seller&apos;s account. This container may not be returned if a seller does not have a monthly cap for total quantity sold and total sales amount. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;The selling limit value returned in &lt;b&gt;getPrivileges&lt;/b&gt; may vary slightly from the value displayed in Seller Hub. The value in Seller Hub is an abbreviated figure, where rounding is applied.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the sellingLimit property.
      */
     public void setSellingLimit(@jakarta.annotation.Nullable final SellingLimit value) {

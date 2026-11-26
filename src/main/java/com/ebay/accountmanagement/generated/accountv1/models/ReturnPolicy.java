@@ -43,11 +43,11 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
      */
     private Boolean extendedHolidayReturnsOffered;
     /**
-     * This type defines the fields for a seller&apos;s international return policy. Sellers have the ability to set separate domestic and international return policies, but if an international return policy is not set, the same return policy settings specified for the domestic return policy are also used for returns for international buyers. 
+     * This container shows the seller&apos;s international return policy settings. This container is only returned if the seller has set a separate international return policy for the business policy. International return policies are optional, even if the seller ships to international locations. If a separate international return policy is not set, all of the domestic return policy settings also apply to international orders.
      */
     private InternationalReturnOverrideType internationalOverride;
     /**
-     * This enumerated type contains a list of the standard codes that represent each of the eBay marketplaces. | - **EBAY_AT**: eBay Austria (ebay.at) - **EBAY_AU**: eBay Australia (ebay.com/au) - **EBAY_BE**: eBay Belgium (ebay.com/sch/Belgium) - **EBAY_CA**: eBay Canada (English) (ebay.ca) - **EBAY_CH**: eBay Switzerland (ebay.ch) - **EBAY_CN**: eBay China (ebay.com/sch/China) - **EBAY_CZ**: eBay Czech Republic (ebay.com/sch/Czech-Republic) - **EBAY_DE**: eBay Germany (ebay.de) - **EBAY_DK**: eBay Denmark (ebay.com/sch/Denmark) - **EBAY_ES**: eBay Spain (ebay.es) - **EBAY_FI**: eBay Finland (ebay.com/sch/Finland) - **EBAY_FR**: eBay France (ebay.fr) - **EBAY_GB**: eBay UK (ebay.co.uk) - **EBAY_GR**: eBay Greece (ebay.com/sch/Greece) - **EBAY_HK**: eBay Hong Kong (ebay.com.hk) - **EBAY_HU**: eBay Hungary (ebay.com/sch/Hungary) - **EBAY_ID**: eBay Indonesia (id.ebay.com) - **EBAY_IE**: eBay Ireland (ebay.ie) - **EBAY_IL**: eBay Israel (ebay.com/sch/Israel) - **EBAY_IN**: eBay India (ebay.in)&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay India is no longer a functioning eBay marketplace.&lt;/span&gt; - **EBAY_IT**: eBay Italy (ebay.it) - **EBAY_JP**: eBay Japan (ebay.co.jp) - **EBAY_MY**: eBay Malaysia (ebay.com/my) - **EBAY_NL**: eBay Netherlands (ebay.nl) - **EBAY_NO**: eBay Norway (ebay.com/sch/Norway) - **EBAY_NZ**: eBay New Zealand (ebay.com/sch/New-Zealand) - **EBAY_PE**: eBay Peru (ebay.com/sch/Peru) - **EBAY_PH**: eBay Philippines (ebay.ph) - **EBAY_PL**: eBay Poland (ebay.pl) - **EBAY_PR**: eBay Puerto Rico (ebay.com/sch/Puerto-Rico) - **EBAY_PT**: eBay Portugal (ebay.com/sch/Portugal) - **EBAY_RU**: eBay Russia (ebay.com/sch/Russia) - **EBAY_SE**: eBay Sweden (ebay.com/sch/Sweden) - **EBAY_SG**: eBay Singapore (ebay.com/sg) - **EBAY_TH**: eBay Thailand (export.ebay.co.th) - **EBAY_TW**: eBay Taiwan (ebay.com/tw) - **EBAY_US**: eBay US (ebay.com) - **EBAY_VN**: eBay Vietnam (ebay.vn) - **EBAY_ZA**: eBay South Africa (ebay.com/sch/South-Africa) - **EBAY_HALF_US**: This enumeration value is no longer applicable as the Half.com site no longer exists. - **EBAY_MOTORS_US**: eBay Motors US (ebay.com/motors)
+     * The ID of the eBay marketplace to which this return business policy applies.
      */
     private MarketplaceIdEnum marketplaceId;
     /**
@@ -55,7 +55,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
      */
     private String name;
     /**
-     * This enumerated type defines the supported refund types for buyer returns. | - **MERCHANDISE_CREDIT**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **MONEY_BACK**: This enumeration value indicates that the buyer will get their money back (refund) for a returned item.
+     * This field indicates the refund method offered by the seller. Its value will be &lt;code&gt;MONEY_BACK&lt;/code&gt; unless the seller is enabled for &lt;b&gt;Click and Collect&lt;/b&gt;, and then it might be &lt;code&gt;MERCHANDISE_CREDIT&lt;/code&gt;. Getting their money back for returned items is always an option for buyers, regardless of what the seller sets in this field.
      */
     private RefundMethodEnum refundMethod;
     /**
@@ -67,11 +67,11 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
      */
     private String returnInstructions;
     /**
-     * This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
+     * This field is only returned if the seller is willing to offer a replacement item as an alternative to &apos;Money Back&apos;.
      */
     private ReturnMethodEnum returnMethod;
     /**
-     * A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * This container indicates the number of calendar days that the buyer has to return an item. The return period begins when the item is marked &quot;delivered&quot; at the buyer&apos;s specified ship-to location.  &lt;br&gt;&lt;br&gt;Most categories support 30-day and 60-day return periods.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: Unless the seller has set a separate international return policy through the &lt;b&gt;internationalOverride&lt;/b&gt; container, this return period will be valid for domestic and international returns (if the seller ships internationally).&lt;/span&gt;
      */
     private TimeDuration returnPeriod;
     /**
@@ -83,7 +83,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
      */
     private Boolean returnsAccepted;
     /**
-     * This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
+     * This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
      */
     private ReturnShippingCostPayerEnum returnShippingCostPayer;
     /**
@@ -158,7 +158,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the internationalOverride property value. This type defines the fields for a seller&apos;s international return policy. Sellers have the ability to set separate domestic and international return policies, but if an international return policy is not set, the same return policy settings specified for the domestic return policy are also used for returns for international buyers. 
+     * Gets the internationalOverride property value. This container shows the seller&apos;s international return policy settings. This container is only returned if the seller has set a separate international return policy for the business policy. International return policies are optional, even if the seller ships to international locations. If a separate international return policy is not set, all of the domestic return policy settings also apply to international orders.
      * @return a {@link InternationalReturnOverrideType}
      */
     @jakarta.annotation.Nullable
@@ -166,7 +166,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return this.internationalOverride;
     }
     /**
-     * Gets the marketplaceId property value. This enumerated type contains a list of the standard codes that represent each of the eBay marketplaces. | - **EBAY_AT**: eBay Austria (ebay.at) - **EBAY_AU**: eBay Australia (ebay.com/au) - **EBAY_BE**: eBay Belgium (ebay.com/sch/Belgium) - **EBAY_CA**: eBay Canada (English) (ebay.ca) - **EBAY_CH**: eBay Switzerland (ebay.ch) - **EBAY_CN**: eBay China (ebay.com/sch/China) - **EBAY_CZ**: eBay Czech Republic (ebay.com/sch/Czech-Republic) - **EBAY_DE**: eBay Germany (ebay.de) - **EBAY_DK**: eBay Denmark (ebay.com/sch/Denmark) - **EBAY_ES**: eBay Spain (ebay.es) - **EBAY_FI**: eBay Finland (ebay.com/sch/Finland) - **EBAY_FR**: eBay France (ebay.fr) - **EBAY_GB**: eBay UK (ebay.co.uk) - **EBAY_GR**: eBay Greece (ebay.com/sch/Greece) - **EBAY_HK**: eBay Hong Kong (ebay.com.hk) - **EBAY_HU**: eBay Hungary (ebay.com/sch/Hungary) - **EBAY_ID**: eBay Indonesia (id.ebay.com) - **EBAY_IE**: eBay Ireland (ebay.ie) - **EBAY_IL**: eBay Israel (ebay.com/sch/Israel) - **EBAY_IN**: eBay India (ebay.in)&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay India is no longer a functioning eBay marketplace.&lt;/span&gt; - **EBAY_IT**: eBay Italy (ebay.it) - **EBAY_JP**: eBay Japan (ebay.co.jp) - **EBAY_MY**: eBay Malaysia (ebay.com/my) - **EBAY_NL**: eBay Netherlands (ebay.nl) - **EBAY_NO**: eBay Norway (ebay.com/sch/Norway) - **EBAY_NZ**: eBay New Zealand (ebay.com/sch/New-Zealand) - **EBAY_PE**: eBay Peru (ebay.com/sch/Peru) - **EBAY_PH**: eBay Philippines (ebay.ph) - **EBAY_PL**: eBay Poland (ebay.pl) - **EBAY_PR**: eBay Puerto Rico (ebay.com/sch/Puerto-Rico) - **EBAY_PT**: eBay Portugal (ebay.com/sch/Portugal) - **EBAY_RU**: eBay Russia (ebay.com/sch/Russia) - **EBAY_SE**: eBay Sweden (ebay.com/sch/Sweden) - **EBAY_SG**: eBay Singapore (ebay.com/sg) - **EBAY_TH**: eBay Thailand (export.ebay.co.th) - **EBAY_TW**: eBay Taiwan (ebay.com/tw) - **EBAY_US**: eBay US (ebay.com) - **EBAY_VN**: eBay Vietnam (ebay.vn) - **EBAY_ZA**: eBay South Africa (ebay.com/sch/South-Africa) - **EBAY_HALF_US**: This enumeration value is no longer applicable as the Half.com site no longer exists. - **EBAY_MOTORS_US**: eBay Motors US (ebay.com/motors)
+     * Gets the marketplaceId property value. The ID of the eBay marketplace to which this return business policy applies.
      * @return a {@link MarketplaceIdEnum}
      */
     @jakarta.annotation.Nullable
@@ -182,7 +182,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the refundMethod property value. This enumerated type defines the supported refund types for buyer returns. | - **MERCHANDISE_CREDIT**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **MONEY_BACK**: This enumeration value indicates that the buyer will get their money back (refund) for a returned item.
+     * Gets the refundMethod property value. This field indicates the refund method offered by the seller. Its value will be &lt;code&gt;MONEY_BACK&lt;/code&gt; unless the seller is enabled for &lt;b&gt;Click and Collect&lt;/b&gt;, and then it might be &lt;code&gt;MERCHANDISE_CREDIT&lt;/code&gt;. Getting their money back for returned items is always an option for buyers, regardless of what the seller sets in this field.
      * @return a {@link RefundMethodEnum}
      */
     @jakarta.annotation.Nullable
@@ -206,7 +206,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return this.returnInstructions;
     }
     /**
-     * Gets the returnMethod property value. This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
+     * Gets the returnMethod property value. This field is only returned if the seller is willing to offer a replacement item as an alternative to &apos;Money Back&apos;.
      * @return a {@link ReturnMethodEnum}
      */
     @jakarta.annotation.Nullable
@@ -214,7 +214,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return this.returnMethod;
     }
     /**
-     * Gets the returnPeriod property value. A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * Gets the returnPeriod property value. This container indicates the number of calendar days that the buyer has to return an item. The return period begins when the item is marked &quot;delivered&quot; at the buyer&apos;s specified ship-to location.  &lt;br&gt;&lt;br&gt;Most categories support 30-day and 60-day return periods.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: Unless the seller has set a separate international return policy through the &lt;b&gt;internationalOverride&lt;/b&gt; container, this return period will be valid for domestic and international returns (if the seller ships internationally).&lt;/span&gt;
      * @return a {@link TimeDuration}
      */
     @jakarta.annotation.Nullable
@@ -238,7 +238,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         return this.returnsAccepted;
     }
     /**
-     * Gets the returnShippingCostPayer property value. This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
+     * Gets the returnShippingCostPayer property value. This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
      * @return a {@link ReturnShippingCostPayerEnum}
      */
     @jakarta.annotation.Nullable
@@ -296,14 +296,14 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         this.extendedHolidayReturnsOffered = value;
     }
     /**
-     * Sets the internationalOverride property value. This type defines the fields for a seller&apos;s international return policy. Sellers have the ability to set separate domestic and international return policies, but if an international return policy is not set, the same return policy settings specified for the domestic return policy are also used for returns for international buyers. 
+     * Sets the internationalOverride property value. This container shows the seller&apos;s international return policy settings. This container is only returned if the seller has set a separate international return policy for the business policy. International return policies are optional, even if the seller ships to international locations. If a separate international return policy is not set, all of the domestic return policy settings also apply to international orders.
      * @param value Value to set for the internationalOverride property.
      */
     public void setInternationalOverride(@jakarta.annotation.Nullable final InternationalReturnOverrideType value) {
         this.internationalOverride = value;
     }
     /**
-     * Sets the marketplaceId property value. This enumerated type contains a list of the standard codes that represent each of the eBay marketplaces. | - **EBAY_AT**: eBay Austria (ebay.at) - **EBAY_AU**: eBay Australia (ebay.com/au) - **EBAY_BE**: eBay Belgium (ebay.com/sch/Belgium) - **EBAY_CA**: eBay Canada (English) (ebay.ca) - **EBAY_CH**: eBay Switzerland (ebay.ch) - **EBAY_CN**: eBay China (ebay.com/sch/China) - **EBAY_CZ**: eBay Czech Republic (ebay.com/sch/Czech-Republic) - **EBAY_DE**: eBay Germany (ebay.de) - **EBAY_DK**: eBay Denmark (ebay.com/sch/Denmark) - **EBAY_ES**: eBay Spain (ebay.es) - **EBAY_FI**: eBay Finland (ebay.com/sch/Finland) - **EBAY_FR**: eBay France (ebay.fr) - **EBAY_GB**: eBay UK (ebay.co.uk) - **EBAY_GR**: eBay Greece (ebay.com/sch/Greece) - **EBAY_HK**: eBay Hong Kong (ebay.com.hk) - **EBAY_HU**: eBay Hungary (ebay.com/sch/Hungary) - **EBAY_ID**: eBay Indonesia (id.ebay.com) - **EBAY_IE**: eBay Ireland (ebay.ie) - **EBAY_IL**: eBay Israel (ebay.com/sch/Israel) - **EBAY_IN**: eBay India (ebay.in)&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; eBay India is no longer a functioning eBay marketplace.&lt;/span&gt; - **EBAY_IT**: eBay Italy (ebay.it) - **EBAY_JP**: eBay Japan (ebay.co.jp) - **EBAY_MY**: eBay Malaysia (ebay.com/my) - **EBAY_NL**: eBay Netherlands (ebay.nl) - **EBAY_NO**: eBay Norway (ebay.com/sch/Norway) - **EBAY_NZ**: eBay New Zealand (ebay.com/sch/New-Zealand) - **EBAY_PE**: eBay Peru (ebay.com/sch/Peru) - **EBAY_PH**: eBay Philippines (ebay.ph) - **EBAY_PL**: eBay Poland (ebay.pl) - **EBAY_PR**: eBay Puerto Rico (ebay.com/sch/Puerto-Rico) - **EBAY_PT**: eBay Portugal (ebay.com/sch/Portugal) - **EBAY_RU**: eBay Russia (ebay.com/sch/Russia) - **EBAY_SE**: eBay Sweden (ebay.com/sch/Sweden) - **EBAY_SG**: eBay Singapore (ebay.com/sg) - **EBAY_TH**: eBay Thailand (export.ebay.co.th) - **EBAY_TW**: eBay Taiwan (ebay.com/tw) - **EBAY_US**: eBay US (ebay.com) - **EBAY_VN**: eBay Vietnam (ebay.vn) - **EBAY_ZA**: eBay South Africa (ebay.com/sch/South-Africa) - **EBAY_HALF_US**: This enumeration value is no longer applicable as the Half.com site no longer exists. - **EBAY_MOTORS_US**: eBay Motors US (ebay.com/motors)
+     * Sets the marketplaceId property value. The ID of the eBay marketplace to which this return business policy applies.
      * @param value Value to set for the marketplaceId property.
      */
     public void setMarketplaceId(@jakarta.annotation.Nullable final MarketplaceIdEnum value) {
@@ -317,7 +317,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         this.name = value;
     }
     /**
-     * Sets the refundMethod property value. This enumerated type defines the supported refund types for buyer returns. | - **MERCHANDISE_CREDIT**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **MONEY_BACK**: This enumeration value indicates that the buyer will get their money back (refund) for a returned item.
+     * Sets the refundMethod property value. This field indicates the refund method offered by the seller. Its value will be &lt;code&gt;MONEY_BACK&lt;/code&gt; unless the seller is enabled for &lt;b&gt;Click and Collect&lt;/b&gt;, and then it might be &lt;code&gt;MERCHANDISE_CREDIT&lt;/code&gt;. Getting their money back for returned items is always an option for buyers, regardless of what the seller sets in this field.
      * @param value Value to set for the refundMethod property.
      */
     public void setRefundMethod(@jakarta.annotation.Nullable final RefundMethodEnum value) {
@@ -338,14 +338,14 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         this.returnInstructions = value;
     }
     /**
-     * Sets the returnMethod property value. This enumerated type lists the return options (other than &apos;money back&apos;) that a seller may offer to the buyer for a return request. | - **EXCHANGE**: &lt;strong&gt;Do not use/No longer supported.&lt;/strong&gt; - **REPLACEMENT**: This value indicates that the seller offers a replacement (identical) item as an alternative to &apos;money back&apos; when the buyer is returning an item.
+     * Sets the returnMethod property value. This field is only returned if the seller is willing to offer a replacement item as an alternative to &apos;Money Back&apos;.
      * @param value Value to set for the returnMethod property.
      */
     public void setReturnMethod(@jakarta.annotation.Nullable final ReturnMethodEnum value) {
         this.returnMethod = value;
     }
     /**
-     * Sets the returnPeriod property value. A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * Sets the returnPeriod property value. This container indicates the number of calendar days that the buyer has to return an item. The return period begins when the item is marked &quot;delivered&quot; at the buyer&apos;s specified ship-to location.  &lt;br&gt;&lt;br&gt;Most categories support 30-day and 60-day return periods.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: Unless the seller has set a separate international return policy through the &lt;b&gt;internationalOverride&lt;/b&gt; container, this return period will be valid for domestic and international returns (if the seller ships internationally).&lt;/span&gt;
      * @param value Value to set for the returnPeriod property.
      */
     public void setReturnPeriod(@jakarta.annotation.Nullable final TimeDuration value) {
@@ -366,7 +366,7 @@ public class ReturnPolicy implements AdditionalDataHolder, Parsable {
         this.returnsAccepted = value;
     }
     /**
-     * Sets the returnShippingCostPayer property value. This enumerated type defines who is responsible for the return shipping cost. Note that the seller is always responsible for the return shipping cost of SNAD-related returns. | - **BUYER**: Return shipping cost paid by BUYER. - **SELLER**: Return shipping cost paid by SELLER.
+     * Sets the returnShippingCostPayer property value. This field indicates who is responsible for paying for the shipping charges for returned items. The field can be set to either &lt;code&gt;BUYER&lt;/code&gt; or &lt;code&gt;SELLER&lt;/code&gt;.  &lt;br&gt;&lt;br&gt;Depending on the return policy and specifics of the return, either the buyer or the seller can be responsible for the return shipping costs. Note that the seller is always responsible for return shipping costs for SNAD-related issues.
      * @param value Value to set for the returnShippingCostPayer property.
      */
     public void setReturnShippingCostPayer(@jakarta.annotation.Nullable final ReturnShippingCostPayerEnum value) {

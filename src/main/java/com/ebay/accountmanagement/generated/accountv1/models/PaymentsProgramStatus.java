@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumerated type defines the different possible statuses relating to whether or not a seller is opted-in to a payments program. | - **OPTED_IN**: Status indicating the seller is opted-in to the associated payment program. - **NOT_OPTED_IN**: Status indicating the seller is not opted-in to the associated payment program.
+ * The enumeration value returned in this field indicates whether or not the seller&apos;s account is enabled for the payments program.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum PaymentsProgramStatus implements ValuedEnum {

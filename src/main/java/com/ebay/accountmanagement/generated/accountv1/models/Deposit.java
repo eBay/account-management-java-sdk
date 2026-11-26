@@ -31,11 +31,11 @@ public class Deposit implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * This value indicates the initial deposit amount required from the buyer in order to purchase a motor vehicle. This value can be as high as $2,000.00 if immediate payment is not required, and up to $500.00 if immediate payment is required.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max&lt;/b&gt;: &lt;code&gt;2000.0&lt;/code&gt;
      */
     private Amount amount;
     /**
-     * A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * This value indicates the number of hours that the buyer has (after they commit to buy) to pay the initial deposit on a motor vehicle. Valid &lt;b&gt;dueIn&lt;/b&gt; times are 24, 48, and 72 hours. &lt;code&gt;HOUR&lt;/code&gt; is set as the &lt;b&gt;unit&lt;/b&gt; value, and &lt;code&gt;24&lt;/code&gt;, &lt;code&gt;48&lt;/code&gt; or &lt;code&gt;72&lt;/code&gt; are set in the &lt;b&gt;value&lt;/b&gt; field.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: The &lt;b&gt;dueIn&lt;/b&gt; value is overridden if the seller has set the motor vehicle listing to require immediate payment. If the listing requires immediate payment, the buyer must pay the deposit immediately in order to be eligible to purchase the motor vehicle.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 24 (hours)&lt;br&gt;&lt;b&gt;Maximum:&lt;/b&gt; 72 (hours)&lt;br&gt;&lt;b&gt;Default:&lt;/b&gt; 48 (hours)
      */
     private TimeDuration dueIn;
     /**
@@ -67,7 +67,7 @@ public class Deposit implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * Gets the amount property value. This value indicates the initial deposit amount required from the buyer in order to purchase a motor vehicle. This value can be as high as $2,000.00 if immediate payment is not required, and up to $500.00 if immediate payment is required.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max&lt;/b&gt;: &lt;code&gt;2000.0&lt;/code&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -75,7 +75,7 @@ public class Deposit implements AdditionalDataHolder, Parsable {
         return this.amount;
     }
     /**
-     * Gets the dueIn property value. A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * Gets the dueIn property value. This value indicates the number of hours that the buyer has (after they commit to buy) to pay the initial deposit on a motor vehicle. Valid &lt;b&gt;dueIn&lt;/b&gt; times are 24, 48, and 72 hours. &lt;code&gt;HOUR&lt;/code&gt; is set as the &lt;b&gt;unit&lt;/b&gt; value, and &lt;code&gt;24&lt;/code&gt;, &lt;code&gt;48&lt;/code&gt; or &lt;code&gt;72&lt;/code&gt; are set in the &lt;b&gt;value&lt;/b&gt; field.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: The &lt;b&gt;dueIn&lt;/b&gt; value is overridden if the seller has set the motor vehicle listing to require immediate payment. If the listing requires immediate payment, the buyer must pay the deposit immediately in order to be eligible to purchase the motor vehicle.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 24 (hours)&lt;br&gt;&lt;b&gt;Maximum:&lt;/b&gt; 72 (hours)&lt;br&gt;&lt;b&gt;Default:&lt;/b&gt; 48 (hours)
      * @return a {@link TimeDuration}
      */
     @jakarta.annotation.Nullable
@@ -121,14 +121,14 @@ public class Deposit implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. A complex type that describes the value of a monetary amount as represented by a global currency. When passing in an amount in a request payload, both &lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt; fields are required, and both fields are also always returned for an amount in a response field.
+     * Sets the amount property value. This value indicates the initial deposit amount required from the buyer in order to purchase a motor vehicle. This value can be as high as $2,000.00 if immediate payment is not required, and up to $500.00 if immediate payment is required.&lt;br&gt;&lt;br&gt;&lt;b&gt;Max&lt;/b&gt;: &lt;code&gt;2000.0&lt;/code&gt;
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
         this.amount = value;
     }
     /**
-     * Sets the dueIn property value. A type used to specify a period of time using a specified time-measurement unit. Payment, return, and fulfillment business policies all use this type to specify time windows.&lt;br&gt;&lt;br&gt;Whenever a container that uses this type is used in a request, both of these fields are required. Similarly, whenever a container that uses this type is returned in a response, both of these fields are always returned.
+     * Sets the dueIn property value. This value indicates the number of hours that the buyer has (after they commit to buy) to pay the initial deposit on a motor vehicle. Valid &lt;b&gt;dueIn&lt;/b&gt; times are 24, 48, and 72 hours. &lt;code&gt;HOUR&lt;/code&gt; is set as the &lt;b&gt;unit&lt;/b&gt; value, and &lt;code&gt;24&lt;/code&gt;, &lt;code&gt;48&lt;/code&gt; or &lt;code&gt;72&lt;/code&gt; are set in the &lt;b&gt;value&lt;/b&gt; field.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note&lt;/b&gt;: The &lt;b&gt;dueIn&lt;/b&gt; value is overridden if the seller has set the motor vehicle listing to require immediate payment. If the listing requires immediate payment, the buyer must pay the deposit immediately in order to be eligible to purchase the motor vehicle.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 24 (hours)&lt;br&gt;&lt;b&gt;Maximum:&lt;/b&gt; 72 (hours)&lt;br&gt;&lt;b&gt;Default:&lt;/b&gt; 48 (hours)
      * @param value Value to set for the dueIn property.
      */
     public void setDueIn(@jakarta.annotation.Nullable final TimeDuration value) {

@@ -15,12 +15,29 @@
 package com.ebay.accountmanagement.configuration;
 
 import jakarta.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Locale;
 import java.util.Set;
 
 public final class AccountManagementConfiguration {
     private @Nullable String accessToken;
+    /** eBay hosts that receive the access token by default. */
+    public static final Set<String> DEFAULT_ALLOWED_HOSTS = Collections.unmodifiableSet(new LinkedHashSet<>(java.util.List.of(
+        "api.ebay.com",
+        "api.sandbox.ebay.com",
+        "apiz.ebay.com",
+        "apiz.sandbox.ebay.com",
+        "graphqlapi.sandbox.ebay.com"
+    )));
+
+    /** Hosts that may use plain http, for example a local mock server. They must still be allowed hosts. */
+    public static final Set<String> LOOPBACK_HOSTS = Set.of("127.0.0.1", "::1", "localhost");
+
     private RequestOptions defaultRequestOptions = new RequestOptions();
+    private final Set<String> allowedHosts;
 
     private final String accountV1BaseUrl;
     private final String accountV2BaseUrl;
@@ -28,6 +45,7 @@ public final class AccountManagementConfiguration {
     private final String graphQLBaseUrl;
 
     public AccountManagementConfiguration() {
+        this.allowedHosts = Collections.emptySet();
         this.accountV1BaseUrl = "https://api.ebay.com/sell/account/v1";
         this.accountV2BaseUrl = "https://api.ebay.com/sell/account/v2";
         this.financesBaseUrl = "https://apiz.ebay.com/sell/finances/v1";
@@ -39,6 +57,23 @@ public final class AccountManagementConfiguration {
             String accountV2BaseUrl,
             String financesBaseUrl,
             String graphQLBaseUrl) {
+        this(accountV1BaseUrl, accountV2BaseUrl, financesBaseUrl, graphQLBaseUrl, Collections.emptySet());
+    }
+
+    /**
+     * @param allowedHosts additional hosts trusted with the access token, for example
+     *     {@code api.sandbox.ebay.com}, or {@code 127.0.0.1} for a local mock server. Every base URL
+     *     must use a host from {@link #DEFAULT_ALLOWED_HOSTS} or this collection, and https unless
+     *     the host is in {@link #LOOPBACK_HOSTS}.
+     * @throws IllegalArgumentException when a base URL is not trusted
+     */
+    public AccountManagementConfiguration(
+            String accountV1BaseUrl,
+            String accountV2BaseUrl,
+            String financesBaseUrl,
+            String graphQLBaseUrl,
+            Collection<String> allowedHosts) {
+        this.allowedHosts = lowerCased(allowedHosts);
         this.accountV1BaseUrl = validateHost(accountV1BaseUrl);
         this.accountV2BaseUrl = validateHost(accountV2BaseUrl);
         this.financesBaseUrl = validateHost(financesBaseUrl);
@@ -46,15 +81,55 @@ public final class AccountManagementConfiguration {
     }
 
     private String validateHost(String url) {
+        String problem = untrustedReason(url);
+        if (problem != null) {
+            throw new IllegalArgumentException(problem + ": " + url);
+        }
+        return url;
+    }
+
+    /**
+     * True when {@code url} uses a host from {@link #getAllowedHosts()} and https, or http on a
+     * host from {@link #LOOPBACK_HOSTS}. Hosts compare lowercased, without IPv6 brackets.
+     */
+    public boolean isTrustedUrl(String url) {
+        return untrustedReason(url) == null;
+    }
+
+    private @Nullable String untrustedReason(String url) {
+        java.net.URI uri;
         try {
-            String host = new java.net.URI(url).getHost();
-            if (host == null || !getAllowedHosts().contains(host)) {
-                throw new IllegalArgumentException("URL host not in allowed list: " + url);
-            }
+            uri = new java.net.URI(url);
         } catch (java.net.URISyntaxException e) {
             throw new IllegalArgumentException("Invalid URL: " + url, e);
         }
-        return url;
+        String host = uri.getHost();
+        if (host == null) {
+            return "URL has no host";
+        }
+        String normalizedHost = normalizeHost(host);
+        String scheme = uri.getScheme();
+        if (!"https".equalsIgnoreCase(scheme)
+                && !("http".equalsIgnoreCase(scheme) && LOOPBACK_HOSTS.contains(normalizedHost))) {
+            return "URL must use https, or http on a loopback host";
+        }
+        if (!getAllowedHosts().contains(normalizedHost)) {
+            return "Host " + normalizedHost + " is not trusted; add it to allowedHosts to send the access token there";
+        }
+        return null;
+    }
+
+    private static String normalizeHost(String host) {
+        String lower = host.toLowerCase(Locale.ROOT);
+        return lower.startsWith("[") && lower.endsWith("]") ? lower.substring(1, lower.length() - 1) : lower;
+    }
+
+    private static Set<String> lowerCased(Collection<String> hosts) {
+        Set<String> result = new HashSet<>();
+        for (String host : hosts) {
+            result.add(normalizeHost(host));
+        }
+        return Collections.unmodifiableSet(result);
     }
 
     /**
@@ -77,10 +152,10 @@ public final class AccountManagementConfiguration {
         return defaultRequestOptions;
     }
 
+    /** Hosts the access token may be sent to: {@link #DEFAULT_ALLOWED_HOSTS} plus configured extras. */
     public Set<String> getAllowedHosts() {
-        Set<String> hosts = new HashSet<>();
-        hosts.add("api.ebay.com");
-        hosts.add("apiz.ebay.com");
+        Set<String> hosts = new HashSet<>(DEFAULT_ALLOWED_HOSTS);
+        hosts.addAll(allowedHosts);
         return hosts;
     }
 

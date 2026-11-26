@@ -21,6 +21,9 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * A complex type that indicates a parameter that caused an error and the value of the parameter which caused the error.
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class ErrorParameter implements AdditionalDataHolder, Parsable {
     /**

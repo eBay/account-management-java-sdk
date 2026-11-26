@@ -35,7 +35,7 @@ public class Region implements AdditionalDataHolder, Parsable {
      */
     private String regionName;
     /**
-     * This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
+     * Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt;
      */
     private RegionTypeEnum regionType;
     /**
@@ -82,7 +82,7 @@ public class Region implements AdditionalDataHolder, Parsable {
         return this.regionName;
     }
     /**
-     * Gets the regionType property value. This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
+     * Gets the regionType property value. Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt;
      * @return a {@link RegionTypeEnum}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class Region implements AdditionalDataHolder, Parsable {
         this.regionName = value;
     }
     /**
-     * Sets the regionType property value. This enumerated type defines shipping region types.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; These enumeration values are not currently being used by fulfillment policy methods, but may be used in the future.&lt;/span&gt; | - **COUNTRY**: A single country. - **COUNTRY_REGION**: A domestic region or special location within a country. In the US, these domestic region/special location include &apos;Alaska/Hawaii&apos; and &apos;PO Box&apos;. - **STATE_OR_PROVINCE**: A state or province, such as California (CA) or New York (NY) in the US, or British Columbia (BC) or Ontario (ON) in Canada. - **WORLD_REGION**: A world region, such as Europe, the Middle East, or Southeast Asia. - **WORLDWIDE**: The entire world as we know it.
+     * Sets the regionType property value. Reserved for future use. &lt;!--The region&apos;s type, which can be one of the following: &apos;COUNTRY&apos;, &apos;COUNTRY_REGION&apos;, &apos;STATE_OR_PROVINCE&apos;, &apos;WORLD_REGION&apos;, or &apos;WORLDWIDE&apos;.--&gt;
      * @param value Value to set for the regionType property.
      */
     public void setRegionType(@jakarta.annotation.Nullable final RegionTypeEnum value) {

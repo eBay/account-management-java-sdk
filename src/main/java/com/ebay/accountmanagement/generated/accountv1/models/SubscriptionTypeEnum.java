@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumerated type defines the types of subscriptions that may be associated with a seller account, such as an eBay store subscription. | - **STORE_PLAN**: This value indicates an eBay store subscription.
+ * The kind of entity with which the subscription is associated, such as an eBay store.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum SubscriptionTypeEnum implements ValuedEnum {

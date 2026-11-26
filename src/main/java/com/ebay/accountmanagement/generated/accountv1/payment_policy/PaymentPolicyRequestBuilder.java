@@ -101,7 +101,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new payment policy where the policy encapsulates seller&apos;s terms for order payments. &lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getPaymentPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
+     * @param body Payment policy request
      * @return a {@link SetPaymentPolicyResponse}
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 500 status code
@@ -112,7 +112,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new payment policy where the policy encapsulates seller&apos;s terms for order payments. &lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getPaymentPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
+     * @param body Payment policy request
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SetPaymentPolicyResponse}
      * @throws Error When receiving a 400 status code
@@ -149,7 +149,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new payment policy where the policy encapsulates seller&apos;s terms for order payments. &lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getPaymentPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
+     * @param body Payment policy request
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -158,7 +158,7 @@ public class PaymentPolicyRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates a new payment policy where the policy encapsulates seller&apos;s terms for order payments. &lt;br&gt;&lt;br&gt;A successful request returns the &lt;b&gt;getPaymentPolicy&lt;/b&gt; URI to the new policy in the &lt;b&gt;Location&lt;/b&gt; response header and the ID for the new policy is returned in the response payload.  &lt;p class=&quot;tablenote&quot;&gt;&lt;b&gt;Tip:&lt;/b&gt; For details on creating and using the business policies supported by the Account API, see &lt;a href=&quot;/api-docs/sell/static/seller-accounts/business-policies.html&quot;&gt;eBay business policies&lt;/a&gt;.&lt;/p&gt;
-     * @param body This root container defines a seller&apos;s payment business policy for a specific marketplace and category group. This type is used when creating or updating a payment business policy.
+     * @param body Payment policy request
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
