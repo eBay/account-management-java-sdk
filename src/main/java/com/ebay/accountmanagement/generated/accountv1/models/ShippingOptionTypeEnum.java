@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumerated type defines whether the corresponding shipping service options are domestic or international shipping service options. a region that is either domestic (within the country from where the item is listed or shipped) or international (a country outside the country from where the item is listed or shipped). | - **DOMESTIC**: This value indicates that the corresponding shipping service options are domestic shipping service options. - **INTERNATIONAL**: This value indicates that the corresponding shipping service options are international shipping service options.
+ * This enumeration value returned here indicates whether the shipping rate table is a domestic or international shipping rate table.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum ShippingOptionTypeEnum implements ValuedEnum {

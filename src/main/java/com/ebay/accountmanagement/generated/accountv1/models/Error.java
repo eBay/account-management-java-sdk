@@ -32,9 +32,9 @@ public class Error extends ApiException implements AdditionalDataHolder, Parsabl
      */
     private Map<String, Object> additionalData;
     /**
-     * Identifies the type of error.
+     * Identifies the category of error.
      */
-    private String category;
+    private ErrorCategoryEnum category;
     /**
      * Name for the primary system where the error occurred. This is relevant for application errors.
      */
@@ -92,11 +92,11 @@ public class Error extends ApiException implements AdditionalDataHolder, Parsabl
         return this.additionalData;
     }
     /**
-     * Gets the category property value. Identifies the type of error.
-     * @return a {@link String}
+     * Gets the category property value. Identifies the category of error.
+     * @return a {@link ErrorCategoryEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCategory() {
+    public ErrorCategoryEnum getCategory() {
         return this.category;
     }
     /**
@@ -122,7 +122,7 @@ public class Error extends ApiException implements AdditionalDataHolder, Parsabl
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(9);
-        deserializerMap.put("category", (n) -> { this.setCategory(n.getStringValue()); });
+        deserializerMap.put("category", (n) -> { this.setCategory(n.getEnumValue(ErrorCategoryEnum::forValue)); });
         deserializerMap.put("domain", (n) -> { this.setDomain(n.getStringValue()); });
         deserializerMap.put("errorId", (n) -> { this.setErrorId(n.getIntegerValue()); });
         deserializerMap.put("inputRefIds", (n) -> { this.setInputRefIds(n.getCollectionOfPrimitiveValues(String.class)); });
@@ -196,7 +196,7 @@ public class Error extends ApiException implements AdditionalDataHolder, Parsabl
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("category", this.getCategory());
+        writer.writeEnumValue("category", this.getCategory());
         writer.writeStringValue("domain", this.getDomain());
         writer.writeIntegerValue("errorId", this.getErrorId());
         writer.writeCollectionOfPrimitiveValues("inputRefIds", this.getInputRefIds());
@@ -215,10 +215,10 @@ public class Error extends ApiException implements AdditionalDataHolder, Parsabl
         this.additionalData = value;
     }
     /**
-     * Sets the category property value. Identifies the type of error.
+     * Sets the category property value. Identifies the category of error.
      * @param value Value to set for the category property.
      */
-    public void setCategory(@jakarta.annotation.Nullable final String value) {
+    public void setCategory(@jakarta.annotation.Nullable final ErrorCategoryEnum value) {
         this.category = value;
     }
     /**

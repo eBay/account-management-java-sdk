@@ -35,7 +35,7 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
      */
     private String name;
     /**
-     * This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
+     * This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt;
      */
     private PaymentsProgramOnboardingStepStatus status;
     /**
@@ -87,7 +87,7 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
         return this.name;
     }
     /**
-     * Gets the status property value. This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
+     * Gets the status property value. This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link PaymentsProgramOnboardingStepStatus}
      */
     @jakarta.annotation.Nullable
@@ -128,7 +128,7 @@ public class PaymentsProgramOnboardingSteps implements AdditionalDataHolder, Par
         this.name = value;
     }
     /**
-     * Sets the status property value. This enumeration value indicates the status of the present onboarding step. | - **NOT_STARTED**: This enumeration value indicates that the present step has not started. - **IN_PROGRESS**: This enumeration value indicates that the present step has started but has not completed. - **COMPLETED**: This enumeration value indicates that the present step has completed.
+     * Sets the status property value. This enumeration value indicates the status of the associated step. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only one step can be &lt;code&gt;IN_PROGRESS&lt;/code&gt; at a time.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the status property.
      */
     public void setStatus(@jakarta.annotation.Nullable final PaymentsProgramOnboardingStepStatus value) {

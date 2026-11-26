@@ -54,6 +54,9 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
      * This method allows developers to check the seller eligibility status for eBay advertising programs.
      * @return a {@link SellerEligibilityMultiProgramResponse}
      * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 429 status code
      * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
@@ -65,6 +68,9 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SellerEligibilityMultiProgramResponse}
      * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 429 status code
      * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
@@ -72,6 +78,9 @@ public class AdvertisingEligibilityRequestBuilder extends BaseRequestBuilder {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("429", Error::createFromDiscriminatorValue);
         errorMapping.put("500", Error::createFromDiscriminatorValue);
         return this.requestAdapter.send(requestInfo, errorMapping, SellerEligibilityMultiProgramResponse::createFromDiscriminatorValue);
     }

@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This enumerated type defines the seller eligibility status for a specified eBay advertising program. | - **ELIGIBLE**: This value indicates that the seller is eligible for the specified eBay advertising program. - **INELIGIBLE**: This value indicates that the seller is ineligible for the specified eBay advertising program.
+ * The seller eligibility status for the specified eBay advertising program.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum SellerEligibilityEnum implements ValuedEnum {

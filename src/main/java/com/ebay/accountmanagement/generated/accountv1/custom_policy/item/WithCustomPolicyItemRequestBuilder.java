@@ -80,7 +80,7 @@ public class WithCustomPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing custom policy specified by the &lt;b&gt;custom_policy_id&lt;/b&gt; path parameter. Since this method overwrites the policy&apos;s &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;label&lt;/b&gt;, and &lt;b&gt;description&lt;/b&gt; fields, always include the complete and current text of all three policy fields in the request payload, even if they are not being updated.&lt;br/&gt; &lt;br/&gt;For example, the value for the &lt;b&gt;label&lt;/b&gt; field is to be updated, but the &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values will remain unchanged. The existing &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values, as they are defined in the current policy, must also be passed in. &lt;br/&gt;&lt;br/&gt;A successful policy update call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used to request a list of custom policies.
+     * @param body Request to update a current custom policy.
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 404 status code
      * @throws Error When receiving a 409 status code
@@ -91,7 +91,7 @@ public class WithCustomPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing custom policy specified by the &lt;b&gt;custom_policy_id&lt;/b&gt; path parameter. Since this method overwrites the policy&apos;s &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;label&lt;/b&gt;, and &lt;b&gt;description&lt;/b&gt; fields, always include the complete and current text of all three policy fields in the request payload, even if they are not being updated.&lt;br/&gt; &lt;br/&gt;For example, the value for the &lt;b&gt;label&lt;/b&gt; field is to be updated, but the &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values will remain unchanged. The existing &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values, as they are defined in the current policy, must also be passed in. &lt;br/&gt;&lt;br/&gt;A successful policy update call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used to request a list of custom policies.
+     * @param body Request to update a current custom policy.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 404 status code
@@ -130,7 +130,7 @@ public class WithCustomPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing custom policy specified by the &lt;b&gt;custom_policy_id&lt;/b&gt; path parameter. Since this method overwrites the policy&apos;s &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;label&lt;/b&gt;, and &lt;b&gt;description&lt;/b&gt; fields, always include the complete and current text of all three policy fields in the request payload, even if they are not being updated.&lt;br/&gt; &lt;br/&gt;For example, the value for the &lt;b&gt;label&lt;/b&gt; field is to be updated, but the &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values will remain unchanged. The existing &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values, as they are defined in the current policy, must also be passed in. &lt;br/&gt;&lt;br/&gt;A successful policy update call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used to request a list of custom policies.
+     * @param body Request to update a current custom policy.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -139,7 +139,7 @@ public class WithCustomPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing custom policy specified by the &lt;b&gt;custom_policy_id&lt;/b&gt; path parameter. Since this method overwrites the policy&apos;s &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;label&lt;/b&gt;, and &lt;b&gt;description&lt;/b&gt; fields, always include the complete and current text of all three policy fields in the request payload, even if they are not being updated.&lt;br/&gt; &lt;br/&gt;For example, the value for the &lt;b&gt;label&lt;/b&gt; field is to be updated, but the &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values will remain unchanged. The existing &lt;b&gt;name&lt;/b&gt; and &lt;b&gt;description&lt;/b&gt; values, as they are defined in the current policy, must also be passed in. &lt;br/&gt;&lt;br/&gt;A successful policy update call returns an HTTP status code of &lt;b&gt;204 No Content&lt;/b&gt;.
-     * @param body This type is used to request a list of custom policies.
+     * @param body Request to update a current custom policy.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

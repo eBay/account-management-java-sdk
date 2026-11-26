@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * An enumeration type that defines the supported types of Custom Policies. | - **PRODUCT_COMPLIANCE**: This enumeration value indicates that the custom policy is a product compliance policy. - **TAKE_BACK**: This enumeration value indicates that the custom policy is a product takeback policy.
+ * Specifies the type of Custom Policy being returned.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum CustomPolicyTypeEnum implements ValuedEnum {

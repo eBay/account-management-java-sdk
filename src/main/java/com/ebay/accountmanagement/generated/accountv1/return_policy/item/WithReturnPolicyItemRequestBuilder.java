@@ -108,7 +108,7 @@ public class WithReturnPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing return policy. Specify the policy you want to update using the &lt;b&gt;return_policy_id&lt;/b&gt; path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Container for a return policy request.
      * @return a {@link SetReturnPolicyResponse}
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 404 status code
@@ -120,7 +120,7 @@ public class WithReturnPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing return policy. Specify the policy you want to update using the &lt;b&gt;return_policy_id&lt;/b&gt; path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Container for a return policy request.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link SetReturnPolicyResponse}
      * @throws Error When receiving a 400 status code
@@ -179,7 +179,7 @@ public class WithReturnPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing return policy. Specify the policy you want to update using the &lt;b&gt;return_policy_id&lt;/b&gt; path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Container for a return policy request.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -188,7 +188,7 @@ public class WithReturnPolicyItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing return policy. Specify the policy you want to update using the &lt;b&gt;return_policy_id&lt;/b&gt; path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.
-     * @param body This root container defines a seller&apos;s return business policy for a specific marketplace and category group. This type is used when creating or updating a return business policy.
+     * @param body Container for a return policy request.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
